@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <!-- TrawlBens Official Eagle Symbol (Matches user's Logo Red _ Text.png) -->
+  <g fill="#E11931">
+    <!-- Top Wing -->
+    <path d="M 6.5 5.5 C 5.8 5.5 5.2 6.1 5.5 6.8 L 6.8 10 H 18.5 L 15.5 5.5 Z"/>
+    
+    <!-- Middle Wing (with horizontal aerodynamic slit) -->
+    <path d="M 3.8 11.5 L 6 15 H 19 L 16.5 11.5 Z"/>
+    <path d="M 6.2 16 L 7.8 19.5 H 20.2 L 18.5 16 Z"/>
+    
+    <!-- Head / Forward Aerodynamic Beak -->
+    <path d="M 20.8 11.5 H 25.5 L 28 15.5 L 22.5 19.5 H 20.8 Z"/>
+    
+    <!-- Lower Tail Fin -->
+    <path d="M 12.8 19.5 L 14 25.5 C 14.1 26.2 14.8 26.5 15.5 26.5 H 17.5 L 20 19.5 Z"/>
+  </g>
+</svg>
