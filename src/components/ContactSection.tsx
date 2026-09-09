@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 
 const CONTACT_LINKS = [
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/aldoabieza', isExternal: true },
+  { label: 'LinkedIn', url: 'https://linkedin.com/in/aldo-abieza', isExternal: true },
   { label: 'Email', url: 'mailto:hello@aldoabieza.com', isExternal: false }
 ];
 
