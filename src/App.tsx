@@ -83,8 +83,8 @@ export default function App() {
       {/* Subtle Grain Texture Overlay */}
       <div className="grain" aria-hidden="true" />
 
-      {/* Fixed Site-wide Grid Pattern */}
-      <div className="site-grid" aria-hidden="true" />
+      {/* Fixed Site-wide Grid Pattern - disabled on case study details page for improved accessibility & readability */}
+      {!currentCaseStudy && <div className="site-grid" aria-hidden="true" />}
 
       {/* Desktop Cursor Spotlight Glow */}
       <Spotlight />

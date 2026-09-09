@@ -17,17 +17,93 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       { value: '100%', label: 'Design-to-code token parity across products' },
       { value: '25+', label: 'Payment products unified across the platform' }
     ],
-    overview: "As Indonesia's pioneering payment enabler, DOKU connects businesses with dozens of payment rails. Leading the design system initiative ensures consistency, speed to market, and accessible multi-brand adaptability across all product suites.",
-    problem: 'Rapid product expansion had led to fragmented UI libraries, disjointed accessibility states, and redundant front-end implementation cycles across disparate engineering squads.',
-    solution: 'Established a unified design system architecture in Figma and code with atomic tokens, flexible layout components, robust dark/light themes, and strict WCAG compliance guidelines.',
+    overview: "At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.",
+    problem: 'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system, duplicate components, and divergent user behaviors across merchant products.',
+    solution: 'Facilitated a collaborative design system strategy workshop, architected a federated closed-loop contribution model, standardized harmonic 8pt spatial foundations, and unified cross-product navigation and header anatomy.',
     galleryImages: [
-      '/assets/projects/doku-design-system-cover.jpg'
+      '/assets/projects/doku/doku-workshop-strategy-board.svg',
+      '/assets/projects/doku/doku-current-flowchart.svg',
+      '/assets/projects/doku/doku-product-inconsistency-breakdown.svg'
     ],
-    testimonial: {
-      quote: 'Aldo brought remarkable structural clarity to our core design system architecture. His ability to balance developer velocity with a polished, accessible user experience has been pivotal.',
-      author: 'Design & Product Leadership',
-      role: 'DOKU Enterprise Solutions'
-    }
+    metaDetails: {
+      platform: 'Multi-Brand Web & Mobile Payment Platforms (Figma, React, Token Engine)',
+      responsibilities: [
+        'Design System Architecture & Governance',
+        'Cross-Functional Strategy Workshop Facilitation',
+        'Component Tokenization & Mathematical Foundations',
+        'Cross-Squad Alignment (Designers, Writers, Engineers)',
+        'Figma Master Libraries & Storybook Code Parity'
+      ],
+      tools: ['Figma', 'FigJam', 'Storybook', 'Tokens Studio', 'GitHub', 'Zeroheight'],
+      team: 'Lead UI/UX Designer (Facilitator), Design Lead (Sponsor), Squad UI Designers, UX Writers, Core Frontend Engineers'
+    },
+    sections: [
+      {
+        number: '01',
+        badge: '01 · Overview',
+        title: 'Overview',
+        paragraphs: [
+          'At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.'
+        ]
+      },
+      {
+        number: '02',
+        badge: '02 · The Workshop',
+        title: 'The Workshop',
+        paragraphs: [
+          'As designers and writer, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/doku/The Workshop Image.png',
+            aspect: 'wide'
+          }
+        ],
+        afterImageParagraphs: [
+          'Selama workshop berlangsung saya mendapatkan insight banyak dari participant terkait design system, berikut poin inti yang kita dapatkan.'
+        ]
+      },
+      {
+        number: '03',
+        badge: '03 · Diagnostic Workflow',
+        title: '1. Missing Component Update Flow',
+        paragraphs: [
+          'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system.'
+        ],
+        imagesBeforePoints: true,
+        images: [
+          {
+            url: '/assets/projects/doku/Missing Component Update.png',
+            aspect: 'wide'
+          }
+        ],
+        keyPoints: [
+          {
+            title: 'Lack of Component Visibility Across Designers',
+            description: 'Limited visibility across designers led to duplicate components with inconsistent variations, making the design system harder to maintain, update, and scale consistently.'
+          },
+          {
+            title: 'Missing Design System Synchronization Flow',
+            description: 'Updated components implemented during development were often not synchronized back to the design system repository, resulting in outdated libraries and misalignment across teams.'
+          }
+        ]
+      },
+      {
+        number: '04',
+        badge: '04 · Foundation & Behavior Gaps',
+        title: '2. Inconsistency Design Across Products',
+        paragraphs: [
+          'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',
+          'For example in details page, we have different behaviour to return the parent page, inconsistency spacing and header page components in body dashboard.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/doku/doku-product-inconsistency-breakdown.svg',
+            aspect: 'wide'
+          }
+        ]
+      }
+    ]
   },
   orderonline: {
     id: 'orderonline',
@@ -69,24 +145,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     sections: [
       {
         number: '01',
-        badge: '01 · Overview',
-        title: 'Empowering Indonesian Merchants with No-Code Storefronts',
-        summary: 'Making digital commerce accessible to entrepreneurs of all technical levels.',
-        paragraphs: [
-          'Storefront on OrderOnline.id is a website builder platform that enables users—primarily independent business owners and online sellers—to build, customize, and publish an online store to market their products without needing coding or technical skills.',
-          'As Indonesian e-commerce evolved, sellers required an agile digital storefront tightly coupled with OrderOnline’s proprietary order funnel, checkout automations, reseller capabilities, and payment enablers.'
-        ],
-        callouts: [
-          {
-            icon: '💡',
-            label: 'Product Vision',
-            text: 'Provide non-technical business owners with a frictionless, instantaneous website creation experience that rivals bespoke e-commerce sites.'
-          }
-        ]
-      },
-      {
-        number: '02',
-        badge: '02 · Discovery & Research',
+        badge: '01 · Discovery & Research',
         title: 'Validating Assumptions Through Usability Testing',
         summary: 'Transitioning from stakeholder guesswork to empirical user behavior evidence.',
         callouts: [
@@ -134,8 +193,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ]
       },
       {
-        number: '03',
-        badge: '03 · Problem Synthesis',
+        number: '02',
+        badge: '02 · Problem Synthesis',
         title: 'Four Core Bottlenecks in the Existing Experience',
         summary: 'Clear pain points that prevented sellers from launching their stores effectively.',
         keyPoints: [
@@ -158,8 +217,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ]
       },
       {
-        number: '04',
-        badge: '04 · Ideation & Architecture',
+        number: '03',
+        badge: '03 · Ideation & Architecture',
         title: 'Information Architecture Overhaul & Feature Relayouting',
         summary: 'Decoupling administrative management from visual customization.',
         paragraphs: [
@@ -209,8 +268,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ]
       },
       {
-        number: '05',
-        badge: '05 · Visual Design & Experience',
+        number: '04',
+        badge: '04 · Visual Design & Experience',
         title: 'Engineering the Live WYSIWYG Storefront Editor',
         summary: 'Real-time design canvas, modular sidebars, and contextual micro-guidance.',
         keyPoints: [
@@ -257,8 +316,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         ]
       },
       {
-        number: '06',
-        badge: '06 · Impact & Learnings',
+        number: '05',
+        badge: '05 · Impact & Learnings',
         title: 'Measurable Growth & Lessons in Simplicity',
         summary: 'Demonstrating user growth and putting design philosophy into practice.',
         keyPoints: [

@@ -39,12 +39,14 @@ export interface CaseStudyImage {
 export interface CaseStudySection {
   number: string;
   badge: string;
-  title: string;
+  title?: string;
   summary?: string;
   paragraphs?: string[];
+  afterImageParagraphs?: string[];
   keyPoints?: CaseStudyKeyPoint[];
   callouts?: CaseStudyCallout[];
   images?: CaseStudyImage[];
+  imagesBeforePoints?: boolean;
   comparison?: {
     beforeTitle?: string;
     beforeText?: string;

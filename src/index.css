@@ -194,28 +194,32 @@ img { max-width: 100%; display: block; }
 .sidebar__case-nav {
   display: flex;
   flex-direction: column;
-  gap: 32px;
 }
 .sidebar__back {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   width: fit-content;
   font-size: 14px;
+  font-weight: 500;
   color: var(--ink-soft);
-  transition: color 0.2s var(--ease);
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
   background: none;
   border: none;
-  padding: 0;
+  padding: 4px 0;
   cursor: pointer;
   font-family: inherit;
 }
-.sidebar__back:hover { color: var(--accent); }
+.sidebar__back:hover {
+  color: var(--ink);
+  transform: translateX(-3px);
+}
 
 .sidebar__case-meta {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  width: 100%;
 }
 
 .sidebar__bottom {
@@ -1044,6 +1048,8 @@ img { max-width: 100%; display: block; }
 =================================================== */
 .case-study {
   padding-top: 120px;
+  position: relative;
+  background: var(--bg);
 }
 
 .case__back {
@@ -1064,7 +1070,7 @@ img { max-width: 100%; display: block; }
 
 .case__head {
   max-width: 760px;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 .case__title {
   font-family: var(--font-display);
@@ -1072,7 +1078,7 @@ img { max-width: 100%; display: block; }
   font-size: 48px;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  margin: 0 0 20px;
+  margin: 0;
 }
 .case__intro {
   font-size: 18px;
@@ -1119,7 +1125,7 @@ img { max-width: 100%; display: block; }
 /* sidebar variant: stack with dividers instead of side-by-side columns */
 .sidebar__case-meta .case__meta-item {
   padding-left: 0;
-  padding-top: 20px;
+  padding-top: 14px;
   border-left: none;
   border-top: 1px solid var(--line);
 }
@@ -1127,12 +1133,17 @@ img { max-width: 100%; display: block; }
   padding-top: 0;
   border-top: none;
 }
+.sidebar__case-meta .case__meta-label {
+  margin: 0 0 4px;
+}
 .sidebar__case-meta .case__meta-value {
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.35;
 }
 
 .case__cover {
+  max-width: 760px;
+  width: 100%;
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
@@ -1143,6 +1154,7 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .case__stats {
@@ -1172,7 +1184,7 @@ img { max-width: 100%; display: block; }
 .case__body {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 28px;
   max-width: 760px;
   margin-bottom: 72px;
 }
@@ -1312,9 +1324,21 @@ img { max-width: 100%; display: block; }
 .case__section {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   padding-bottom: 40px;
   border-bottom: 1px solid var(--line);
+}
+/* Overview (section 1) & The Workshop (section 2) have no bottom border */
+.case__section:nth-of-type(1),
+.case__section:nth-of-type(2) {
+  border-bottom: none;
+}
+/* Selected sections: set gap bottom / padding bottom to 12px for clear visual hierarchy */
+.case__section:nth-of-type(1),
+.case__section:nth-of-type(2),
+.case__section:nth-of-type(3),
+.case__section:nth-of-type(4) {
+  padding-bottom: 12px;
 }
 .case__section:last-of-type {
   border-bottom: none;
@@ -1326,35 +1350,30 @@ img { max-width: 100%; display: block; }
   gap: 8px;
 }
 .case__section-badge {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
+  display: none !important;
 }
 .case__section-title {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--ink);
   line-height: 1.25;
   margin: 0;
 }
-.case__section-summary {
-  font-size: 16.5px;
-  color: var(--ink-soft);
-  font-weight: 450;
-  line-height: 1.6;
-  margin: 2px 0 0;
-  padding-left: 14px;
-  border-left: 2px solid var(--line);
+.case__section-summary,
+.case__callouts,
+.case__callout-card,
+.case__image-caption {
+  display: none !important;
 }
 .case__section-paragraphs {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+.case__section-paragraphs--after-image {
+  margin-top: 4px;
 }
 
 /* Callouts & Alert Boxes */

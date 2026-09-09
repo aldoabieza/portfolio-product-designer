@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap');
+      .title-text { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 20px; fill: #111827; }
+      .tag-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: #D97706; letter-spacing: 0.05em; text-transform: uppercase; }
+      .col-header { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; fill: #1F2937; }
+      .desc-text { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; fill: #4B5563; }
+      .ui-label { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; fill: #374151; }
+      .token-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; }
+    </style>
+    <filter id="box-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-opacity="0.05" flood-color="#000000"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="740" rx="16" fill="#FAFAF8" stroke="#E8E6DF" stroke-width="1.5" />
+
+  <!-- Outer Card -->
+  <g transform="translate(48, 40)" filter="url(#box-shadow)">
+    <rect width="1104" height="660" rx="14" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+
+    <!-- Header -->
+    <g transform="translate(36, 32)">
+      <text x="0" y="22" class="title-text">Cross-Product UI Discrepancy &amp; Fragmentation Analysis</text>
+      <rect x="580" y="4" width="180" height="24" rx="6" fill="#FFFBEB" stroke="#FDE68A"/>
+      <text x="592" y="20" class="tag-badge">BEHAVIOR &amp; FOUNDATION GAPS</text>
+      <text x="0" y="48" font-family="'Inter', sans-serif" font-size="13.5" fill="#4B5563">
+        Tiga titik friksi utama pada details page dan dashboard sebelum DOKU Fragment distandarisasi.
+      </text>
+    </g>
+
+    <line x1="36" y1="96" x2="1068" y2="96" stroke="#F3F4F6" stroke-width="1.5" />
+
+    <!-- 3 COMPARISON CARDS -->
+    <g transform="translate(36, 116)">
+
+      <!-- CARD 1: Return to Parent Page Behavior -->
+      <g transform="translate(0, 0)">
+        <rect width="328" height="500" rx="10" fill="#F8FAFC" stroke="#E2E8F0" />
+        
+        <!-- Header Bar -->
+        <g transform="translate(18, 20)">
+          <rect width="28" height="28" rx="6" fill="#FEE2E2" />
+          <text x="14" y="19" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#DC2626">01</text>
+          <text x="38" y="18" class="col-header">Return to Parent Page</text>
+        </g>
+        <text x="18" y="74" class="desc-text">
+          Di details page, user mengalami inkonsistensi perilaku kembali (navigasi):
+        </text>
+
+        <!-- UI Mockup Illustration 1: Inconsistent Back Triggers -->
+        <g transform="translate(18, 100)">
+          <rect width="292" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-dasharray="3,3"/>
+          
+          <!-- Squad A -->
+          <g transform="translate(14, 16)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">SQUAD A · DETAILS PAGE</text>
+            <rect x="0" y="20" width="80" height="26" rx="4" fill="#F1F5F9" stroke="#94A3B8"/>
+            <text x="10" y="37" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#334155">← Kembali</text>
+            <text x="90" y="37" font-family="'Inter', sans-serif" font-size="10.5" fill="#94A3B8">(Textual button)</text>
+          </g>
+
+          <!-- Squad B -->
+          <g transform="translate(14, 80)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">SQUAD B · INVOICE DETAILS</text>
+            <circle cx="16" cy="33" r="14" fill="#FEE2E2" stroke="#EF4444"/>
+            <text x="16" y="38" text-anchor="middle" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#DC2626">✕</text>
+            <text x="40" y="37" font-family="'Inter', sans-serif" font-size="10.5" fill="#DC2626">(Modal dismiss icon on full page)</text>
+          </g>
+
+          <!-- Squad C -->
+          <g transform="translate(14, 144)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">SQUAD C · MERCHANT DASHBOARD</text>
+            <text x="0" y="34" font-family="'Inter', sans-serif" font-size="11" fill="#0284C7">Home / Transactions / <tspan font-weight="600" fill="#0F172A">Details</tspan></text>
+            <text x="0" y="52" font-family="'Inter', sans-serif" font-size="10.5" fill="#94A3B8">(Breadcrumbs only, no back CTA)</text>
+          </g>
+
+          <!-- Warning callout inside mock -->
+          <rect x="14" y="212" width="264" height="34" rx="4" fill="#FEF2F2" />
+          <text x="22" y="233" font-family="'Inter', sans-serif" font-size="10.5" font-weight="600" fill="#B91C1C">⚠️ Mental model user terpecah-pecah</text>
+        </g>
+
+        <!-- Solution footer -->
+        <g transform="translate(18, 380)">
+          <rect width="292" height="96" rx="6" fill="#E6F2F2" stroke="#99D5D5"/>
+          <text x="12" y="20" class="token-badge" fill="#008080">DOKU FRAGMENT STANDARD</text>
+          <text x="12" y="40" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#084D4D">Canonical Parent Navigation Bar</text>
+          <text x="12" y="58" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            Pola tetap: Standar icon button ← dengan
+          </text>
+          <text x="12" y="74" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            semantic label dan keyboard shortcut escape.
+          </text>
+        </g>
+      </g>
+
+      <!-- CARD 2: Inconsistency Spacing -->
+      <g transform="translate(352, 0)">
+        <rect width="328" height="500" rx="10" fill="#F8FAFC" stroke="#E2E8F0" />
+        
+        <g transform="translate(18, 20)">
+          <rect width="28" height="28" rx="6" fill="#FEF3C7" />
+          <text x="14" y="19" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#D97706">02</text>
+          <text x="38" y="18" class="col-header">Inconsistency Spacing</text>
+        </g>
+        <text x="18" y="74" class="desc-text">
+          Belum ada sistem skala token margin/padding baku antarmuka:
+        </text>
+
+        <!-- UI Mockup Illustration 2: Spacing Collision -->
+        <g transform="translate(18, 100)">
+          <rect width="292" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-dasharray="3,3"/>
+
+          <!-- Visual Spacing Bars -->
+          <g transform="translate(14, 16)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">RANDOM PADDING SCALES</text>
+            
+            <rect x="0" y="24" width="70" height="28" fill="#FEE2E2" stroke="#EF4444"/>
+            <text x="35" y="42" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#B91C1C">p: 7px</text>
+            
+            <rect x="80" y="24" width="95" height="28" fill="#FEF3C7" stroke="#F59E0B"/>
+            <text x="127" y="42" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#B45309">gap: 13px</text>
+
+            <rect x="185" y="24" width="92" height="28" fill="#FEE2E2" stroke="#EF4444"/>
+            <text x="231" y="42" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#B91C1C">m: 23px</text>
+          </g>
+
+          <!-- Visual Disaligned Form -->
+          <g transform="translate(14, 80)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">ASYMMETRIC CARD CONTAINERS</text>
+            <rect x="0" y="20" width="120" height="60" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/>
+            <text x="8" y="38" font-family="'Inter', sans-serif" font-size="9" fill="#64748B">Padding Left 10px</text>
+            <rect x="132" y="20" width="146" height="60" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/>
+            <text x="140" y="38" font-family="'Inter', sans-serif" font-size="9" fill="#64748B">Padding Left 28px</text>
+          </g>
+
+          <rect x="14" y="180" width="264" height="66" rx="4" fill="#FEF2F2" />
+          <text x="22" y="202" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#B91C1C">Dampak Front-End:</text>
+          <text x="22" y="218" font-family="'Inter', sans-serif" font-size="10" fill="#7F1D1D">Engineer menulis ratusan custom inline styles</text>
+          <text x="22" y="232" font-family="'Inter', sans-serif" font-size="10" fill="#7F1D1D">dan layout shift terlihat saat pergantian menu.</text>
+        </g>
+
+        <!-- Solution footer -->
+        <g transform="translate(18, 380)">
+          <rect width="292" height="96" rx="6" fill="#E6F2F2" stroke="#99D5D5"/>
+          <text x="12" y="20" class="token-badge" fill="#008080">DOKU FRAGMENT STANDARD</text>
+          <text x="12" y="40" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#084D4D">Harmonic 8pt Spatial Token Scale</text>
+          <text x="12" y="58" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            Token baku: 4px, 8px, 16px, 24px, 32px, 48px.
+          </text>
+          <text x="12" y="74" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            Selaras antara token Figma &amp; CSS variables.
+          </text>
+        </g>
+      </g>
+
+      <!-- CARD 3: Header Page Components in Body Dashboard -->
+      <g transform="translate(704, 0)">
+        <rect width="328" height="500" rx="10" fill="#F8FAFC" stroke="#E2E8F0" />
+        
+        <g transform="translate(18, 20)">
+          <rect width="28" height="28" rx="6" fill="#E0E7FF" />
+          <text x="14" y="19" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#4F46E5">03</text>
+          <text x="38" y="18" class="col-header">Dashboard Header Anatomy</text>
+        </g>
+        <text x="18" y="74" class="desc-text">
+          Header halaman berbeda format antara squad satu dengan yang lain:
+        </text>
+
+        <!-- UI Mockup Illustration 3: Header Fragment -->
+        <g transform="translate(18, 100)">
+          <rect width="292" height="260" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-dasharray="3,3"/>
+
+          <!-- Product X Header -->
+          <g transform="translate(14, 14)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">PRODUCT X HEADER</text>
+            <rect x="0" y="20" width="264" height="42" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+            <text x="10" y="44" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#0F172A">Daftar Transaksi</text>
+            <rect x="176" y="28" width="78" height="26" rx="4" fill="#2563EB"/>
+            <text x="215" y="45" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">+ Export</text>
+          </g>
+
+          <!-- Product Y Header -->
+          <g transform="translate(14, 86)">
+            <text x="0" y="12" class="token-badge" fill="#64748B">PRODUCT Y HEADER</text>
+            <rect x="0" y="20" width="264" height="56" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+            <text x="10" y="40" font-family="'Inter', sans-serif" font-size="10" fill="#64748B">Merchant Suite</text>
+            <text x="10" y="58" font-family="'Inter', sans-serif" font-size="15" font-weight="800" fill="#DC2626">Laporan &amp; Settlement</text>
+            <circle cx="242" cy="46" r="12" fill="#E2E8F0"/>
+          </g>
+
+          <rect x="14" y="180" width="264" height="66" rx="4" fill="#FEF2F2" />
+          <text x="22" y="202" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#B91C1C">Dampak User Experience:</text>
+          <text x="22" y="218" font-family="'Inter', sans-serif" font-size="10" fill="#7F1D1D">Visual hierarchy membingungkan; user</text>
+          <text x="22" y="232" font-family="'Inter', sans-serif" font-size="10" fill="#7F1D1D">merasa seperti masuk ke aplikasi berbeda.</text>
+        </g>
+
+        <!-- Solution footer -->
+        <g transform="translate(18, 380)">
+          <rect width="292" height="96" rx="6" fill="#E6F2F2" stroke="#99D5D5"/>
+          <text x="12" y="20" class="token-badge" fill="#008080">DOKU FRAGMENT STANDARD</text>
+          <text x="12" y="40" font-family="'Inter', sans-serif" font-size="11.5" font-weight="600" fill="#084D4D">Unified PageHeader Component</text>
+          <text x="12" y="58" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            Komponen master dengan slot title, subtitle,
+          </text>
+          <text x="12" y="74" font-family="'Inter', sans-serif" font-size="11" fill="#116363">
+            breadcrumb opsional, status badge, &amp; CTA seragam.
+          </text>
+        </g>
+      </g>
+
+    </g>
+  </g>
+</svg>

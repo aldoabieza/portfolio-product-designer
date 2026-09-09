@@ -5,13 +5,138 @@ import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
 
 interface CaseStudyViewProps {
   caseStudy: CaseStudy;
-  onBackToWork: () => void;
+  onBackToWork?: () => void;
   onSelectCaseStudy: (id: string) => void;
+}
+
+interface CaseImageProps {
+  key?: string | number;
+  img: CaseStudyImage;
+  title: string;
+  index: number;
+  onExpand: (img: CaseStudyImage) => void;
+}
+
+function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
+  const [currentSrc, setCurrentSrc] = useState(img.url);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+
+  const getNextFallback = (url: string, attemptCount: number): string | null => {
+    const encoded = encodeURI(url);
+    if (attemptCount === 0 && encoded !== url) return encoded;
+
+    const filename = decodeURIComponent(url.split('/').pop() || '');
+    const dir = url.substring(0, url.lastIndexOf('/'));
+    
+    // Lowercase with hyphens
+    const kebab = filename.toLowerCase().replace(/\s+/g, '-');
+    const kebabUrl = `${dir}/${kebab}`;
+    if (attemptCount <= 1 && kebabUrl !== url) return kebabUrl;
+
+    // Inverted names support (Missing Component Update vs Missing Update Component)
+    if (attemptCount === 2) {
+      if (filename.includes('Missing Component Update')) {
+        return `${dir}/${filename.replace('Missing Component Update', 'Missing Update Component')}`;
+      }
+      if (filename.includes('Missing Update Component')) {
+        return `${dir}/${filename.replace('Missing Update Component', 'Missing Component Update')}`;
+      }
+    }
+
+    // Alternative extensions: png, jpg, jpeg, webp
+    const baseName = filename.replace(/\.[^/.]+$/, '');
+    const ext = filename.split('.').pop()?.toLowerCase();
+    const exts = ['png', 'jpg', 'jpeg', 'webp'].filter(e => e !== ext);
+    if (attemptCount - 3 < exts.length && attemptCount >= 3) {
+      return `${dir}/${baseName}.${exts[attemptCount - 3]}`;
+    }
+
+    return null;
+  };
+
+  const handleError = () => {
+    const next = getNextFallback(img.url, attempt);
+    if (next) {
+      setAttempt(prev => prev + 1);
+      setCurrentSrc(next);
+    } else {
+      setLoadFailed(true);
+    }
+  };
+
+  const filename = decodeURIComponent(img.url.split('/').pop() || '');
+
+  if (loadFailed) {
+    return (
+      <figure className="case__image-figure" style={{ width: '100%' }}>
+        <div
+          className="case__image-container"
+          style={{
+            padding: '36px 24px',
+            border: '1.5px dashed var(--line)',
+            borderRadius: '12px',
+            background: 'var(--surface)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            gap: '12px',
+            minHeight: '200px'
+          }}
+        >
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '10px',
+              background: 'rgba(0, 128, 128, 0.08)',
+              color: 'var(--accent)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '20px'
+            }}
+          >
+            🖼️
+          </div>
+          <div>
+            <div style={{ fontWeight: 600, fontSize: '15px', color: 'var(--ink)', marginBottom: '4px' }}>
+              Menunggu File: <code style={{ background: 'rgba(0,0,0,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{filename}</code>
+            </div>
+            <div style={{ fontSize: '13px', color: 'var(--ink-soft)', maxWidth: '460px', lineHeight: 1.5 }}>
+              File belum terdeteksi di server. Silakan upload file asli ke folder <code style={{ color: 'var(--accent)' }}>public/assets/projects/doku/</code> lewat File Explorer.
+            </div>
+          </div>
+        </div>
+      </figure>
+    );
+  }
+
+  return (
+    <figure
+      className="case__image-figure"
+      onClick={() => onExpand({ ...img, url: currentSrc })}
+    >
+      <div className="case__image-container">
+        <img
+          src={currentSrc}
+          alt={img.caption || `${title} visual ${index + 1}`}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={handleError}
+        />
+        <div className="case__image-zoom-indicator">
+          <span>🔍 Click to expand</span>
+        </div>
+      </div>
+    </figure>
+  );
 }
 
 export default function CaseStudyView({
   caseStudy,
-  onBackToWork,
   onSelectCaseStudy
 }: CaseStudyViewProps) {
   const [activeImage, setActiveImage] = useState<CaseStudyImage | null>(null);
@@ -29,31 +154,14 @@ export default function CaseStudyView({
 
   return (
     <section className="section case-study">
-      {/* Back button */}
-      <motion.button
-        onClick={onBackToWork}
-        className="case__back"
-        initial={{ opacity: 0, x: -12 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        ← Back to work
-      </motion.button>
-
       {/* Case Header */}
       <motion.div
         className="case__head"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="case__tag-badge">
-          <span className="case__badge-pill">{caseStudy.client}</span>
-          <span className="case__badge-sep">•</span>
-          <span className="case__badge-category">{caseStudy.tag}</span>
-        </div>
         <h1 className="case__title">{caseStudy.title}</h1>
-        <p className="case__intro">{caseStudy.summary}</p>
       </motion.div>
 
       {/* Cover Image */}
@@ -79,13 +187,11 @@ export default function CaseStudyView({
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="case__section-header">
-                <span className="case__section-badge">{section.badge}</span>
-                <h2 className="case__section-title">{section.title}</h2>
-                {section.summary && (
-                  <p className="case__section-summary">{section.summary}</p>
-                )}
-              </div>
+              {section.title && (
+                <div className="case__section-header">
+                  <h3 className="case__section-title">{section.title}</h3>
+                </div>
+              )}
 
               {/* Section Paragraphs */}
               {section.paragraphs && section.paragraphs.length > 0 && (
@@ -96,36 +202,18 @@ export default function CaseStudyView({
                 </div>
               )}
 
-              {/* Callouts (Disclaimers / Key Insights / Alerts) */}
-              {section.callouts && section.callouts.length > 0 && (
-                <div className="case__callouts">
-                  {section.callouts.map((callout, cIndex) => {
-                    const isAlert =
-                      callout.icon === '⚠️' ||
-                      callout.label?.toLowerCase().includes('disclaimer') ||
-                      callout.label?.toLowerCase().includes('alert');
-                    return (
-                      <div
-                        key={cIndex}
-                        className={`case__callout-card ${
-                          isAlert ? 'case__callout-card--alert' : 'case__callout-card--info'
-                        }`}
-                        role={isAlert ? 'alert' : 'note'}
-                      >
-                        <div className="case__callout-icon-box">
-                          {callout.icon || (isAlert ? '⚠️' : '💡')}
-                        </div>
-                        <div className="case__callout-content">
-                          {callout.label && (
-                            <div className="case__callout-header">
-                              <span className="case__callout-label">{callout.label}</span>
-                            </div>
-                          )}
-                          <p className="case__callout-text">{callout.text}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
+              {/* Section Figures & Visuals (rendered before points if imagesBeforePoints is true) */}
+              {section.imagesBeforePoints && section.images && section.images.length > 0 && (
+                <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
+                  {section.images.map((img, iIndex) => (
+                    <CaseImageItem
+                      key={iIndex}
+                      img={img}
+                      title={section.title}
+                      index={iIndex}
+                      onExpand={setActiveImage}
+                    />
+                  ))}
                 </div>
               )}
 
@@ -136,7 +224,7 @@ export default function CaseStudyView({
                     <div key={kIndex} className="case__key-point-card">
                       <div className="case__key-point-header">
                         <span className="case__key-point-number">0{kIndex + 1}</span>
-                        <h3 className="case__key-point-title">{point.title}</h3>
+                        <h4 className="case__key-point-title">{point.title}</h4>
                       </div>
                       <p className="case__key-point-desc">{point.description}</p>
                     </div>
@@ -144,31 +232,26 @@ export default function CaseStudyView({
                 </div>
               )}
 
-              {/* Section Figures & Visuals */}
-              {section.images && section.images.length > 0 && (
+              {/* Section Figures & Visuals (rendered after points if not imagesBeforePoints) */}
+              {!section.imagesBeforePoints && section.images && section.images.length > 0 && (
                 <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
                   {section.images.map((img, iIndex) => (
-                    <figure
+                    <CaseImageItem
                       key={iIndex}
-                      className="case__image-figure"
-                      onClick={() => setActiveImage(img)}
-                    >
-                      <div className="case__image-container">
-                        <img
-                          src={img.url}
-                          alt={img.caption || `${section.title} visual ${iIndex + 1}`}
-                          loading="lazy"
-                        />
-                        <div className="case__image-zoom-indicator">
-                          <span>🔍 Click to expand</span>
-                        </div>
-                      </div>
-                      {img.caption && (
-                        <figcaption className="case__image-caption">
-                          {img.caption}
-                        </figcaption>
-                      )}
-                    </figure>
+                      img={img}
+                      title={section.title}
+                      index={iIndex}
+                      onExpand={setActiveImage}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Section Paragraphs (rendered below image) */}
+              {section.afterImageParagraphs && section.afterImageParagraphs.length > 0 && (
+                <div className="case__section-paragraphs case__section-paragraphs--after-image">
+                  {section.afterImageParagraphs.map((p, pIndex) => (
+                    <p key={pIndex} className="case__block-text">{p}</p>
                   ))}
                 </div>
               )}
@@ -185,7 +268,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">01. Overview</p>
-              <h2 className="case__block-title">Context & Challenge</h2>
+              <h3 className="case__block-title">Context & Challenge</h3>
               <p className="case__block-text">{caseStudy.overview}</p>
             </motion.div>
 
@@ -197,7 +280,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">02. The Friction</p>
-              <h2 className="case__block-title">Identifying Core Bottlenecks</h2>
+              <h3 className="case__block-title">Identifying Core Bottlenecks</h3>
               <p className="case__block-text">{caseStudy.problem}</p>
             </motion.div>
 
@@ -209,7 +292,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">03. The Solution</p>
-              <h2 className="case__block-title">Modular & Responsive Redesign</h2>
+              <h3 className="case__block-title">Modular & Responsive Redesign</h3>
               <p className="case__block-text">{caseStudy.solution}</p>
             </motion.div>
           </>
@@ -226,7 +309,7 @@ export default function CaseStudyView({
           >
             <div className="case__lesson-header">
               <span className="case__lesson-badge">Takeaways & Reflection</span>
-              <h3 className="case__lesson-title">{caseStudy.lessonLearned.title || 'Design Reflections'}</h3>
+              <h4 className="case__lesson-title">{caseStudy.lessonLearned.title || 'Design Reflections'}</h4>
             </div>
             <p className="case__lesson-text">{caseStudy.lessonLearned.text}</p>
             {caseStudy.lessonLearned.bullets && (
@@ -281,7 +364,7 @@ export default function CaseStudyView({
               >
                 ✕ Close
               </button>
-              <img src={activeImage.url} alt={activeImage.caption || 'Project visual'} />
+              <img src={activeImage.url} alt={activeImage.caption || 'Project visual'} referrerPolicy="no-referrer" />
               {activeImage.caption && (
                 <p className="case__lightbox-caption">{activeImage.caption}</p>
               )}

@@ -1,0 +1,567 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap');
+      .canvas-bg { fill: #F8F9FA; }
+      .grid-dot { fill: #CBD5E1; }
+      .board-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; fill: #111827; }
+      .sec-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; fill: #1F2937; }
+      .sec-sub { font-family: 'Inter', sans-serif; font-size: 9.5px; fill: #6B7280; }
+      .note-text { font-family: 'Inter', sans-serif; font-size: 9.5px; line-height: 1.35; fill: #1F2937; }
+      .note-title { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 10px; fill: #111827; }
+      .tag-text { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; }
+    </style>
+    <pattern id="dot-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" class="grid-dot" opacity="0.55"/>
+    </pattern>
+    <filter id="shadow-sm" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-opacity="0.06" flood-color="#000000"/>
+    </filter>
+    <filter id="shadow-md" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-opacity="0.08" flood-color="#000000"/>
+    </filter>
+  </defs>
+
+  <!-- Background with Canvas Dots -->
+  <rect width="1600" height="900" class="canvas-bg" />
+  <rect width="1600" height="900" fill="url(#dot-grid)" />
+
+  <!-- TOP HEADER (FigJam Center Badge) -->
+  <g transform="translate(580, 18)" filter="url(#shadow-md)">
+    <rect width="440" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <rect x="14" y="12" width="20" height="20" rx="4" fill="#008080" />
+    <path d="M18 22L22 26L28 18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="44" y="29" class="board-title">Design System: Vision and Strategy</text>
+    <rect x="330" y="12" width="96" height="20" rx="4" fill="#E6F2F2" />
+    <text x="340" y="26" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" fill="#008080">WORKSHOP BOARD</text>
+  </g>
+
+  <!-- ==========================================
+       ROW 1 (TOP HALF)
+       ========================================== -->
+
+  <!-- 1. CURRENT FLOW (Flowchart Section) -->
+  <g transform="translate(35, 78)" filter="url(#shadow-sm)">
+    <rect width="255" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <text x="16" y="26" class="sec-title">Current Flow</text>
+    <rect x="16" y="36" width="223" height="1" fill="#F3F4F6"/>
+
+    <g transform="translate(16, 48)">
+      <!-- Project -->
+      <rect width="54" height="24" rx="4" fill="#F3F4F6" stroke="#D1D5DB"/>
+      <text x="11" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#374151">Project</text>
+
+      <path d="M54 12 L72 12" stroke="#9CA3AF" stroke-width="1.5" />
+      
+      <!-- Create UIs -->
+      <rect x="72" y="0" width="62" height="24" rx="4" fill="#F3F4F6" stroke="#D1D5DB"/>
+      <text x="79" y="16" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#374151">Create UIs</text>
+
+      <path d="M134 12 L150 12" stroke="#9CA3AF" stroke-width="1.5" />
+      
+      <!-- Diamond: Component Exist? -->
+      <polygon points="170,0 190,12 170,24 150,12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.2"/>
+      <text x="156" y="10" font-family="'Inter', sans-serif" font-size="6" font-weight="600" fill="#92400E">Component</text>
+      <text x="160" y="18" font-family="'Inter', sans-serif" font-size="6" font-weight="600" fill="#92400E">Exist?</text>
+
+      <!-- Yes path -->
+      <text x="194" y="10" font-family="'Inter', sans-serif" font-size="7" font-weight="600" fill="#059669">yes</text>
+      <path d="M190 12 L212 12" stroke="#059669" stroke-width="1.2"/>
+      <rect x="212" y="2" width="20" height="20" rx="3" fill="#DCFCE7" stroke="#86EFAC"/>
+      <text x="216" y="15" font-family="'Inter', sans-serif" font-size="6" fill="#166534">Pull</text>
+      
+      <!-- No path -->
+      <path d="M170 24 L170 42 L76 42 L76 56" stroke="#EA580C" stroke-width="1.4" stroke-dasharray="3,2" fill="none"/>
+      <text x="174" y="36" font-family="'Inter', sans-serif" font-size="7" font-weight="600" fill="#DC2626">no</text>
+
+      <!-- Local component box -->
+      <rect x="36" y="56" width="82" height="32" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-dasharray="3,2"/>
+      <text x="42" y="70" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#C2410C">Create new local</text>
+      <text x="48" y="81" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#C2410C">components</text>
+      
+      <!-- Warning tag -->
+      <rect x="24" y="96" width="106" height="22" rx="4" fill="#FEF2F2" stroke="#FECACA"/>
+      <text x="28" y="108" font-family="'Inter', sans-serif" font-size="6.5" fill="#B91C1C">⚠️ DS Repository</text>
+      <text x="34" y="115" font-family="'Inter', sans-serif" font-size="6.5" fill="#B91C1C">doesn't update from All</text>
+
+      <!-- Push repo -->
+      <path d="M76 88 L76 126 L118 126" stroke="#9CA3AF" stroke-width="1.4" fill="none"/>
+      <rect x="118" y="114" width="84" height="28" rx="4" fill="#FFF7ED" stroke="#EA580C" stroke-dasharray="3,2"/>
+      <text x="124" y="126" font-family="'Inter', sans-serif" font-size="7" font-weight="600" fill="#C2410C">Push to Project</text>
+      <text x="130" y="136" font-family="'Inter', sans-serif" font-size="7" font-weight="600" fill="#C2410C">Repository</text>
+
+      <!-- Bottleneck Alert Card -->
+      <rect x="12" y="156" width="200" height="66" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+      <text x="22" y="176" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#B91C1C">Confusion &amp; Duplicates</text>
+      <text x="22" y="190" font-family="'Inter', sans-serif" font-size="7.5" fill="#7F1D1D">Designers unaware of new pieces,</text>
+      <text x="22" y="202" font-family="'Inter', sans-serif" font-size="7.5" fill="#7F1D1D">re-inventing wheels repeatedly.</text>
+      <text x="22" y="214" font-family="'Inter', sans-serif" font-size="7" font-weight="600" fill="#DC2626">• Divergent UI Behaviors</text>
+    </g>
+  </g>
+
+  <!-- 2. VISION (Miro / FigJam Sticky Notes Grid) -->
+  <g transform="translate(310, 78)" filter="url(#shadow-sm)">
+    <rect width="365" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <text x="16" y="24" class="sec-title">Vision</text>
+    <text x="68" y="24" class="sec-sub">· Align system with internal, product, and company scope</text>
+    <rect x="16" y="36" width="333" height="1" fill="#F3F4F6"/>
+
+    <!-- Sticky 1: Faster decision making (Green) -->
+    <g transform="translate(16, 46)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#DCFCE7" stroke="#86EFAC"/>
+      <text x="8" y="16" class="note-title" fill="#166534">Faster Decision</text>
+      <text x="8" y="28" class="note-text" fill="#14532D">Efisien pengambilan</text>
+      <text x="8" y="40" class="note-text" fill="#14532D">keputusan UI</text>
+      <text x="8" y="52" class="note-text" fill="#14532D">lintas tim &amp; squad</text>
+    </g>
+
+    <!-- Sticky 2: Dev Efficiency (Yellow) -->
+    <g transform="translate(130, 46)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#FEF08A" stroke="#FDE047"/>
+      <text x="8" y="16" class="note-title" fill="#854D0E">Efisien Dev</text>
+      <text x="8" y="28" class="note-text" fill="#713F12">Pengembangan,</text>
+      <text x="8" y="40" class="note-text" fill="#713F12">effort, time, cost</text>
+      <text x="8" y="52" class="note-text" fill="#713F12">engineer lebih hemat</text>
+    </g>
+
+    <!-- Sticky 3: Scalable Product (Orange) -->
+    <g transform="translate(244, 46)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+      <text x="8" y="16" class="note-title" fill="#9A3412">Pengalaman Konsisten</text>
+      <text x="8" y="28" class="note-text" fill="#7C2D12">Menciptakan</text>
+      <text x="8" y="40" class="note-text" fill="#7C2D12">pengalaman pengguna</text>
+      <text x="8" y="52" class="note-text" fill="#7C2D12">yang seragam</text>
+    </g>
+
+    <!-- Sticky 4: Single Source of Truth (Yellow) -->
+    <g transform="translate(16, 120)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#FEF08A" stroke="#FDE047"/>
+      <text x="8" y="16" class="note-title" fill="#854D0E">Single Source</text>
+      <text x="8" y="28" class="note-text" fill="#713F12">Single source of truth.</text>
+      <text x="8" y="40" class="note-text" fill="#713F12">Menyata konsistensi &amp;</text>
+      <text x="8" y="52" class="note-text" fill="#713F12">kolaborasi squad</text>
+    </g>
+
+    <!-- Sticky 5: Scalable & Maintain (Orange) -->
+    <g transform="translate(130, 120)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#FFEDD5" stroke="#FDBA74"/>
+      <text x="8" y="16" class="note-title" fill="#9A3412">Scalable Product</text>
+      <text x="8" y="28" class="note-text" fill="#7C2D12">Menciptakan product</text>
+      <text x="8" y="40" class="note-text" fill="#7C2D12">yang scalable dan</text>
+      <text x="8" y="52" class="note-text" fill="#7C2D12">dapat dimaintain</text>
+    </g>
+
+    <!-- Sticky 6: User Awareness (Blue) -->
+    <g transform="translate(244, 120)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#DBEAFE" stroke="#93C5FD"/>
+      <text x="8" y="16" class="note-title" fill="#1E40AF">User Awareness</text>
+      <text x="8" y="28" class="note-text" fill="#1E3A8A">Meningkatkan</text>
+      <text x="8" y="40" class="note-text" fill="#1E3A8A">awareness user dgn</text>
+      <text x="8" y="52" class="note-text" fill="#1E3A8A">design yg konsisten</text>
+    </g>
+
+    <!-- Sticky 7: Collab Designer & Dev (Teal) -->
+    <g transform="translate(16, 194)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#CCFBF1" stroke="#5EEAD4"/>
+      <text x="8" y="16" class="note-title" fill="#0F766E">Consistency &amp; Dev</text>
+      <text x="8" y="28" class="note-text" fill="#115E59">Konsistensi, efisiensi</text>
+      <text x="8" y="40" class="note-text" fill="#115E59">pekerjaan designer</text>
+      <text x="8" y="52" class="note-text" fill="#115E59">dan engineer</text>
+    </g>
+
+    <!-- Sticky 8: Brand Identity (Yellow) -->
+    <g transform="translate(130, 194)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#FEF08A" stroke="#FDE047"/>
+      <text x="8" y="16" class="note-title" fill="#854D0E">Brand Identity</text>
+      <text x="8" y="28" class="note-text" fill="#713F12">Make a strong</text>
+      <text x="8" y="40" class="note-text" fill="#713F12">company brand</text>
+      <text x="8" y="52" class="note-text" fill="#713F12">relationship with users</text>
+    </g>
+
+    <!-- Sticky 9: Collab Squad (Blue) -->
+    <g transform="translate(244, 194)" filter="url(#shadow-sm)">
+      <rect width="104" height="66" rx="3" fill="#DBEAFE" stroke="#93C5FD"/>
+      <text x="8" y="16" class="note-title" fill="#1E40AF">Strengthen Collab</text>
+      <text x="8" y="28" class="note-text" fill="#1E3A8A">Strengthen collab</text>
+      <text x="8" y="40" class="note-text" fill="#1E3A8A">between designer,</text>
+      <text x="8" y="52" class="note-text" fill="#1E3A8A">dev &amp; product team</text>
+    </g>
+
+    <!-- Bottom row banner -->
+    <g transform="translate(16, 268)">
+      <rect width="332" height="44" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="10" y="18" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#0F172A">Key Vision Statement:</text>
+      <text x="10" y="32" font-family="'Inter', sans-serif" font-size="8" fill="#475569">"Consistency, integrated, coverage, and applicable across all merchant platforms."</text>
+    </g>
+  </g>
+
+  <!-- 3. CORE TEAM (Governance Tree) -->
+  <g transform="translate(695, 78)" filter="url(#shadow-sm)">
+    <rect width="295" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <text x="16" y="24" class="sec-title">Core Team</text>
+    <text x="96" y="24" class="sec-sub">· Federated &amp; dedicated teams</text>
+    <rect x="16" y="36" width="263" height="1" fill="#F3F4F6"/>
+
+    <!-- Lead Box -->
+    <g transform="translate(100, 48)">
+      <rect width="95" height="34" rx="6" fill="#1E293B" stroke="#0F172A"/>
+      <text x="47" y="16" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF">Design Lead</text>
+      <text x="47" y="26" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="6.5" fill="#94A3B8">SPONSOR</text>
+    </g>
+
+    <path d="M147 82 L147 98" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <!-- Coordinators -->
+    <g transform="translate(35, 98)">
+      <rect width="100" height="36" rx="6" fill="#E6F2F2" stroke="#008080"/>
+      <text x="50" y="16" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#008080">Facilitator / Aldo</text>
+      <text x="50" y="27" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="6.5" fill="#116363">DS ARCHITECT</text>
+    </g>
+
+    <g transform="translate(155, 98)">
+      <rect width="100" height="36" rx="6" fill="#F3F4F6" stroke="#D1D5DB"/>
+      <text x="50" y="16" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#374151">Coordinator 2</text>
+      <text x="50" y="27" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="6.5" fill="#6B7280">TECH LIAISON</text>
+    </g>
+
+    <!-- Tree connector line -->
+    <path d="M85 134 L85 150 L147 150 L205 150 L205 134" stroke="#94A3B8" stroke-width="1.5" fill="none"/>
+    <path d="M147 150 L147 162" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <!-- Federated Card Box -->
+    <g transform="translate(25, 162)">
+      <rect width="245" height="120" rx="6" fill="#0F172A" />
+      <text x="14" y="20" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#38BDF8">FEDERATED MODEL</text>
+      <text x="14" y="36" font-family="'Inter', sans-serif" font-size="7.5" fill="#94A3B8">• 2-3 orang memegang design system</text>
+      <text x="14" y="48" font-family="'Inter', sans-serif" font-size="7.5" fill="#94A3B8">  (pusat mengorganisir menjadi yang sah di sisi repo &amp; figma)</text>
+      
+      <!-- Mini Central Node Diagram -->
+      <circle cx="122" cy="82" r="12" fill="#0284C7"/>
+      <text x="122" y="85" text-anchor="middle" font-family="'Inter', sans-serif" font-size="6" font-weight="700" fill="#FFFFFF">CORE</text>
+      <line x1="110" y1="82" x2="70" y2="82" stroke="#38BDF8" stroke-dasharray="2,2"/>
+      <circle cx="64" cy="82" r="7" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+      <text x="64" y="84" text-anchor="middle" font-family="'Inter', sans-serif" font-size="5" fill="#94A3B8">S1</text>
+      
+      <line x1="134" y1="82" x2="174" y2="82" stroke="#38BDF8" stroke-dasharray="2,2"/>
+      <circle cx="180" cy="82" r="7" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+      <text x="180" y="84" text-anchor="middle" font-family="'Inter', sans-serif" font-size="5" fill="#94A3B8">S2</text>
+      
+      <text x="14" y="110" font-family="'Inter', sans-serif" font-size="6.5" fill="#64748B">Squad UI Designers, UX Writers, FE Devs, QA collaborate in loop.</text>
+    </g>
+
+    <!-- Role Responsibilities -->
+    <g transform="translate(25, 290)">
+      <rect width="245" height="52" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="8" y="16" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#0F172A">Driver: Defines strategy, plans roadmap &amp; regular updates.</text>
+      <text x="8" y="30" font-family="'Inter', sans-serif" font-size="7.5" fill="#475569">Contributor: Proposes components, tests parity, and DS champion.</text>
+      <text x="8" y="44" font-family="'Inter', sans-serif" font-size="7" fill="#64748B">Commit to shared metrics &amp; continuous improvement.</text>
+    </g>
+  </g>
+
+  <!-- 4. PURPLE STRATEGY NOTES CARD -->
+  <g transform="translate(1010, 78)" filter="url(#shadow-sm)">
+    <rect width="265" height="200" rx="8" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="1.5"/>
+    <g transform="translate(14, 18)">
+      <rect width="110" height="18" rx="4" fill="#E9D5FF" />
+      <text x="8" y="13" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#7E22CE">STRATEGY PLAN</text>
+
+      <text x="2" y="44" font-family="'Inter', sans-serif" font-size="8.5" line-height="1.4" fill="#581C87">• Set visi dari hasil brainstorming kemarin,</text>
+      <text x="12" y="58" font-family="'Inter', sans-serif" font-size="8.5" fill="#581C87">dari hasil tersebut kira-kira mana yang fit</text>
+      <text x="12" y="72" font-family="'Inter', sans-serif" font-size="8.5" fill="#581C87">dengan visi DS kita kedepannya.</text>
+
+      <text x="2" y="100" font-family="'Inter', sans-serif" font-size="8.5" fill="#581C87">• Grouping/filter Problems yang similar,</text>
+      <text x="12" y="114" font-family="'Inter', sans-serif" font-size="8.5" fill="#581C87">dan ambil problem yang banyak di-vote</text>
+      <text x="12" y="128" font-family="'Inter', sans-serif" font-size="8.5" fill="#581C87">untuk kita jadiin sebuah strategi DS.</text>
+
+      <text x="2" y="156" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#6B21A8">• Baru kita bikin flow yang baru.</text>
+    </g>
+  </g>
+
+  <!-- 5. NEXT ACTION: RESULT VISION / GROUPING VISI -->
+  <g transform="translate(1295, 78)" filter="url(#shadow-sm)">
+    <rect width="270" height="360" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <!-- Pill header -->
+    <rect x="14" y="16" width="170" height="22" rx="4" fill="#1F2937"/>
+    <text x="22" y="31" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#FFFFFF">Next Action : Result Vision</text>
+    <text x="14" y="56" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#111827">Grouping visi</text>
+
+    <!-- Stacked Colored Cards (Matching exactly the user upload) -->
+    <!-- Card 1: Green -->
+    <g transform="translate(14, 68)" filter="url(#shadow-sm)">
+      <rect width="242" height="44" rx="6" fill="#059669"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">maintain consistency, integrated,</text>
+      <text x="12" y="32" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">coverage, applicable</text>
+    </g>
+
+    <!-- Card 2: Teal -->
+    <g transform="translate(14, 120)" filter="url(#shadow-sm)">
+      <rect width="242" height="44" rx="6" fill="#0D9488"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">konsistensi design dan efisiensi</text>
+      <text x="12" y="32" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">pekerjaan designer dan dev</text>
+    </g>
+
+    <!-- Card 3: Cyan/Blue -->
+    <g transform="translate(14, 172)" filter="url(#shadow-sm)">
+      <rect width="242" height="44" rx="6" fill="#0284C7"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">meningkatkan awareness user</text>
+      <text x="12" y="32" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">dengan design yg konsisten</text>
+    </g>
+
+    <!-- Card 4: Amber/Orange -->
+    <g transform="translate(14, 224)" filter="url(#shadow-sm)">
+      <rect width="242" height="44" rx="6" fill="#EA580C"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">Menciptakan pengalaman pengguna</text>
+      <text x="12" y="32" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">yang konsisten</text>
+    </g>
+
+    <!-- Card 5: Warm Yellow -->
+    <g transform="translate(14, 276)" filter="url(#shadow-sm)">
+      <rect width="242" height="44" rx="6" fill="#CA8A04"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">better experience karena</text>
+      <text x="12" y="32" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF">seragam</text>
+    </g>
+
+    <text x="14" y="340" font-family="'Inter', sans-serif" font-size="7.5" fill="#6B7280">Pilar konsensus yang disepakati bersama peserta</text>
+  </g>
+
+  <!-- ==========================================
+       ROW 2 (BOTTOM HALF): 2. PROBLEMS
+       Synthesized Pain Points from Participants
+       ========================================== -->
+
+  <g transform="translate(35, 458)" filter="url(#shadow-sm)">
+    <rect width="1240" height="420" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <g transform="translate(16, 18)">
+      <rect width="88" height="20" rx="4" fill="#FEE2E2" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#DC2626">2. PROBLEMS</text>
+      <text x="100" y="15" class="sec-title">Synthesized Pain Points from Participants</text>
+      <text x="420" y="15" class="sec-sub">· Puluhan aspirasi divergen dikelompokkan ke dalam kategori friksi utama</text>
+    </g>
+    <rect x="16" y="46" width="1208" height="1" fill="#F3F4F6"/>
+
+    <!-- GRID OF STICKY NOTES (4 Columns x 3 Rows) -->
+    
+    <!-- COL 1 -->
+    <!-- Sticky 1: Copy Komponen Basi (Yellow) -->
+    <g transform="translate(16, 58)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FEF08A" stroke="#FACC15"/>
+      <text x="8" y="16" class="note-title" fill="#713F12">Copy Komponen Basi</text>
+      <text x="8" y="30" class="note-text" fill="#854D0E">"Copy component di satu</text>
+      <text x="8" y="42" class="note-text" fill="#854D0E">project udah dibetulkan,</text>
+      <text x="8" y="54" class="note-text" fill="#854D0E">tapi pas di project lain</text>
+      <text x="8" y="66" class="note-text" fill="#854D0E">copy masih pakai yang</text>
+      <text x="8" y="78" class="note-text" fill="#854D0E">versi lama."</text>
+      <text x="8" y="90" class="tag-text" fill="#A16207">#microcopy</text>
+    </g>
+
+    <!-- Sticky 2: Info Asimetris (Green) -->
+    <g transform="translate(16, 165)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#DCFCE7" stroke="#86EFAC"/>
+      <text x="8" y="16" class="note-title" fill="#166534">Info Asimetris</text>
+      <text x="8" y="30" class="note-text" fill="#14532D">"Informasi ttg komponen</text>
+      <text x="8" y="42" class="note-text" fill="#14532D">baru kadang saya terima,</text>
+      <text x="8" y="54" class="note-text" fill="#14532D">tapi teman yang lain</text>
+      <text x="8" y="66" class="note-text" fill="#14532D">nggak terima update</text>
+      <text x="8" y="78" class="note-text" fill="#14532D">sama sekali."</text>
+      <text x="8" y="90" class="tag-text" fill="#15803D">#communication</text>
+    </g>
+
+    <!-- Sticky 3: Struktur Berbeda (Orange) -->
+    <g transform="translate(16, 272)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FFEDD5" stroke="#FB923C"/>
+      <text x="8" y="16" class="note-title" fill="#9A3412">Struktur Berbeda</text>
+      <text x="8" y="30" class="note-text" fill="#7C2D12">"Sama part tapi</text>
+      <text x="8" y="42" class="note-text" fill="#7C2D12">different structure.</text>
+      <text x="8" y="54" class="note-text" fill="#7C2D12">Di satu project landscape,</text>
+      <text x="8" y="66" class="note-text" fill="#7C2D12">di project lain cuma pakai</text>
+      <text x="8" y="78" class="note-text" fill="#7C2D12">screen title biasa."</text>
+      <text x="8" y="90" class="tag-text" fill="#C2410C">#inconsistency</text>
+    </g>
+
+    <!-- COL 2 -->
+    <!-- Sticky 4: Kurang Deep-Dive UI (Orange) -->
+    <g transform="translate(170, 58)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FFEDD5" stroke="#FB923C"/>
+      <text x="8" y="16" class="note-title" fill="#9A3412">Kurang Deep-Dive UI</text>
+      <text x="8" y="30" class="note-text" fill="#7C2D12">"Ada komponen baru tapi</text>
+      <text x="8" y="42" class="note-text" fill="#7C2D12">nggak pernah di-deep</text>
+      <text x="8" y="54" class="note-text" fill="#7C2D12">dive di UI Compo,</text>
+      <text x="8" y="66" class="note-text" fill="#7C2D12">komunikasi antar</text>
+      <text x="8" y="78" class="note-text" fill="#7C2D12">designer terputus."</text>
+      <text x="8" y="90" class="tag-text" fill="#C2410C">#alignment</text>
+    </g>
+
+    <!-- Sticky 5: Tidak Ada PIC DS (Yellow) -->
+    <g transform="translate(170, 165)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FEF08A" stroke="#FACC15"/>
+      <text x="8" y="16" class="note-title" fill="#713F12">Tidak Ada PIC DS</text>
+      <text x="8" y="30" class="note-text" fill="#854D0E">"Tidak ada info yang</text>
+      <text x="8" y="42" class="note-text" fill="#854D0E">handle DS, jadi bingung</text>
+      <text x="8" y="54" class="note-text" fill="#854D0E">tanya ke mana kalau</text>
+      <text x="8" y="66" class="note-text" fill="#854D0E">ada komponen baru yang</text>
+      <text x="8" y="78" class="note-text" fill="#854D0E">dibutuhkan."</text>
+      <text x="8" y="90" class="tag-text" fill="#A16207">#governance</text>
+    </g>
+
+    <!-- Sticky 6: Desain vs Code Desync (Blue) -->
+    <g transform="translate(170, 272)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#DBEAFE" stroke="#93C5FD"/>
+      <text x="8" y="16" class="note-title" fill="#1E40AF">Desain vs Code Desync</text>
+      <text x="8" y="30" class="note-text" fill="#1E3A8A">"Ada beberapa komponen</text>
+      <text x="8" y="42" class="note-text" fill="#1E3A8A">di existing yang butuh</text>
+      <text x="8" y="54" class="note-text" fill="#1E3A8A">adjustment, tapi gatau</text>
+      <text x="8" y="66" class="note-text" fill="#1E3A8A">update-nya di repo</text>
+      <text x="8" y="78" class="note-text" fill="#1E3A8A">mana."</text>
+      <text x="8" y="90" class="tag-text" fill="#1D4ED8">#parity</text>
+    </g>
+
+    <!-- COL 3 -->
+    <!-- Sticky 7: Dokumentasi Minim (Pink) -->
+    <g transform="translate(324, 58)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FCE7F3" stroke="#F472B6"/>
+      <text x="8" y="16" class="note-title" fill="#9D174D">Dokumentasi Minim</text>
+      <text x="8" y="30" class="note-text" fill="#831843">"Belum banyak dokumentasi</text>
+      <text x="8" y="42" class="note-text" fill="#831843">penggunaan, sehingga</text>
+      <text x="8" y="54" class="note-text" fill="#831843">designer baru bingung</text>
+      <text x="8" y="66" class="note-text" fill="#831843">kapan harus pakai</text>
+      <text x="8" y="78" class="note-text" fill="#831843">komponen."</text>
+      <text x="8" y="90" class="tag-text" fill="#BE185D">#documentation</text>
+    </g>
+
+    <!-- Sticky 8: Misleading Variant (Blue) -->
+    <g transform="translate(324, 165)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#DBEAFE" stroke="#93C5FD"/>
+      <text x="8" y="16" class="note-title" fill="#1E40AF">Misleading Variant</text>
+      <text x="8" y="30" class="note-text" fill="#1E3A8A">"Penggunaan komponen yang</text>
+      <text x="8" y="42" class="note-text" fill="#1E3A8A">kurang tepat bikin</text>
+      <text x="8" y="54" class="note-text" fill="#1E3A8A">misleading. Butuh</text>
+      <text x="8" y="66" class="note-text" fill="#1E3A8A">guidelines cara track</text>
+      <text x="8" y="78" class="note-text" fill="#1E3A8A">latest component."</text>
+      <text x="8" y="90" class="tag-text" fill="#1D4ED8">#components</text>
+    </g>
+
+    <!-- Sticky 9: Flow Buat Komponen (Yellow) -->
+    <g transform="translate(324, 272)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FEF08A" stroke="#FACC15"/>
+      <text x="8" y="16" class="note-title" fill="#713F12">Flow Buat Komponen</text>
+      <text x="8" y="30" class="note-text" fill="#854D0E">"Ketika satu designer bikin</text>
+      <text x="8" y="42" class="note-text" fill="#854D0E">dan harus create new</text>
+      <text x="8" y="54" class="note-text" fill="#854D0E">component, flow-nya</text>
+      <text x="8" y="66" class="note-text" fill="#854D0E">mau jelas harus gimana</text>
+      <text x="8" y="78" class="note-text" fill="#854D0E">&amp; tanya ke siapa."</text>
+      <text x="8" y="90" class="tag-text" fill="#A16207">#workflow</text>
+    </g>
+
+    <!-- COL 4 -->
+    <!-- Sticky 10: Asumsi Sendiri (Yellow) -->
+    <g transform="translate(478, 58)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FEF08A" stroke="#FACC15"/>
+      <text x="8" y="16" class="note-title" fill="#713F12">Asumsi Sendiri</text>
+      <text x="8" y="30" class="note-text" fill="#854D0E">"Tiap designer punya</text>
+      <text x="8" y="42" class="note-text" fill="#854D0E">pandangan sendiri</text>
+      <text x="8" y="54" class="note-text" fill="#854D0E">ketika eksplorasi baru,</text>
+      <text x="8" y="66" class="note-text" fill="#854D0E">belum ada standard</text>
+      <text x="8" y="78" class="note-text" fill="#854D0E">baku yang dipegang."</text>
+      <text x="8" y="90" class="tag-text" fill="#A16207">#standards</text>
+    </g>
+
+    <!-- Sticky 11: Belum Masuk Master (Pink) -->
+    <g transform="translate(478, 165)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FCE7F3" stroke="#F472B6"/>
+      <text x="8" y="16" class="note-title" fill="#9D174D">Belum Masuk Master</text>
+      <text x="8" y="30" class="note-text" fill="#831843">"Komponen basic banyak</text>
+      <text x="8" y="42" class="note-text" fill="#831843">yang belum masuk ke</text>
+      <text x="8" y="54" class="note-text" fill="#831843">master component,</text>
+      <text x="8" y="66" class="note-text" fill="#831843">sehingga harus explore</text>
+      <text x="8" y="78" class="note-text" fill="#831843">komponen baru terus."</text>
+      <text x="8" y="90" class="tag-text" fill="#BE185D">#library</text>
+    </g>
+
+    <!-- Sticky 12: Belum Terdistribusi (Pink) -->
+    <g transform="translate(478, 272)" filter="url(#shadow-sm)">
+      <rect width="140" height="95" rx="3" fill="#FCE7F3" stroke="#F472B6"/>
+      <text x="8" y="16" class="note-title" fill="#9D174D">Belum Terdistribusi</text>
+      <text x="8" y="30" class="note-text" fill="#831843">"Komponen yang baru</text>
+      <text x="8" y="42" class="note-text" fill="#831843">dibuat belum pernah</text>
+      <text x="8" y="54" class="note-text" fill="#831843">lagi dipertukarkan dan</text>
+      <text x="8" y="66" class="note-text" fill="#831843">dipublish untuk</text>
+      <text x="8" y="78" class="note-text" fill="#831843">diakses."</text>
+      <text x="8" y="90" class="tag-text" fill="#BE185D">#distribution</text>
+    </g>
+
+    <!-- Synthesis Summary Panel (Right side of Problems) -->
+    <g transform="translate(634, 58)" filter="url(#shadow-md)">
+      <rect width="590" height="309" rx="6" fill="#0F172A"/>
+      <text x="20" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#38BDF8">CRITICAL TAKEAWAYS · 3 CORE SYSTEM BREAKDOWNS</text>
+      <rect x="20" y="40" width="550" height="1" fill="#334155"/>
+
+      <!-- Problem 1 Box -->
+      <g transform="translate(20, 52)">
+        <rect width="550" height="68" rx="4" fill="#1E293B" stroke="#334155"/>
+        <text x="14" y="20" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#F59E0B">1. Missing Component Update &amp; Sync Flow</text>
+        <text x="14" y="36" font-family="'Inter', sans-serif" font-size="8.5" fill="#CBD5E1">Alur kerja eksisting tidak memiliki mekanisme distribusi komponen antar squad.</text>
+        <text x="14" y="50" font-family="'Inter', sans-serif" font-size="8.5" fill="#CBD5E1">Designer bekerja terisolasi, melahirkan duplicate components &amp; silent debt.</text>
+      </g>
+
+      <!-- Problem 2 Box -->
+      <g transform="translate(20, 130)">
+        <rect width="550" height="68" rx="4" fill="#1E293B" stroke="#334155"/>
+        <text x="14" y="20" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#EF4444">2. Inconsistency Design Across Products</text>
+        <text x="14" y="36" font-family="'Inter', sans-serif" font-size="8.5" fill="#CBD5E1">Tanpa standarisasi spatial (8pt grid) &amp; layout anatomy, tiap produk payment</text>
+        <text x="14" y="50" font-family="'Inter', sans-serif" font-size="8.5" fill="#CBD5E1">menggunakan variasi visual berbeda (header, filter, card behavior).</text>
+      </g>
+
+      <!-- Solution Pillar Box -->
+      <g transform="translate(20, 208)">
+        <rect width="550" height="82" rx="4" fill="#064E3B" stroke="#059669"/>
+        <text x="14" y="20" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#34D399">Workshop Decision: Build Closed-Loop Governance</text>
+        <text x="14" y="36" font-family="'Inter', sans-serif" font-size="8.5" fill="#A7F3D0">• Tetapkan DOKU Fragment sebagai single source of truth.</text>
+        <text x="14" y="50" font-family="'Inter', sans-serif" font-size="8.5" fill="#A7F3D0">• Struktur federated contribution: squad berkontribusi melalui verifikasi DS Architect.</text>
+        <text x="14" y="64" font-family="'Inter', sans-serif" font-size="8.5" fill="#A7F3D0">• Standarisasi 8pt baseline spacing dan global header anatomy di semua dashboard.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- BOTTOM RIGHT ROADMAP (x: 1295, y: 458) -->
+  <g transform="translate(1295, 458)" filter="url(#shadow-sm)">
+    <rect width="270" height="420" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
+    <rect x="14" y="16" width="130" height="20" rx="4" fill="#E6F2F2"/>
+    <text x="20" y="30" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#008080">SYSTEM ROADMAP</text>
+    <text x="14" y="54" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#111827">Workshop Outcomes</text>
+
+    <!-- Phase 1 -->
+    <g transform="translate(14, 70)">
+      <rect width="242" height="72" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="12" y="18" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#008080">PHASE 01 · FOUNDATION</text>
+      <text x="12" y="34" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#0F172A">Spatial Grid &amp; Design Tokens</text>
+      <text x="12" y="48" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">Harmonic 8pt layout, typography scale,</text>
+      <text x="12" y="60" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">dan token parity dengan kode.</text>
+    </g>
+
+    <!-- Phase 2 -->
+    <g transform="translate(14, 152)">
+      <rect width="242" height="72" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="12" y="18" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#008080">PHASE 02 · ANATOMY</text>
+      <text x="12" y="34" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#0F172A">Global Header &amp; Navigation</text>
+      <text x="12" y="48" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">Penyatuan navigasi &amp; filter pattern</text>
+      <text x="12" y="60" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">di 25+ produk merchant dashboard.</text>
+    </g>
+
+    <!-- Phase 3 -->
+    <g transform="translate(14, 234)">
+      <rect width="242" height="72" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="12" y="18" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#008080">PHASE 03 · GOVERNANCE</text>
+      <text x="12" y="34" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#0F172A">Closed-Loop Contribution Flow</text>
+      <text x="12" y="48" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">SOP kontribusi, review bi-weekly,</text>
+      <text x="12" y="60" font-family="'Inter', sans-serif" font-size="7.5" fill="#64748B">dan release notes terpadu.</text>
+    </g>
+
+    <g transform="translate(14, 320)">
+      <rect width="242" height="80" rx="6" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="12" y="20" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#065F46">Facilitator Verdict:</text>
+      <text x="12" y="34" font-family="'Inter', sans-serif" font-size="7.5" fill="#047857">Workshop menyatukan visi seluruh squad,</text>
+      <text x="12" y="46" font-family="'Inter', sans-serif" font-size="7.5" fill="#047857">menghentikan perdebatan opini, dan</text>
+      <text x="12" y="58" font-family="'Inter', sans-serif" font-size="7.5" fill="#047857">menghasilkan komitmen eksekusi bersama.</text>
+    </g>
+  </g>
+</svg>
