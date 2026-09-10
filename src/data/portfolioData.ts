@@ -17,7 +17,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       { value: '100%', label: 'Design-to-code token parity across products' },
       { value: '25+', label: 'Payment products unified across the platform' }
     ],
-    overview: "At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.",
+    overview: "At DOKU, designers rely on a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.",
     problem: 'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system, duplicate components, and divergent user behaviors across merchant products.',
     solution: 'Facilitated a collaborative design system strategy workshop, architected a federated closed-loop contribution model, standardized harmonic 8pt spatial foundations, and unified cross-product navigation and header anatomy.',
     galleryImages: [
@@ -43,7 +43,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         badge: '01 · Overview',
         title: 'Overview',
         paragraphs: [
-          'At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.'
+          'At DOKU, designers rely on a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.'
         ]
       },
       {
@@ -51,7 +51,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         badge: '02 · The Workshop',
         title: 'The Workshop',
         paragraphs: [
-          'As designers and writer, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
+          'As designers and writers, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
         ],
         images: [
           {
@@ -60,7 +60,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           }
         ],
         afterImageParagraphs: [
-          'Selama workshop berlangsung saya mendapatkan insight banyak dari participant terkait design system, berikut poin inti yang kita dapatkan.'
+          'Throughout the workshop, I gathered valuable insights from participants about the design system. Here are the key takeaways we found.'
         ]
       },
       {
@@ -118,7 +118,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     coverImage: '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
     stats: [
       { value: '100%', label: 'No-code storefront setup for sellers' },
-      { value: '1x.xx%+', label: 'User growth over 6 months post-rollout' },
+      { value: 'Sustained', label: 'User growth over 6 months post-rollout (exact figures under NDA)' },
       { value: 'WYSIWYG', label: 'Real-time responsive live editor experience' }
     ],
     overview: 'Storefront on OrderOnline.id empowers merchants to build dedicated digital stores seamlessly. To modernize the legacy builder, we conducted proactive usability tests and competitive feature audits, decoupling fragmented dashboard menus into a true live editor.',
@@ -322,8 +322,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         summary: 'Demonstrating user growth and putting design philosophy into practice.',
         keyPoints: [
           {
-            title: 'Sustained User Growth (1x.xx% - xx.xx%)',
-            description: 'Data Science analytics recorded an average increase of 1x.xx% to xx.xx% in active product users within 6 months post-rollout.'
+            title: 'Sustained User Growth Post-Rollout',
+            description: 'Data Science analytics confirmed a sustained increase in active product users within 6 months of rollout. Exact figures remain confidential under NDA, but the upward trend was clear enough to justify further investment in the redesign.'
           },
           {
             title: 'Championing Research in Product Culture',
