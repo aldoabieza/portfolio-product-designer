@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CaseStudy, CaseStudyImage } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
+import { InconsistencyCards } from './InconsistencyCards';
 
 interface CaseStudyViewProps {
   caseStudy: CaseStudy;
@@ -117,7 +118,16 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
   return (
     <figure
       className="case__image-figure"
+      role="button"
+      tabIndex={0}
+      aria-label={`Expand visual: ${img.caption || `${title} visual ${index + 1}`}`}
       onClick={() => onExpand({ ...img, url: currentSrc })}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onExpand({ ...img, url: currentSrc });
+        }
+      }}
     >
       <div className="case__image-container">
         <img
@@ -127,7 +137,7 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
           referrerPolicy="no-referrer"
           onError={handleError}
         />
-        <div className="case__image-zoom-indicator">
+        <div className="case__image-zoom-indicator" aria-hidden="true">
           <span>🔍 Click to expand</span>
         </div>
       </div>
@@ -189,7 +199,7 @@ export default function CaseStudyView({
             >
               {section.title && (
                 <div className="case__section-header">
-                  <h3 className="case__section-title">{section.title}</h3>
+                  <h4 className="case__section-title">{section.title}</h4>
                 </div>
               )}
 
@@ -219,32 +229,60 @@ export default function CaseStudyView({
 
               {/* Structured Key Points Cards */}
               {section.keyPoints && section.keyPoints.length > 0 && (
-                <div className="case__key-points-grid">
-                  {section.keyPoints.map((point, kIndex) => (
-                    <div key={kIndex} className="case__key-point-card">
-                      <div className="case__key-point-header">
-                        <span className="case__key-point-number">0{kIndex + 1}</span>
-                        <h4 className="case__key-point-title">{point.title}</h4>
-                      </div>
-                      <p className="case__key-point-desc">{point.description}</p>
-                    </div>
-                  ))}
+                <div
+                  className="case__key-points-grid"
+                  role="list"
+                  aria-label={section.title ? `Key takeaways for ${section.title}` : 'Key takeaways'}
+                >
+                  {section.keyPoints.map((point, kIndex) => {
+                    const pointId = `key-point-${sIndex}-${kIndex}`;
+                    return (
+                      <article
+                        key={kIndex}
+                        className="case__key-point-card"
+                        role="listitem"
+                        aria-labelledby={pointId}
+                      >
+                        <div className="case__key-point-header">
+                          <span className="case__key-point-number" aria-hidden="true">
+                            0{kIndex + 1}
+                          </span>
+                          <h5 id={pointId} className="case__key-point-title">
+                            {point.title}
+                          </h5>
+                        </div>
+                        <p className="case__key-point-desc">{point.description}</p>
+                      </article>
+                    );
+                  })}
                 </div>
               )}
 
-              {/* Section Figures & Visuals (rendered after points if not imagesBeforePoints) */}
-              {!section.imagesBeforePoints && section.images && section.images.length > 0 && (
-                <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
-                  {section.images.map((img, iIndex) => (
-                    <CaseImageItem
-                      key={iIndex}
-                      img={img}
-                      title={section.title}
-                      index={iIndex}
-                      onExpand={setActiveImage}
-                    />
-                  ))}
-                </div>
+              {/* Custom Variant: Inconsistency Cards */}
+              {section.customVariant === 'inconsistency-cards' ? (
+                <InconsistencyCards
+                  onExpand={(url, caption) =>
+                    setActiveImage({
+                      url: url || section.images?.[0]?.url || '/assets/projects/doku/doku-product-inconsistency-breakdown.png',
+                      caption: caption || section.images?.[0]?.caption || 'Cross-Product Inconsistency Breakdown'
+                    })
+                  }
+                />
+              ) : (
+                /* Section Figures & Visuals (rendered after points if not imagesBeforePoints) */
+                !section.imagesBeforePoints && section.images && section.images.length > 0 && (
+                  <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
+                    {section.images.map((img, iIndex) => (
+                      <CaseImageItem
+                        key={iIndex}
+                        img={img}
+                        title={section.title}
+                        index={iIndex}
+                        onExpand={setActiveImage}
+                      />
+                    ))}
+                  </div>
+                )
               )}
 
               {/* Section Paragraphs (rendered below image) */}
@@ -268,7 +306,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">01. Overview</p>
-              <h3 className="case__block-title">Context & Challenge</h3>
+              <h4 className="case__block-title">Context & Challenge</h4>
               <p className="case__block-text">{caseStudy.overview}</p>
             </motion.div>
 
@@ -280,7 +318,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">02. The Friction</p>
-              <h3 className="case__block-title">Identifying Core Bottlenecks</h3>
+              <h4 className="case__block-title">Identifying Core Bottlenecks</h4>
               <p className="case__block-text">{caseStudy.problem}</p>
             </motion.div>
 
@@ -292,7 +330,7 @@ export default function CaseStudyView({
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="case__block-label">03. The Solution</p>
-              <h3 className="case__block-title">Modular & Responsive Redesign</h3>
+              <h4 className="case__block-title">Modular & Responsive Redesign</h4>
               <p className="case__block-text">{caseStudy.solution}</p>
             </motion.div>
           </>

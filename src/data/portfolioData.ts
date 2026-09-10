@@ -96,9 +96,10 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',
           'For example in details page, we have different behaviour to return the parent page, inconsistency spacing and header page components in body dashboard.'
         ],
+        customVariant: 'inconsistency-cards',
         images: [
           {
-            url: '/assets/projects/doku/doku-product-inconsistency-breakdown.svg',
+            url: '/assets/projects/doku/doku-product-inconsistency-breakdown.png',
             aspect: 'wide'
           }
         ]

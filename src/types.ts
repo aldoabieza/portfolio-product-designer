@@ -47,6 +47,7 @@ export interface CaseStudySection {
   callouts?: CaseStudyCallout[];
   images?: CaseStudyImage[];
   imagesBeforePoints?: boolean;
+  customVariant?: 'inconsistency-cards';
   comparison?: {
     beforeTitle?: string;
     beforeText?: string;
