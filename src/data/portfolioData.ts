@@ -1,743 +1,60 @@
-import { CaseStudy, ExperimentItem, ExperienceItem } from '../types';
+import { CaseStudy, ExperienceItem } from '../types';
 
-export const CASE_STUDIES: Record<string, CaseStudy> = {
-  doku: {
-    id: 'doku',
-    title: 'Leading the Evolution of DOKU’s Design System',
-    tag: 'Design System',
-    category: 'Design System',
-    client: 'DOKU',
-    role: 'Lead UI/UX Designer',
-    year: '2024 - Present',
-    timeline: 'Ongoing',
-    summary: "Leading and scaling the unified multi-brand design system across DOKU's digital payment products, checkout experiences, and merchant suites.",
-    coverImage: '/assets/projects/doku-design-system-cover.jpg',
-    stats: [
-      { value: '40+', label: 'Design system components built & tokenized' },
-      { value: '100%', label: 'Design-to-code token parity across products' },
-      { value: '25+', label: 'Payment products unified across the platform' }
-    ],
-    overview: "At DOKU, designers rely on a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.",
-    problem: 'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system, duplicate components, and divergent user behaviors across merchant products.',
-    solution: 'Facilitated a collaborative design system strategy workshop, architected a federated closed-loop contribution model, standardized harmonic 8pt spatial foundations, and unified cross-product navigation and header anatomy.',
-    galleryImages: [
-      '/assets/projects/doku/doku-workshop-strategy-board.svg',
-      '/assets/projects/doku/doku-current-flowchart.svg',
-      '/assets/projects/doku/doku-product-inconsistency-breakdown.svg'
-    ],
-    metaDetails: {
-      platform: 'Multi-Brand Web & Mobile Payment Platforms (Figma, React, Token Engine)',
-      responsibilities: [
-        'Design System Architecture & Governance',
-        'Cross-Functional Strategy Workshop Facilitation',
-        'Component Tokenization & Mathematical Foundations',
-        'Cross-Squad Alignment (Designers, Writers, Engineers)',
-        'Figma Master Libraries & Storybook Code Parity'
-      ],
-      tools: ['Figma', 'FigJam', 'Storybook', 'Tokens Studio', 'GitHub', 'Zeroheight'],
-      team: 'Lead UI/UX Designer (Facilitator), Design Lead (Sponsor), Squad UI Designers, UX Writers, Core Frontend Engineers'
-    },
-    sections: [
-      {
-        number: '01',
-        badge: '01 · Overview',
-        title: 'Overview',
-        paragraphs: [
-          'At DOKU, designers rely on a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.'
-        ]
-      },
-      {
-        number: '02',
-        badge: '02 · The Workshop',
-        title: 'The Workshop',
-        paragraphs: [
-          'As designers and writers, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
-        ],
-        images: [
-          {
-            url: '/assets/projects/doku/The Workshop Image.png',
-            aspect: 'wide'
-          }
-        ],
-        afterImageParagraphs: [
-          'Throughout the workshop, I gathered valuable insights from participants about the design system. Here are the key takeaways we found.'
-        ]
-      },
-      {
-        number: '03',
-        badge: '03 · Diagnostic Workflow',
-        title: '1. Missing Component Update Flow',
-        paragraphs: [
-          'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system.'
-        ],
-        imagesBeforePoints: true,
-        images: [
-          {
-            url: '/assets/projects/doku/Missing Component Update.png',
-            aspect: 'wide'
-          }
-        ],
-        keyPoints: [
-          {
-            title: 'Lack of Component Visibility Across Designers',
-            description: 'Limited visibility across designers led to duplicate components with inconsistent variations, making the design system harder to maintain, update, and scale consistently.'
-          },
-          {
-            title: 'Missing Design System Synchronization Flow',
-            description: 'Updated components implemented during development were often not synchronized back to the design system repository, resulting in outdated libraries and misalignment across teams.'
-          }
-        ]
-      },
-      {
-        number: '04',
-        badge: '04 · Foundation & Behavior Gaps',
-        title: '2. Inconsistency Design Across Products',
-        paragraphs: [
-          'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',
-          'For example in details page, we have different behaviour to return the parent page, inconsistency spacing and header page components in body dashboard.'
-        ],
-        customVariant: 'inconsistency-cards',
-        images: [
-          {
-            url: '/assets/projects/doku/doku-product-inconsistency-breakdown.png',
-            aspect: 'wide'
-          }
-        ]
-      }
-    ]
+export interface ExperimentItem {
+  id: string;
+  title: string;
+  category: string;
+  source: string;
+  imageUrl: string;
+  dribbbleUrl: string;
+}
+
+export interface PlaygroundItem {
+  id: string;
+  title: string;
+  category: string;
+  year: string;
+  aspect: string;
+  description: string;
+  figmaLink: string;
+  previewType: string;
+  tags: string[];
+}
+
+export const EXPERIMENTS: ExperimentItem[] = [
+  {
+    id: '1',
+    title: 'Storefront Website Builder',
+    category: 'E-Commerce Platform',
+    source: 'Dribbble',
+    imageUrl: '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
+    dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
-  orderonline: {
-    id: 'orderonline',
-    title: 'Building New Seller Experience for Create The Website',
-    tag: 'Web Application',
-    category: 'Website',
-    client: 'OrderOnline.id',
-    role: 'Product Designer',
-    year: '2023 - 2024',
-    timeline: '2 Months',
-    summary: 'Storefront is a website builder platform that makes it effortless for online business owners and merchants to create an online store to market their products without needing coding skills.',
-    coverImage: '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
-    stats: [
-      { value: '100%', label: 'No-code storefront setup for sellers' },
-      { value: 'Sustained', label: 'User growth over 6 months post-rollout (exact figures under NDA)' },
-      { value: 'WYSIWYG', label: 'Real-time responsive live editor experience' }
-    ],
-    overview: 'Storefront on OrderOnline.id empowers merchants to build dedicated digital stores seamlessly. To modernize the legacy builder, we conducted proactive usability tests and competitive feature audits, decoupling fragmented dashboard menus into a true live editor.',
-    problem: 'Sellers suffered from cognitive overload due to cluttered menus mixed into a single dashboard. Lack of live preview forced sellers to toggle back-and-forth to a live website, while template discovery lacked device responsiveness validation.',
-    solution: 'Separated administrative dashboard features from visual styling, eliminated unused legacy options, designed a single-page responsive template selector, and engineered an intuitive WYSIWYG Live Editor with real-time viewport toggles and contextual tooltips.',
-    galleryImages: [
-      '/assets/projects/storefront/6c9bbd74-3c31-4390-9dcd-3929219a832a.webp',
-      '/assets/projects/storefront/be125896-c7ed-44f1-8a88-f8ecb26042cf.webp',
-      '/assets/projects/storefront/Result_Exploration.webp',
-      '/assets/projects/storefront/Explain_the_new_config_dashboard_(1).webp'
-    ],
-    metaDetails: {
-      platform: 'Web Application (Desktop & Mobile Responsive)',
-      responsibilities: [
-        'User Research & Usability Testing (UT)',
-        'Competitive & SWOT Benchmarking',
-        'Information Architecture & Menu Relayouting',
-        'Live WYSIWYG Storefront Editor Prototyping',
-        'Design Systems & Developer Handover'
-      ],
-      tools: ['Figma', 'Maze', 'Google Analytics', 'Whimsical'],
-      team: 'Product Designer, Product Manager, Frontend & Backend Engineers, QA Squad'
-    },
-    sections: [
-      {
-        number: '01',
-        badge: '01 · Discovery & Research',
-        title: 'Validating Assumptions Through Usability Testing',
-        summary: 'Transitioning from stakeholder guesswork to empirical user behavior evidence.',
-        callouts: [
-          {
-            icon: '⚠️',
-            label: 'Research Initiative Disclaimer',
-            text: 'Previously, we did not conduct much research before developing features, relying solely on assumptions from stakeholders. For this initiative, I conducted proactive research sessions with both existing and newly onboarded sellers to map divergent mental models.'
-          }
-        ],
-        keyPoints: [
-          {
-            title: 'Usability Testing (UT) Across Cohorts',
-            description: 'Interviewed and observed both active power sellers and newly registered sellers to uncover distinct friction points in store setup workflows.'
-          },
-          {
-            title: 'Competitive Feature Audit (TokoTalk & Others)',
-            description: 'Analyzed direct competitors, benchmarked TokoTalk’s dashboard architecture, and evaluated catalog structures, homepage customization blocks, and pricing models.'
-          },
-          {
-            title: 'SWOT Analysis & Competitive Advantages',
-            description: 'Identified key differentiators to leverage: affordable subscription pricing, native reseller distribution channels, and deep Google Analytics tracking integration.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/storefront/AffDiagram_Problem.webp',
-            caption: 'Pain points and seller needs synthesized into an Affinity Diagram to identify root problems',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/storefront/TokoTalk_Dashboard.webp',
-            caption: 'Competitive benchmarking analysis on TokoTalk dashboard and navigation hierarchy',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/storefront/Image_Audit_Features.webp',
-            caption: 'Detailed feature configuration audit across homepage sections, product catalogs, and editor controls',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Strength_and_Weakness.webp',
-            caption: 'SWOT matrix identifying opportunities in pricing, reseller logistics, and analytics tracking',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '02',
-        badge: '02 · Problem Synthesis',
-        title: 'Four Core Bottlenecks in the Existing Experience',
-        summary: 'Clear pain points that prevented sellers from launching their stores effectively.',
-        keyPoints: [
-          {
-            title: '01. Rigid Template Installation Flow',
-            description: 'Templates had to be installed blind before sellers could see how they looked or confirm whether the layout supported different mobile and tablet screens.'
-          },
-          {
-            title: '02. Disconnected Preview Feedback Loop',
-            description: 'Unable to see design updates in real time while configuring. To inspect changes, users had to open the live website in another window, creating cognitive friction and uncertainty.'
-          },
-          {
-            title: '03. Cluttered & Unused Configurations',
-            description: 'The single dashboard was overloaded with legacy and neglected settings that distracted merchants from focusing on what truly mattered for their storefront.'
-          },
-          {
-            title: '04. Ambiguous Labels & Zero Contextual Guidance',
-            description: 'Configuration toggles lacked helpful descriptions or microcopy, leaving non-technical merchants confused about the purpose and impact of specific settings.'
-          }
-        ]
-      },
-      {
-        number: '03',
-        badge: '03 · Ideation & Architecture',
-        title: 'Information Architecture Overhaul & Feature Relayouting',
-        summary: 'Decoupling administrative management from visual customization.',
-        paragraphs: [
-          'Based on usability testing insights, I led the architectural redesign by clustering related features, removing dead weight, and redesigning the template discovery workflow.'
-        ],
-        keyPoints: [
-          {
-            title: 'Idea 1: Relayouting & Pruning Unused Features',
-            description: 'Mapped existing features into functional clusters, purged unutilized options that cluttered the dashboard, and established a clean separation between administrative settings and visual design.'
-          },
-          {
-            title: 'Idea 2: Frictionless Single-Page Template Flow',
-            description: 'Framed "How Might We" challenges: (1) HMW enable users to browse and apply templates on a single page without prior installation? (2) HMW help users understand responsive template behavior per device? Introduced device silhouetted previews.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/storefront/Grouping_Existing_Features.webp',
-            caption: 'Grouping legacy features into cohesive functional clusters before re-architecting',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Remove_Features_(2).webp',
-            caption: 'Auditing and removing obsolete features that hindered seller productivity',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Result_Menus_Structure.webp',
-            caption: 'New structural blueprint clearly dividing Dashboard configuration and Live Editor controls',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Existing_Flow_Template.webp',
-            caption: 'Legacy multi-step template installation flow requiring blind commitment',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/New_Flow_Template.webp',
-            caption: 'Streamlined new template workflow enabling instant selection and preview',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Result_Exploration.webp',
-            caption: 'Internal testing exploration showing device silhouette previews in "Desain Toko Kamu"',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '04',
-        badge: '04 · Visual Design & Experience',
-        title: 'Engineering the Live WYSIWYG Storefront Editor',
-        summary: 'Real-time design canvas, modular sidebars, and contextual micro-guidance.',
-        keyPoints: [
-          {
-            title: 'Idea 3: Unified Live Store Editor',
-            description: 'Created a focused editor navbar with device toggle previews (Desktop, Tablet, Mobile), undo/redo controls, and instant publish triggers. The collapsible sidebar provides structured access to banners, testimonials, colors, and product catalog displays with instantaneous visual feedback.'
-          },
-          {
-            title: 'Idea 4: Contextual Guidance & Tooltip Architecture',
-            description: 'Implemented informative tooltips and concise microcopy next to technical settings, eliminating guesswork and guiding merchants gently through complex configurations.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/storefront/Explain_about_navbar_editor.webp',
-            caption: 'Editor top navbar layout: responsive viewport switches, action history, and live preview links',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Sidebar_Only.webp',
-            caption: 'Consolidated sidebar navigation allowing quick navigation between design sections',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/storefront/6c9bbd74-3c31-4390-9dcd-3929219a832a.webp',
-            caption: 'The final Live Editor interface empowering sellers with real-time visual editing',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/be125896-c7ed-44f1-8a88-f8ecb26042cf.webp',
-            caption: 'Homepage block configuration for banners, collections, and promotional sections',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Explain_the_new_config_dashboard_(1).webp',
-            caption: 'New dashboard settings layout with clear section headers and guidance',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/storefront/Tooltip_Solution.webp',
-            caption: 'Contextual tooltips providing clear explanations for previously ambiguous settings',
-            aspect: 'standard'
-          }
-        ]
-      },
-      {
-        number: '05',
-        badge: '05 · Impact & Learnings',
-        title: 'Measurable Growth & Lessons in Simplicity',
-        summary: 'Demonstrating user growth and putting design philosophy into practice.',
-        keyPoints: [
-          {
-            title: 'Sustained User Growth Post-Rollout',
-            description: 'Data Science analytics confirmed a sustained increase in active product users within 6 months of rollout. Exact figures remain confidential under NDA, but the upward trend was clear enough to justify further investment in the redesign.'
-          },
-          {
-            title: 'Championing Research in Product Culture',
-            description: 'Successfully demonstrated to leadership that proactive user research and usability testing derisk complex overhauls and directly elevate business adoption.'
-          },
-          {
-            title: 'John Maeda’s Laws of Simplicity in Practice',
-            description: 'Applied Maeda’s core principle of simplicity: subtract the obvious and add the meaningful. Pruning unnecessary controls while elevating live feedback created an empowering user experience.'
-          }
-        ]
-      }
-    ],
-    lessonLearned: {
-      title: 'Design Reflection',
-      text: "This revamp was a milestone project in my product design journey. I learned to navigate cross-divisional collaboration, initiate research to uncover genuine seller insights, and demonstrate the business value of data to stakeholders. Most rewardingly, putting John Maeda's simplicity principles into practice proved that subtracting clutter empowers users far more than adding complexity.",
-      bullets: [
-        'Validated that live visual feedback dramatically reduces cognitive hesitation during authoring flows.',
-        'Demonstrated that proactive research initiatives convert skeptical stakeholders into user advocates.',
-        'Proved that simplicity is not the absence of clutter, but the mastery of clear hierarchy and context.'
-      ]
-    }
+  {
+    id: '2',
+    title: 'Store Settings Conversion Optimization',
+    category: 'Product Settings',
+    source: 'Dribbble',
+    imageUrl: '/assets/projects/settings/Cover_Portfolio_Settings.webp',
+    dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
-  'orderonline-settings': {
-    id: 'orderonline-settings',
-    title: 'Increase Conversion Rate Store Settings',
-    tag: 'UX Optimization',
-    category: 'Website',
-    client: 'OrderOnline.id',
-    role: 'Product Designer',
-    year: '2023',
-    timeline: '1 Month',
-    summary: 'Optimizing the store settings information architecture, hierarchy, and interaction copywriting to maximize feature adoption and boost online seller conversion.',
-    coverImage: '/assets/projects/settings/Cover_Portfolio_Settings.webp',
-    stats: [
-      { value: '+5.72%', label: 'Increase in main Online Store setting usage' },
-      { value: 'Top Tier', label: 'Online Store repositioned to primary top spot' },
-      { value: '1 Floating Bar', label: 'Unified bottom save action with instant cancel' }
-    ],
-    overview: 'Settings on OrderOnline.id is a mission-critical support tool where merchants manage transactions, courier logistics, and third-party integrations. Hotjar scroll and click heatmaps revealed significant drop-offs that prevented sellers from discovering and utilizing core Online Store capabilities.',
-    problem: 'Hotjar heatmaps revealed that seller scrolling intensity plummeted before reaching main Online Store settings card buried down the page. Sellers felt frustrated navigating sub-menus, were confused by multiple scattered "Save" buttons, and struggled with ambiguous toggles lacking guidance.',
-    solution: 'Repositioned Online Store settings to the top of the hierarchy, crafted concise contextual UX microcopy explaining each toggle, and introduced a unified floating bottom Save bar with an instant cancel action to eliminate error anxiety.',
-    galleryImages: [
-      '/assets/projects/settings/result_eploration_menu_settings.webp',
-      '/assets/projects/settings/Interaction_Solution_(1).webp',
-      '/assets/projects/settings/Analysis_Data_Menu_Settings.webp',
-      '/assets/projects/settings/Analysis_Data_Sub_Menu_Settings.webp'
-    ],
-    metaDetails: {
-      platform: 'Web Application (Merchant Dashboard)',
-      responsibilities: [
-        'Hotjar Heatmap & Click Stream Analysis',
-        'Seller In-Depth Interviews',
-        'UI Component & IA Audit',
-        'UX Copywriting & Microcopy',
-        'Rapid Prototyping & Developer Handover'
-      ],
-      tools: ['Figma', 'Hotjar Heatmaps & Recordings', 'Google Analytics'],
-      team: 'Product Designer, Product Manager, Data Science Team, Frontend Engineers'
-    },
-    sections: [
-      {
-        number: '01',
-        badge: '01 · Overview & Objective',
-        title: 'Optimizing the Merchant Settings Engine',
-        summary: 'Enabling sellers to configure sales channels and integrations with zero friction.',
-        paragraphs: [
-          'Settings on OrderOnline.id serves as the foundational support center where sellers configure online payment gateways, shipping couriers, third-party marketing tools, and online storefront behaviors to drive their e-commerce revenue.',
-          'The core objective of this optimization sprint was to facilitate merchants in effortlessly discovering desired configurations, removing navigational friction, and boosting the conversion rate of primary Online Store settings usage.'
-        ]
-      },
-      {
-        number: '02',
-        badge: '02 · Quantitative & Qualitative Discovery',
-        title: 'Uncovering Friction via Hotjar Heatmaps & Seller Interviews',
-        summary: 'Combining behavioral telemetry with firsthand qualitative merchant insights.',
-        callouts: [
-          {
-            icon: '📊',
-            label: 'Research Methodology Note',
-            text: 'Telemetry heatmaps pinpointed WHERE drop-offs occurred, while in-depth merchant interviews unraveled WHY. Combining both within a focused 1-month sprint enabled fast, data-backed validation without speculative assumptions.'
-          }
-        ],
-        keyPoints: [
-          {
-            title: 'Scroll Heatmap on Main Settings Menu',
-            description: 'Hotjar scroll telemetry revealed that scrolling intensity dropped drastically as merchants moved down the page, meaning the main Online Store setting card was severely under-exposed.'
-          },
-          {
-            title: 'Sub-Menu Scroll Drop-off & Feature Blindspots',
-            description: 'Analyzing sub-menu heatmaps confirmed that scroll depth cratered as pages grew longer. High-value configuration capabilities located lower down were virtually unvisited.'
-          },
-          {
-            title: 'In-Depth Seller Interviews',
-            description: 'Interviews with seasoned merchants revealed three consistent pain points: (1) Frustration navigating between sub-menus requiring repetitive deep scrolling; (2) Failure to understand setting utilities without explanations; (3) Confusion over multiple save buttons per card with no option to cancel unintended edits.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/settings/Analysis_Data_Menu_Settings.webp',
-            caption: 'Hotjar click and scroll heatmap revealing steep drop-off before reaching core settings',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/settings/Analysis_Data_Sub_Menu_Settings.webp',
-            caption: 'Sub-menu scroll analysis indicating underutilization of features located lower on the page',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '03',
-        badge: '03 · UX & Component Audit',
-        title: 'Diagnosing Three Structural Design Flaws',
-        summary: 'A forensic audit of existing UI components and interaction patterns.',
-        keyPoints: [
-          {
-            title: 'Audit 1: Deep Stacks of Menus & Wasted Whitespace',
-            description: 'Menus were stacked in long vertical arrangements with excessive dead margins, making browsing between sub-menus tedious and requiring high physical scrolling effort.'
-          },
-          {
-            title: 'Audit 2: Absence of Interaction Copywriting',
-            description: 'Toggles and inputs stood in isolation without explanatory microcopy, forcing sellers to guess what changes would happen to their customer checkout experience.'
-          },
-          {
-            title: 'Audit 3: Fragmented Multiple Save Triggers',
-            description: 'Individual cards each featured separate "Save" buttons. Merchants were anxious about whether all edits were saved, and the absence of a Cancel button created fear of human error.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/settings/Audit_Component_1.webp',
-            caption: 'Audit 1: Stack of menus and excessive whitespace creating high scroll friction',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/settings/Audit_Component_2_(1).webp',
-            caption: 'Audit 2: Features lacking contextual interaction copy to explain technical utilities',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/settings/Audit_Component_3.webp',
-            caption: 'Audit 3: Multiple redundant save buttons scattered across each sub-menu',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '04',
-        badge: '04 · Design Solutions',
-        title: 'Concise Navigation, Contextual Microcopy & Floating Save Bar',
-        summary: 'Targeted design solutions formulated through "How Might We" inquiries.',
-        keyPoints: [
-          {
-            title: 'Solution 1: Elevated Hierarchy & Compact Menu Cards',
-            description: 'Redesigned settings into clean, modular cards with balanced padding. Repositioned the primary Online Store card directly at the top of the page, ensuring 100% immediate visibility without scrolling.'
-          },
-          {
-            title: 'Solution 2: Human-Centric Interaction Microcopy',
-            description: 'Drafted clear, concise UX copy beneath every setting toggle, explaining in plain language how activating each option optimizes sales and protects store checkout.'
-          },
-          {
-            title: 'Solution 3: Unified Floating Bottom Save Bar',
-            description: 'Eliminated scattered individual buttons in favor of a sticky floating bottom bar that triggers when edits occur, complete with an instant "Cancel" action to revert changes safely.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/settings/result_eploration_menu_settings.webp',
-            caption: 'New settings menu layout with Online Store elevated to the top for instantaneous access',
-            aspect: 'wide'
-          },
-          {
-            url: '/assets/projects/settings/Interaction_Solution_(1).webp',
-            caption: 'Clear contextual microcopy accompanying each setting toggle and configuration input',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '05',
-        badge: '05 · Impact & Learnings',
-        title: '+5.72% Adoption Boost in a 1-Month Sprint',
-        summary: 'Tangible data-backed growth and strategic takeaways.',
-        keyPoints: [
-          {
-            title: '+5.72% Increase in Main Setting Usage',
-            description: 'Following deployment, analytics validated by the Data Science team recorded a +5.72% increase in the usage of the main Online Store configuration.'
-          },
-          {
-            title: 'Precision Through Telemetry',
-            description: 'Learned that quantitative analytics like Hotjar heatmaps, when corroborated by qualitative seller interviews, provide laser-focused clarity on what to fix first.'
-          },
-          {
-            title: 'Speed & Impact Alignment',
-            description: 'Executed the entire audit, design exploration, internal testing, and developer handover within a rapid 1-month window, delivering immediate commercial value.'
-          }
-        ]
-      }
-    ],
-    lessonLearned: {
-      title: 'Design Reflection',
-      text: 'This fast-paced 1-month optimization challenged me to leverage quantitative data telemetry and qualitative merchant interviews to dissect subtle UX friction. Applying strict hierarchy principles and concise microcopy made the settings interface remarkably intuitive, driving measurable adoption while safeguarding user confidence with human-error recovery mechanisms.',
-      bullets: [
-        'Data heatmaps expose where attention drops; user interviews explain why it happened.',
-        'Repositioning high-value features above the fold delivers immediate adoption dividends.',
-        'A single floating save bar with an instant cancel button turns an anxious form into a safe playground.'
-      ]
-    }
+  {
+    id: '3',
+    title: 'Coordinator Promote Mobile App',
+    category: 'Logistics Mobile',
+    source: 'Dribbble',
+    imageUrl: '/assets/projects/promote-apps/Cover_Portfolio_Coordinator_Fix.webp',
+    dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
-  trawlbens: {
-    id: 'trawlbens',
-    title: 'Increase Coordinator Productivity for Promote Apps',
-    tag: 'Mobile Application',
-    category: 'Mobile',
-    client: 'TrawlBens',
-    role: 'UI/UX Designer',
-    year: '2021 - 2022',
-    timeline: '7 Months',
-    summary: 'Designing an end-to-end promotional mobile app suite for logistics Account Executives and Coordinators to track referrals, monitor commission targets, and distribute instant promo vouchers.',
-    coverImage: '/assets/projects/promote-apps/Cover_Portfolio_Coordinator_Fix.webp',
-    stats: [
-      { value: '+5.37%', label: 'Increase in cargo delivery transactions across all fleets' },
-      { value: 'Real-time', label: 'Transparent team & personal income monitoring' },
-      { value: 'Self-Service', label: 'Instant promo voucher generation without admin delays' }
-    ],
-    overview: 'Trawlbens is a digital cargo logistics company providing affordable freight across the Indonesian archipelago. To scale freight volume, leadership introduced performance incentives for the field sales force. We built Promote Apps to replace manual paper brochures with digital referral sharing, transparent commission tracking, and self-service promo generators.',
-    problem: 'Account Executives relied on distributing printed paper brochures with zero tracking of user conversions. Coordinators could not monitor team quota progress, and creating promotional vouchers required slow, manual paper approvals from back-office admins.',
-    solution: 'Designed an integrated mobile suite featuring unique referral link sharing with live conversion history, a transparent monthly Achievement and Income Monitoring dashboard for both agents and coordinators, and an on-demand self-service voucher generator with automated validation rules.',
-    galleryImages: [
-      '/assets/projects/promote-apps/Solution_1.1.webp',
-      '/assets/projects/promote-apps/Solution_2.1_Result.webp',
-      '/assets/projects/promote-apps/Solution_2.2.webp',
-      '/assets/projects/promote-apps/Solution_3.webp'
-    ],
-    metaDetails: {
-      platform: 'Android Mobile Application',
-      responsibilities: [
-        'Stakeholder & Account Executive In-Depth Interviews',
-        'Concept Modeling & Workflow Mapping',
-        'Semantic Color Rebalancing (Red Brand Cognitive Load)',
-        'Referral Tracking & Commission Dashboard Architecture',
-        'Self-Service Promo Voucher Generator UX'
-      ],
-      tools: ['Figma', 'Miro', 'Zeplin'],
-      team: 'UI/UX Designer, Product Manager, Business Development Leads, Mobile Dev Team'
-    },
-    sections: [
-      {
-        number: '01',
-        badge: '01 · Overview & Business Context',
-        title: 'Scaling Cargo Logistics Across Indonesia',
-        summary: 'Incentivizing the field sales force with real-time digital transparency.',
-        paragraphs: [
-          'Trawlbens is an innovative freight and cargo logistics company in Indonesia offering affordable shipping services that reach all corners of the archipelago via an integrated mobile platform.',
-          'Despite aggressive pricing, cargo delivery volume had not achieved its target scale. The executive leadership introduced an incentive model where Account Executives (AEs) and Area Coordinators earn commissions on every delivery transaction completed by users they onboard.'
-        ]
-      },
-      {
-        number: '02',
-        badge: '02 · Problem Discovery & Research',
-        title: 'In-Depth Interviews with Ground Sales & Coordinators',
-        summary: 'Identifying operational bottlenecks holding back business development.',
-        paragraphs: [
-          'In collaboration with the Product Manager, I conducted in-depth interviews with Account Executives and Coordinators to map their daily routines, friction points, and field requirements.'
-        ],
-        keyPoints: [
-          {
-            title: '01. Promoting Services via Paper Brochures',
-            description: 'Account Executives marketed cargo services solely by handing out printed paper brochures. They had no way of knowing whether prospective clients downloaded the app or booked shipments.'
-          },
-          {
-            title: '02. Blind Target Monitoring & Delayed Commission Visibility',
-            description: 'Coordinators had no digital mechanism to monitor team and personal targets, verify referral shipments, or calculate expected commission payouts, dampening field motivation.'
-          },
-          {
-            title: '03. Cumbersome Manual Promo Voucher Approvals',
-            description: 'Offering promotional discounts during logistics expos or client meetings required formal paper requests to head-office admins, a slow process that caused lost sales opportunities.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/promote-apps/Concept_Model.webp',
-            caption: 'Concept model detailing coordinator workflows, AE interactions, and commission milestones',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '03',
-        badge: '03 · Visual Design Challenge',
-        title: 'The Brand Red Cognitive Load Dilemma',
-        summary: 'Resolving the tension between an intense red brand identity and UI error states.',
-        paragraphs: [
-          'Trawlbens’ primary brand color is a saturated, fiery red. In UI design conventions, red universally signifies critical errors, destructive actions, and warnings. Blanket application of red across interactive elements created visual anxiety and elevated user cognitive load.'
-        ],
-        callouts: [
-          {
-            icon: '⚠️',
-            label: 'Brand & Semantic UI Alert',
-            text: 'Color psychology in product design: When a corporate brand relies on intense red, interactive buttons and alert states must be semantically decoupled to prevent cognitive confusion with system errors and critical warnings.'
-          }
-        ],
-        keyPoints: [
-          {
-            title: '01. Purposeful Secondary CTA Palette',
-            description: 'Introduced cool-toned secondary colors for primary buttons and interactive touchpoints, reserving red strictly for key brand anchors and minimizing saturation fatigue.'
-          },
-          {
-            title: '02. Semantic Information State System',
-            description: 'Created dedicated status colors (info blues, success greens, milestone ambers) for charts, progress bars, and transaction badges.'
-          },
-          {
-            title: '03. Translucent Header & Clean Topbar Hierarchy',
-            description: 'Engineered a transparent topbar with a clean secondary logo variant for default states, ensuring brand elegance without visual clutter.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/promote-apps/The_Existing_Brand.webp',
-            caption: 'The existing primary brand color and cognitive load challenge with error states',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/The_Color_Solution.webp',
-            caption: 'Color system solution: secondary action hues, semantic state palettes, and balanced neutrals',
-            aspect: 'wide'
-          }
-        ]
-      },
-      {
-        number: '04',
-        badge: '04 · Core Design Solutions',
-        title: 'Three Integrated Modules for Field Sales Productivity',
-        summary: 'Frictionless referral sharing, live income monitoring, and self-service promo vouchers.',
-        keyPoints: [
-          {
-            title: 'Solution 1: Referral Link Sharing & User Onboarding Log',
-            description: 'Coordinators and AEs can share their personalized referral code in 1 tap via WhatsApp, Telegram, or social media. A live chronological feed displays recently onboarded customers with custom date range filtering.'
-          },
-          {
-            title: 'Solution 2: Achievement & Income Monitoring Dashboard',
-            description: 'A dual-view dashboard showing personal quota progress for AEs, and a dedicated team management view for Coordinators detailing active agents, cargo volume statistics, and commission accruals.'
-          },
-          {
-            title: 'Solution 3: Self-Service Promo Voucher Generator',
-            description: 'An instant voucher creator empowering AEs to generate tailored shipping promos with customizable discount terms and weight limits on the fly without waiting for admin sign-offs.'
-          }
-        ],
-        images: [
-          {
-            url: '/assets/projects/promote-apps/Solution_1.1.webp',
-            caption: 'Solution 1: Unique referral link generator and quick sharing modal',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/Solution_1.2.webp',
-            caption: 'Solution 1: Real-time referral history log with custom date range filtering',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/Solution_2.1_Result.webp',
-            caption: 'Solution 2: Monthly target achievement progress and commission quota tracking',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/Solution_2.2.webp',
-            caption: 'Solution 2: Team income monitoring overview with interactive commission charts',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/Solution_2.3.webp',
-            caption: 'Solution 2: Personal breakdown of commissions earned from active cargo shipments',
-            aspect: 'standard'
-          },
-          {
-            url: '/assets/projects/promote-apps/Solution_3.webp',
-            caption: 'Solution 3: Self-service promo voucher generator with automated rule validation',
-            aspect: 'standard'
-          }
-        ]
-      },
-      {
-        number: '05',
-        badge: '05 · Impact & Learnings',
-        title: '+5.37% Delivery Transactions & Design Reflections',
-        summary: 'Measurable freight volume growth and invaluable professional learnings.',
-        keyPoints: [
-          {
-            title: '+5.37% Cargo Delivery Volume Growth',
-            description: 'Within 6 months of rollout, analytics from the Data Engineering team confirmed an average 5.37% increase in cargo delivery transactions across all fleet vehicle categories.'
-          },
-          {
-            title: 'Sales Force Empowerment',
-            description: 'Replaced paper brochures with digital transparency, giving field reps instant clarity over their target milestones and financial compensation.'
-          },
-          {
-            title: 'Semantic Color Mastery',
-            description: 'Tackling an intense red brand identity taught me how to separate brand expression from functional UI feedback, a critical design skill for complex systems.'
-          }
-        ]
-      }
-    ],
-    lessonLearned: {
-      title: 'Design Reflection',
-      text: 'Designing Promote Apps as a junior designer was a deeply transformative experience. It gave me the opportunity to conduct field research with sales agents, map complex commission logic into simple mobile views, and directly influence the company’s bottom line. Overcoming the cognitive tension of a red brand identity taught me that color in product design is first and foremost a communication tool.',
-      bullets: [
-        'Field sales tools require extreme simplicity and instant offline/online status feedback.',
-        'Never let brand colors hijack interface semantics; maintain strict color rules for interactive states.',
-        'Automating manual approval bottlenecks (like promo vouchers) unlocks massive field velocity.'
-      ]
-    }
+  {
+    id: '4',
+    title: 'Moving House Services App Concept',
+    category: 'On-Demand Delivery',
+    source: 'Dribbble',
+    imageUrl: '/assets/projects/moving-house-cover.webp',
+    dribbbleUrl: 'https://dribbble.com/aldoabieza'
   }
-};
+];
 
 export const CASE_STUDY_ORDER: string[] = [
   'doku',
@@ -746,34 +63,1193 @@ export const CASE_STUDY_ORDER: string[] = [
   'trawlbens'
 ];
 
-export const EXPERIMENTS: ExperimentItem[] = [
+export const CASE_STUDIES: Record<string, CaseStudy> = {
+  // -------------------------------------------------------------
+  // 01. DOKU — Design System Evolution
+  // -------------------------------------------------------------
+  doku: {
+    id: 'doku',
+    title: 'Leading the Evolution of DOKU’s Design System',
+    tag: 'Design System Lead',
+    tags: ['Design System', 'Fintech', 'Infrastructure', 'Lead'],
+    category: 'Design System & Operations',
+    client: 'DOKU',
+    role: 'Design System Lead',
+    year: '2024 - Present',
+    timeline: 'Ongoing',
+    tools: ['Figma', 'Token Studio', 'Storybook', 'Zeroheight'],
+    summary:
+      'Standardizing DOKU’s multi-product ecosystem through an enterprise-grade token architecture, accessibility-first component standards, and cross-functional governance.',
+    coverImage: '/assets/projects/doku-design-system-cover.jpg',
+    stats: [
+      { value: '38+', label: 'Digital Products' },
+      { value: '98%', label: 'WCAG AA Compliance' },
+      { value: '4.2x', label: 'Faster Slicing Velocity' },
+      { value: '250+', label: 'Synced UI Components' }
+    ],
+    overview:
+      'At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.',
+    problem:
+      'DOKU suffered from significant UX debt across 38+ digital touchpoints. Independent engineering teams re-implemented elementary controls, causing inconsistent padding, conflicting color semantics, accessibility violations, and lengthy handoff cycles.',
+    solution:
+      'Architected and deployed the next-generation DOKU Design System: a multi-tier token schema, 250+ accessible headless-backed components, interactive Storybook documentation, and automated Figma-to-code syncing.',
+    galleryImages: [
+      '/assets/projects/doku-design-system-cover.jpg',
+      '/assets/projects/doku/The Workshop Image.webp',
+      '/assets/projects/doku/Missing Component Update.webp',
+      '/assets/projects/doku/doku-product-inconsistency-breakdown.webp'
+    ],
+    testimonial: {
+      quote:
+        'The design system overhaul transformed our product engineering velocity. What used to take two sprints now takes days, and our consistency across checkout flows has reached an all-time high.',
+      author: 'Head of Engineering',
+      role: 'DOKU Infrastructure'
+    },
+    metaDetails: {
+      platform: 'Web, iOS, Android, Merchant Portal',
+      responsibilities: [
+        'Design Tokens & Semantic Architecture',
+        'Component Library & Accessibility (WCAG AA)',
+        'Figma to Storybook Pipeline Automation',
+        'Cross-Product Governance & Design QA'
+      ],
+      tools: ['Figma', 'Storybook', 'Token Studio', 'Zeroheight', 'Jira'],
+      team: '1 Lead Designer (Me), 4 Core Engineers, 2 Product Managers'
+    },
+    sections: [
+      {
+        number: '01',
+        badge: 'Context',
+        title: 'Overview',
+        paragraphs: [
+          'At DOKU, we are designers have a single source of truth for product development: DOKU Fragment. It comprises foundations, component variants, and source code already implemented in our products. As our products evolve, an increasing number of component design variations are being implemented across our dashboards.'
+        ]
+      },
+      {
+        number: '02',
+        badge: 'Alignment',
+        title: 'The Workshop',
+        paragraphs: [
+          'As designers and writer, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/doku/The Workshop Image.webp',
+            caption: 'Design System Vision & Strategy Workshop: Brainstorming vision, mission, pain points, and cross-team alignment',
+            aspect: 'wide'
+          }
+        ],
+        afterImageParagraphs: [
+          'During the workshop, I get the more insight from the participant about design system. Here are the paint points that I get'
+        ]
+      },
+      {
+        number: '03',
+        badge: 'Discovery',
+        title: 'Pain Points',
+        subSections: [
+          {
+            title: '1. Missing Component Update Flow',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/doku/Missing Component Update.webp',
+                caption: 'Existing component update workflow lacking centralized distribution and sync back to the design system repository',
+                aspect: 'wide'
+              }
+            ],
+            afterImageQuotes: [
+              'Lack of Component Visibility Across Designers: Limited visibility across designers led to duplicate components with inconsistent variations, making the design system harder to maintain, update, and scale consistently.',
+              'Missing Design System Synchronization Flow: Updated components implemented during development were often not synchronized back to the design system repository, resulting in outdated libraries and misalignment across teams.'
+            ]
+          },
+          {
+            title: '2. Inconsistency design across products',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',
+              'For example in details page, we have different behaviour to return the parent page, inconsistency spacing and header page components in body dashboard'
+            ],
+            customVariant: 'inconsistency-cards'
+          }
+        ]
+      },
+      {
+        number: '04',
+        badge: 'Objectives',
+        title: 'Our Goals',
+        paragraphs: [
+          'Mencari tahu lebih jelas spesifik keinginan, serta tujuan kami & stakeholder lainnya untuk design system di DOKU'
+        ],
+        quotes: [
+          'Source of truth design system: Mempunyai source of truth design system yang dapat digunakan oleh temen-temen designer dan ter-update',
+          'Creating a Sustainable Design System: Menciptakan design system yang dapat di maintain dengan mudah, scalable, dan predictable oleh user kami.',
+          'Increase faster development: Mempercepat waktu development, dan konsisten antar produk. Sehingga kami designers fokus pada strategi dan hal-hal paling penting untuk mengembangkan produk yang membantu bisnis dan pengguna.'
+        ]
+      },
+      {
+        number: '05',
+        badge: 'Execution',
+        title: 'Time to Solve the Problems',
+        subSections: [
+          {
+            title: 'Create dedicated teams and new flow',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'Pembentukan tim ini terdiri dari beberapa role, dan masing-masing responsibility untuk menghandle design system. Dan membuat workflow baru agar design kami selalu up to date, mudah di maintaince, dan memudahkan engineer untuk reusable design system kami.'
+            ]
+          }
+        ]
+      }
+    ],
+    lessonLearned: {
+      title: 'Design System Governance & Scale',
+      text: 'A design system is 20% UI design and 80% communication, change management, and alignment. Establishing trust with engineering and providing friction-free onboarding was the key factor in achieving organization-wide adoption.'
+    }
+  },
+
+  // -------------------------------------------------------------
+  // 02. OrderOnline.id — Storefront Website Builder
+  // -------------------------------------------------------------
+  orderonline: {
+    id: 'orderonline',
+    title: 'Building New Seller Experience for Create The Website',
+    tag: 'Web Apps',
+    tags: ['UI/UX', 'Web Apps', '🔥Must Read'],
+    category: 'Product Design',
+    client: 'OrderOnline.id',
+    role: 'UI/UX Designer',
+    year: '2023 - 2024',
+    timeline: '2 Month',
+    tools: ['Google Sheets', 'Figma', 'Google Meet'],
+    summary:
+      'Storefront is a website platform that makes it easy for users (business owners/sellers) to create a website to market their products without needing technical abilities such as coding.',
+    coverImage: '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
+    coverObjectPosition: 'left center',
+    stats: [
+      { value: '2 Mos', label: 'Research to Ship' },
+      { value: '4 Core', label: 'Critical Friction Points' },
+      { value: '100%', label: 'Live Visual Preview' },
+      { value: '1 Flow', label: 'Zero-Install Templates' }
+    ],
+    overview:
+      'Storefront is a website platform that makes it easy for users (business owners/sellers) to create a website to market their products without needing technical abilities such as coding.',
+    problem:
+      'Our product had poor UX in arranging layout and configuration because menus were mixed up within one dashboard, and sellers were unable to see real-time changes to their web store appearance.',
+    solution:
+      'Re-architected the entire Storefront information architecture: split Dashboard from the live visual Editor, established multi-device template previews, and streamlined store customization.',
+    galleryImages: [
+      '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
+      '/assets/projects/storefront/AffDiagram_Problem.webp',
+      '/assets/projects/storefront/TokoTalk_Dashboard.webp',
+      '/assets/projects/storefront/Image_Audit_Features.webp',
+      '/assets/projects/storefront/Strength_and_Weakness.webp',
+      '/assets/projects/storefront/Added_New_Products.webp',
+      '/assets/projects/storefront/Grouping_Existing_Features.webp',
+      '/assets/projects/storefront/Remove_Features_(2).webp',
+      '/assets/projects/storefront/Organize_Features.webp',
+      '/assets/projects/storefront/Result_Menus_Structure.webp',
+      '/assets/projects/storefront/Existing_Flow_Template.webp',
+      '/assets/projects/storefront/New_Flow_Template.webp',
+      '/assets/projects/storefront/Exploration_Design.webp',
+      '/assets/projects/storefront/Result_Exploration.webp',
+      '/assets/projects/storefront/Store_Design_Silhouette_Result.webp',
+      '/assets/projects/storefront/Explain_About_Navbar_Editor.webp',
+      '/assets/projects/storefront/Sidebar_Only.webp',
+      '/assets/projects/storefront/Editor_Display_Menus.webp',
+      '/assets/projects/storefront/Editor_HomePage_Config.webp',
+      '/assets/projects/storefront/Explain_New_Config_Dashboard.webp',
+      '/assets/projects/storefront/Tooltip_Solution.webp',
+      '/assets/projects/storefront/Config_Information_Result_1.webp',
+      '/assets/projects/storefront/Config_Information_Result_2.webp'
+    ],
+    metaDetails: {
+      platform: 'Web Platform (Desktop & Mobile)',
+      responsibilities: [
+        'User Research & Usability Testing',
+        'Competitive & SWOT Analysis',
+        'Information Architecture & Menu Re-layout',
+        'UI/UX Design & Interactive Prototyping'
+      ],
+      tools: ['Google Sheets', 'Figma', 'Google Meet'],
+      team: '1 Product Designer (Me), 1 Product Manager, Engineering Team'
+    },
+    sections: [
+      {
+        number: '01',
+        badge: 'Context',
+        title: 'Overview',
+        paragraphs: [
+          'Storefront is a website platform that makes it easy for users (business owners/sellers) to create a website to market their products without needing technical abilities such as coding.'
+        ]
+      },
+      {
+        number: '02',
+        badge: 'Discovery',
+        title: 'Problem Assumption',
+        quotes: [
+          'Our product has poor UX in arranging layout and configuration because its menus are mixed up within one dashboard.',
+          "When changing the store website's appearance, it feels difficult to see changes to website components directly."
+        ]
+      },
+      {
+        number: '03',
+        badge: 'Research',
+        title: 'Validate Assumption',
+        paragraphs: [
+          'Usability Testing: I conduct this testing with both existing and new sellers, aiming to identify issues/pain points from two different user perspectives.',
+          'Competitive Analysis: Analyzing features and conducting a SWOT analysis to identify the strengths and weaknesses of our competitors, as well as serving as a reference for me to make design decisions.'
+        ],
+        callouts: [
+          {
+            icon: 'ℹ️',
+            label: 'Additional Notes',
+            text: "Previously, we didn't conduct much research before developing the product, relying solely on assumptions from stakeholders. Now, I do research initiatives."
+          }
+        ]
+      },
+      {
+        number: '04',
+        badge: 'Synthesis',
+        title: 'User Problem',
+        paragraphs: [
+          'Below are the pain points/needs of users obtained from Usability Testing. Then grouped into an Affinity Diagram to identify the core problem.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/storefront/AffDiagram_Problem.webp',
+            caption: 'Affinity Diagram grouping user friction points and core themes',
+            aspect: 'wide'
+          }
+        ]
+      },
+      {
+        number: '05',
+        badge: 'Insights',
+        title: 'Core Problem',
+        quotes: [
+          'The flow when using a website template because it needs to be installed first, and not knowing if the template can be used on different devices.',
+          'Unable to see changes in the store design directly while editing. To see the results, users must view them on the live website.',
+          'The website configuration is not well managed and unused, thus hindering users when managing their stores.',
+          'Difficulty in using a configuration due to the lack of specific information to explain its function.'
+        ]
+      },
+      {
+        number: '06',
+        badge: 'Benchmarking',
+        title: 'Competitive Analysis',
+        paragraphs: [
+          "Among the many competitors we have found, 'TokoTalk' is the one whose features closely resemble our products."
+        ],
+        images: [
+          {
+            url: '/assets/projects/storefront/TokoTalk_Dashboard.webp',
+            caption: 'Competitive feature analysis of TokoTalk Dashboard and Editor',
+            aspect: 'wide'
+          }
+        ]
+      },
+      {
+        number: '07',
+        badge: 'Audit',
+        title: 'List Features',
+        images: [
+          {
+            url: '/assets/projects/storefront/Image_Audit_Features.webp',
+            caption: 'Audit competitor features with our product existing features',
+            aspect: 'wide'
+          }
+        ],
+        afterImageParagraphs: [
+          'After conducting a detailed feature analysis, here is the summary I have obtained.'
+        ],
+        afterImageQuotes: [
+          'More comprehensive feature configuration, especially in the Editor section.',
+          'The homepage sections are more comprehensive, such as Testimonials and Partnership Lists.',
+          'We lack some store page configurations, such as Catalog Product and Cart Product pages.',
+          'Have some Live Editor, where users can freely explore their imagination to design their stores.'
+        ]
+      },
+      {
+        number: '08',
+        badge: 'Strategy',
+        title: 'SWOT Analysis',
+        images: [
+          {
+            url: '/assets/projects/storefront/Strength_and_Weakness.webp',
+            caption: 'SWOT Analysis: identifying our product strengths, weaknesses, and market advantages',
+            aspect: 'wide'
+          }
+        ],
+        afterImageParagraphs: [
+          'Based on the analysis I have conducted, here are the opportunities presented by our product, which can serve as advantages to attract users from competitors.'
+        ],
+        afterImageQuotes: [
+          'Cheap Subscription: Although competitors offer free subscriptions, our product has an affordable subscription price.',
+          'Reseller Products: We have feature advantages that can help sellers sell their products to resellers.',
+          "Website Tracking: Our product can monitor customer interactions on every page of the seller's web store, through installed Google Analytics."
+        ],
+        hidePointIcons: true
+      },
+      {
+        number: '09',
+        badge: 'Alignment',
+        title: 'Handover Data',
+        paragraphs: [
+          'Presenting the research results to the stakeholders. Here are some of their considerations before starting the ideation phase of this project.',
+          'Redesign based on UT result: Due to time constraints in development, stakeholders agreed to overhaul the product based on research data we obtained from UT.',
+          'Added some competitor features: The stakeholders have requested us to add a new feature similar to our Funnel Builder, features from competitors, and other features to be added later.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/storefront/Added_New_Products.webp',
+            caption: 'Feature roadmap decisions and stakeholder scope additions',
+            aspect: 'wide'
+          }
+        ],
+        callouts: [
+          {
+            icon: '💡',
+            text: 'I suggest that if the feature is implemented, it should be validated again by conducting a survey. Whether our users need the feature or not. However, our stakeholders still want to add it.'
+          }
+        ]
+      },
+      {
+        number: '10',
+        badge: 'Execution',
+        title: 'Building Ideas',
+        subSections: [
+          {
+            title: 'Ideas 1 : Relayouting Features',
+            paragraphs: [
+              'Grouping Existing Features: This method makes it easier for me to reorganize features with similar functions to create a new menu, and also to remove features that are not used by our users.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Grouping_Existing_Features.webp',
+                caption: 'Grouping existing feature configurations into logical menu domains',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Remove Features',
+            paragraphs: [
+              "And this is the feature that has been removed; the reason being our users do not use this feature, and it hinders the user's goal in modifying their store website."
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Remove_Features_(2).webp',
+                caption: 'Removed unused features: General (Domain & Favicon), Appearance (Templates & CSS), and Assignation to eliminate friction',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Organize Features',
+            paragraphs: [
+              'Reorganizing existing features with similarities and giving the new menu label, so that the available settings are well managed between the Dashboard and Editor.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Organize_Features.webp',
+                caption: 'Categorized settings structure between Dashboard and Editor',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Result Menus Structure',
+            paragraphs: [
+              "Here is the structure of the new Dashboard and Editor menus, making it easier for users to find the settings they want to use and set their store's appearance."
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Result_Menus_Structure.webp',
+                caption: 'Final restructured Information Architecture and menu taxonomy',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Ideas 2 : Improving User Flow Using Template',
+            paragraphs: [
+              'Simplifying the user flow for template usage and ensuring users understand that they can use different design templates on each device.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Existing_Flow_Template.webp',
+                caption: 'Existing user flow when using website templates',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'How Might We',
+            howMightWe: [
+              {
+                number: '01',
+                text: 'How might we users can use templates on a single page without installing them beforehand.'
+              },
+              {
+                number: '02',
+                text: 'How might we users can understand, that they can use different templates for each device.'
+              }
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/New_Flow_Template.webp',
+                caption: 'New simplified flow: using templates on a single page without installation and supporting multiple devices',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Exploration Design',
+            paragraphs: [
+              'Exploring and introducing new designs to users when using templates, as well as conducting internal testing as early as possible.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Exploration_Design.webp',
+                caption: 'Exploring new designs for browsing and selecting templates',
+                aspect: 'wide'
+              }
+            ],
+            afterImageParagraphs: [
+              "Here are the results from our internal team's testing, because this design can accommodate users in using templates, and the information is very clear."
+            ]
+          },
+          {
+            images: [
+              {
+                url: '/assets/projects/storefront/Result_Exploration.webp',
+                caption: "Internal team testing result: intuitive card format with device tags",
+                aspect: 'wide'
+              }
+            ],
+            afterImageParagraphs: [
+              'Then wrapped in a special section, to search for templates based on device/category. And guide information, so that users understand that the template can be used for each device.'
+            ]
+          },
+          {
+            paragraphs: [
+              'Here are the results. Users can easily use design templates on a single page and see the silhouette of the template used in the "Desain Toko Kamu" section.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Store_Design_Silhouette_Result.webp',
+                caption: 'The Result: Instant silhouette preview of active template in "Desain Toko Kamu"',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Ideas 3: Create Store Design Editor',
+            isPrimaryTitle: true
+          },
+          {
+            title: 'Navbar Editor',
+            paragraphs: [
+              'Streamlined top navigation with intuitive breadcrumbs, responsive viewport toggle, store page selector, and instant preview actions.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Explain_About_Navbar_Editor.webp',
+                caption: 'Navbar structure and controls in the Store Design Editor',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Sidebar Menu',
+            paragraphs: [
+              'Combined sidebar menus, and added a header navigation. So that users can easily move to the menu they want to go for change the store design.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/storefront/Sidebar_Only.webp',
+                caption: 'Consolidated sidebar menu with intuitive header navigation tabs',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'The Result',
+            paragraphs: [
+              'Here are the results of the editor I created, where users can design their stores with a new experience using the live editor.'
+            ],
+            imageLayout: 'vertical',
+            images: [
+              {
+                url: '/assets/projects/storefront/Editor_Display_Menus.webp',
+                caption: 'Display Menus — Real-time component controls and styling',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/storefront/Editor_HomePage_Config.webp',
+                caption: 'Home Page Config — Direct layout and section customization with live preview',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Ideas 4: Create information to understand using configuration',
+            isPrimaryTitle: true,
+            paragraphs: [
+              "Creating information to help users understand the configuration functions available in their store's Dashboard and Editor, which also serves as user guidance."
+            ],
+            imageLayout: 'vertical',
+            images: [
+              {
+                url: '/assets/projects/storefront/Explain_New_Config_Dashboard.webp',
+                caption: 'Contextual configuration information and helper copy',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/storefront/Tooltip_Solution.webp',
+                caption: 'Tooltip solution providing clarity for complex settings without visual clutter',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'The Result',
+            paragraphs: [
+              'Clear microcopy and contextual tooltips significantly reduced confusion when sellers configure advanced store settings.'
+            ],
+            imageLayout: 'vertical',
+            images: [
+              {
+                url: '/assets/projects/storefront/Config_Information_Result_1.webp',
+                caption: 'The Result: Informative configuration cards with inline helper hints',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/storefront/Config_Information_Result_2.webp',
+                caption: 'The Result: Detailed setting tooltips and user guidance in action',
+                aspect: 'wide'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        number: '11',
+        badge: 'Validation',
+        title: 'Design Testing',
+        paragraphs: [
+          'Due to our tight task load, I was unable to conduct UT on our design revamp. To gather feedback from users, we deployed the website first.'
+        ]
+      },
+      {
+        number: '12',
+        badge: 'Impact',
+        title: 'Experiment Result',
+        paragraphs: [
+          'According to the data I got from Data Science. Users of our product increased by an average of 1x.xx - xx.xx% after our product was released within 6 months.'
+        ]
+      }
+    ],
+    lessonLearned: {
+      title: 'Lesson Learned',
+      paragraphs: [
+        'This revamp project has been a significant challenge for me because I learned to collaborate with other divisions, conduct research with initiatives to gain user insights, and prove to stakeholders the importance of research and data.',
+        "Moreover, the most intriguing aspect of this project is that I put into practice what I've read from John Maeda's simplicity theory in simplifying an application, in a unique and sensible manner."
+      ]
+    }
+  },
+
+  // -------------------------------------------------------------
+  // 03. OrderOnline.id — Store Settings Conversion
+  // -------------------------------------------------------------
+  'orderonline-settings': {
+    id: 'orderonline-settings',
+    title: 'Increase Conversion Rate Store Settings',
+    tag: 'Web Apps',
+    tags: ['UI/UX', 'Web Apps', '🔥Must Read'],
+    category: 'Product Design',
+    client: 'OrderOnline.id',
+    role: 'UI/UX Designer',
+    year: '2023',
+    timeline: '1 Month',
+    tools: ['Hotjar', 'Figma', 'Google Meet'],
+    summary:
+      'Facilitates users in finding the desired configurations and enhances the conversion of main settings usage (Online Store), thereby helping users to increase their sales.',
+    coverImage: '/assets/projects/settings/Cover_Portfolio_Settings.webp',
+    coverObjectPosition: 'left center',
+    stats: [
+      { value: '+5.72%', label: 'Online Store Usage' },
+      { value: '1 Mo', label: 'Sprint Duration' },
+      { value: '3 Core', label: 'Friction Themes' },
+      { value: '1', label: 'Floating Save Action' }
+    ],
+    overview:
+      'Settings on OrderOnline.id is a support tool where sellers can manage their sales and integrate the accounts they want to achieve their goal to get the revenue from their product sales.',
+    problem:
+      'Seller scroll intensity dropped steeply down the page, leaving critical store settings unconfigured. Confusing multiple "Save" buttons and sparse UX copy caused errors and high drop-off.',
+    solution:
+      'Elevated key store settings to top-level hierarchy, eliminated repetitive manual saving via a unified floating action bar, and created contextual microcopy across configuration panels.',
+    galleryImages: [
+      '/assets/projects/settings/Cover_Portfolio_Settings.webp',
+      '/assets/projects/settings/Analysis_Data_Menu_Settings.webp',
+      '/assets/projects/settings/Analysis_Data_Sub_Menu_Settings.webp',
+      '/assets/projects/settings/Audit_Component_1.webp',
+      '/assets/projects/settings/Audit_Component_2_(1).webp',
+      '/assets/projects/settings/Audit_Component_3.webp',
+      '/assets/projects/settings/Untitled.webp',
+      '/assets/projects/settings/layout_exploration_menu.webp',
+      '/assets/projects/settings/layout_exploration_sub_menu_(3).webp',
+      '/assets/projects/settings/result_eploration_menu_settings.webp',
+      '/assets/projects/settings/Interaction_Solution_(1).webp'
+    ],
+    metaDetails: {
+      platform: 'Web Dashboard',
+      responsibilities: [
+        'Hotjar Heatmap & Click Behaviour Analysis',
+        'Seller In-Depth Qualitative Interviews',
+        'Component & Microcopy Audit',
+        'End-to-End Redesign & Production Slicing'
+      ],
+      tools: ['Hotjar', 'Figma', 'Google Meet'],
+      team: '1 Product Designer (Me), 1 Product Manager, Data Science'
+    },
+    sections: [
+      {
+        number: '01',
+        badge: 'Context',
+        title: 'Overview',
+        paragraphs: [
+          'Settings on OrderOnline.id is a support tool where sellers can manage their sales and integrate the accounts they want to achieve their goal to get the revenue from their product sales.'
+        ]
+      },
+      {
+        number: '02',
+        badge: 'Target',
+        title: 'Objective',
+        paragraphs: [
+          'Facilitates users in finding the desired configurations and enhances the conversion of main settings usage (Online Store), thereby helping users to increase their sales.'
+        ]
+      },
+      {
+        number: '03',
+        badge: 'Telemetry',
+        title: 'Problem Analysis',
+        paragraphs: [
+          'Based on the analysis of heatmap data from the settings page that we obtained from Hotjar, several issues were identified that we must resolve.'
+        ],
+        subSections: [
+          {
+            title: 'Scroll & Click Menu Settings',
+            paragraphs: [
+              'Seller scrolling intensity decreases approaching the main Store settings. Menu clicks indicate sellers frequently integrate their stores with third-party applications.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Analysis_Data_Menu_Settings.webp',
+                caption: 'Heatmap data on settings menu navigation scroll & click intensity',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Scroll & Click Sub Menu Settings',
+            paragraphs: [
+              'Based on sample data from one of the settings menus, potential issues were found that users may encounter when using features in the sub-settings menu.'
+            ],
+            quotes: [
+              'Seller scroll intensity decreases when accessing sub-menu sections further down the page.',
+              'Some features in the sub-menu settings section are still not being utilized to their full potential or are possibly used only for specific cases.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Analysis_Data_Sub_Menu_Settings.webp',
+                caption: 'Heatmap data on sub-menu settings scroll & click intensity',
+                aspect: 'wide'
+              }
+            ]
+          }
+        ],
+        hideBorderBottom: true
+      },
+      {
+        number: '04',
+        badge: 'Research',
+        title: 'Understanding The Problem',
+        primaryPointTitles: true,
+        paragraphs: [
+          'To identify seller issues and pain points, I conducted interviews with old sellers who use the settings to support their online business productivity.'
+        ],
+        quotes: [
+          'Access the Menu Settings: Sellers feel frustrated when using the Online Store settings menu and hard to navigate between sub-menu sections because it requires more scrolling to achieve their goals.',
+          'Understanding the Function of Settings: Sellers struggle to comprehend what specific switches and configurations impact without descriptive helper copy.',
+          'Saving Settings Changes: Sellers feel confused when saving settings changes because each sub-menu section has a "Save" button. And can’t cancel the settings that have been changed.'
+        ],
+        hidePointIcons: true
+      },
+      {
+        number: '05',
+        badge: 'Ideation',
+        title: 'Ideas',
+        paragraphs: [
+          'From the three core seller problems, I thought of a solution to make it easier for them to use the settings and increase seller productivity in managing online sales.'
+        ],
+        hideBorderBottom: true
+      },
+      {
+        number: '06',
+        badge: 'Framing',
+        title: 'How Might We',
+        howMightWe: [
+          {
+            number: '01',
+            text: 'How can users quickly access the desired menu settings.'
+          },
+          {
+            number: '02',
+            text: 'How can users understand and interact with a menu feature easily.'
+          },
+          {
+            number: '03',
+            text: 'How can users easily use the save button, and can cancel changes to their settings.'
+          }
+        ],
+        hideBorderBottom: true
+      },
+      {
+        number: '07',
+        badge: 'Design Audit',
+        title: 'Audit Component',
+        paragraphs: [
+          'Before jump into the solution, I further observed the problems in the existing component design, with the problems experienced by our sellers.'
+        ],
+        hideBorderBottom: true,
+        subSections: [
+          {
+            title: 'Audit 1: Stack of Menu',
+            paragraphs: [
+              'Lots of menus are stacked down in each section, and white space around it. Because sellers have difficulty in:'
+            ],
+            quotes: [
+              'Access the settings menu found in the main settings',
+              'Navigation between 1 sub-menu to another sub-menu.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Audit_Component_1.webp',
+                caption: 'Audit: Vertically stacked menus causing excessive scroll debt',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Audit 2: Interaction Copy',
+            paragraphs: [
+              'Our feature does not have copywriting to make it easier for sellers to interact with our products, making it difficult for our sellers to maximize the use of existing features.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Audit_Component_2_(1).webp',
+                caption: 'Audit: Missing microcopy leaving sellers guessing functionality',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Audit 3: Several Save Buttons',
+            paragraphs: [
+              'The purpose of the "save" button in each section is to make it easier for sellers to save settings in various submenus. However, this makes sellers feel a little confused when saving changes.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Audit_Component_3.webp',
+                caption: 'Audit: Redundant save buttons on every sub-section',
+                aspect: 'wide'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        number: '08',
+        badge: 'Solution',
+        title: 'The Solutions',
+        subSections: [
+          {
+            title: 'Better Navigation Menu',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'Changing the shape of our menu to be simpler, more concise, less white space, well organized. So users can easily access Online Shop settings and features in the sub menu.',
+              'Design Exploration: Exploring the menu card design, settings page sidebar, and new layouts for the settings menu and sub menu. And carry out internal testing as early as possible.'
+            ],
+            imageLayout: 'vertical',
+            images: [
+              {
+                url: '/assets/projects/settings/Untitled.webp',
+                caption: 'Sidebar and category card layout explorations',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/settings/layout_exploration_menu.webp',
+                caption: 'Settings menu grid and high-priority grouping',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/settings/layout_exploration_sub_menu_(3).webp',
+                caption: 'Sub-menu navigation tabs minimizing vertical scroll',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'The Exploration Result',
+            paragraphs: [
+              "Our internal testing has yielded a new look for the settings menu page. Notably, we've moved the Online Store section to the top for easier access, resulting in a clearer and more consistent layout."
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/result_eploration_menu_settings.webp',
+                caption: 'Final restructured Settings Menu with Online Store positioned prominently at top',
+                aspect: 'wide'
+              }
+            ],
+            afterImageParagraphs: [
+              'And below are the results of the settings sub-menu display, where users can access from 1 menu to another menu easily without scrolling much deeper.'
+            ],
+            videos: [
+              {
+                title: 'Before',
+                label: 'Before',
+                url: '/assets/projects/settings/settings-submenu-interaction.mp4',
+                sourceUrl: 'https://jam.dev/c/b0895cf3-06ed-4c3f-9f8e-1bf57d3d8057',
+                poster: '/assets/projects/settings/settings-submenu-poster.webp',
+                caption: 'Previous sub-menu navigation interaction flow'
+              },
+              {
+                title: 'After',
+                label: 'After',
+                url: '/assets/projects/settings/settings-submenu-after.mp4',
+                sourceUrl: 'https://jam.dev/c/9c874841-7417-4e40-a124-8690f2b2af71',
+                poster: '/assets/projects/settings/settings-submenu-after-poster.webp',
+                caption: 'Revamped sub-menu navigation walkthrough: effortlessly jump between settings without deep scrolling'
+              }
+            ]
+          },
+          {
+            title: 'Interaction Copy',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'Create clear and concise UX copy. So that our sellers can easily interact with our settings and understand, then sellers can increase and maximize their online sales.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/settings/Interaction_Solution_(1).webp',
+                caption: 'Contextual guidance labels and helper tips implemented directly beside controls',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Floating Save Button',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'By making the save button float at the bottom, our users are no longer confused about saving their settings changed, and can cancel what they have changed in the event of a human error.'
+            ],
+            video: {
+              url: '/assets/projects/settings/settings-floating-save-button.mp4',
+              poster: '/assets/projects/settings/settings-floating-save-button-poster.webp',
+              caption: 'Interactive demonstration of the floating save bar appearing upon changing settings'
+            }
+          }
+        ]
+      },
+      {
+        number: '09',
+        badge: 'Impact',
+        title: 'User Testing',
+        paragraphs: [
+          'Because my project load was full, this design was immediately sliced and deployed to get feedback at a later date. The impact of the design I made, the use of the main setting (Store Online) increased by 5.72% according to the data I got from Data Science.'
+        ]
+      }
+    ],
+    lessonLearned: {
+      title: 'Lesson Learned',
+      paragraphs: [
+        'This project challenged for me, to carry out data analysis and existing designs to find out more about the problems that occur to sellers.',
+        'Apart from that, I can implement what I learned from design principles to make the settings display more concise, simple, and easy to use for sellers. And provide impact for sellers and businesses.'
+      ]
+    }
+  },
+
+  // -------------------------------------------------------------
+  // 04. Trawlbens — Promote Apps & Coordinator Productivity
+  // -------------------------------------------------------------
+  trawlbens: {
+    id: 'trawlbens',
+    title: 'Increase Coordinator Productivity for Promote Apps',
+    tag: 'Mobile Apps',
+    tags: ['UI/UX', 'Mobile Apps'],
+    category: 'Product Design',
+    client: 'Trawlbens',
+    role: 'UI/UX Designer',
+    year: '2021 - 2022',
+    timeline: '7 Months',
+    tools: ['Google Sheets', 'Figma'],
+    summary:
+      'Trawlbens is a company operating in the cargo sector that provides an application platform for sending goods at low prices and can reach all regions of Indonesia.',
+    coverImage: '/assets/projects/promote-apps/Cover_Portfolio_Coordinator_Fix.webp',
+    stats: [
+      { value: '+5.37%', label: 'Delivery Transactions' },
+      { value: '6 Mos', label: 'Evaluation Period' },
+      { value: '3 Solutions', label: 'Core Capabilities Built' },
+      { value: '100%', label: 'Self-Serve Promos' }
+    ],
+    overview:
+      'Trawlbens is a company operating in the cargo sector that provides an application platform for sending goods at low prices and can reach all regions of Indonesia.',
+    problem:
+      'Cargo delivery service had limited target market reach, relying purely on manual brochure distribution. Coordinators had no way to track referred users, commissions, or distribute marketing vouchers without manual admin approval.',
+    solution:
+      'Designed an all-in-one Coordinator and Agent referral management app: instant referral link sharing, real-time team commission and target tracking, and autonomous voucher creation.',
+    galleryImages: [
+      '/assets/projects/promote-apps/Cover_Portfolio_Coordinator_Fix.webp',
+      '/assets/projects/promote-apps/Concept_Model.webp',
+      '/assets/projects/promote-apps/The_Existing_Brand.webp',
+      '/assets/projects/promote-apps/The_Color_Solution.webp',
+      '/assets/projects/promote-apps/Solution_1.1.webp',
+      '/assets/projects/promote-apps/Solution_1.2.webp',
+      '/assets/projects/promote-apps/Solution_2.1.webp',
+      '/assets/projects/promote-apps/Solution_2.1_Result.webp',
+      '/assets/projects/promote-apps/Solution_2.2.webp',
+      '/assets/projects/promote-apps/Solution_2.3.webp',
+      '/assets/projects/promote-apps/Solution_3_Design_Exploration.webp',
+      '/assets/projects/promote-apps/Solution_3.webp'
+    ],
+    metaDetails: {
+      platform: 'Mobile Application (Android & iOS)',
+      responsibilities: [
+        'Stakeholder & Account Executive Qualitative Interviews',
+        'Brand Color Harmonization & Accessibility Mapping',
+        'End-to-End App Architecture & Concept Modeling',
+        'Mobile UI Systems & Voucher Configuration'
+      ],
+      tools: ['Google Sheets', 'Figma'],
+      team: '1 UI/UX Designer (Me), 1 Product Manager, Cargo Business Team'
+    },
+    sections: [
+      {
+        number: '01',
+        badge: 'Context',
+        title: 'Overview',
+        paragraphs: [
+          'Trawlbens is a company operating in the cargo sector that provides an application platform for sending goods at low prices and can reach all regions of Indonesia.'
+        ]
+      },
+      {
+        number: '02',
+        badge: 'Business',
+        title: 'Business Problem',
+        paragraphs: [
+          "So far, our cargo delivery service still has little reach to the target market, and the delivery is still far from the company's expectations. The business team had an idea so that Account Executives could achieve targets by giving a commission from every delivery transaction carried out by users."
+        ]
+      },
+      {
+        number: '03',
+        badge: 'Field Research',
+        title: 'Validate The Problem',
+        paragraphs: [
+          'In collaboration with Product Manager, I conducted an in-depth interview with the Account Executive team to find out the problems and needs of the Account Executive Team in promoting our application services.',
+          'Referring Apps to new users: So far the account executive team has marketed our application by just distributing brochures. And they find it difficult to know whether they have succeeded or not in inviting potential users to use our application services.',
+          'Monitoring team and personal target processes: With the new policy, coordinators find it difficult to monitor the process of team and personal targets to get a commission, because they cannot see whether the users they refer have made a transaction or not.',
+          'Giving shipping promotions: So far the Account Executive team has felt hampered when providing promos during the event, because they have to request first from our admin to be approved, and the process is quite take time.'
+        ]
+      },
+      {
+        number: '04',
+        badge: 'Synthesis',
+        title: 'Building The Ideas',
+        paragraphs: [
+          'Concept Model: To make it easier for me to visualize the features in this application, I created a concept model, the purpose of which was to explore the idea further, and also detail what the coordinator would do in carrying out his duties.'
+        ],
+        images: [
+          {
+            url: '/assets/projects/promote-apps/Concept_Model.webp',
+            caption: 'Concept Model outlining coordinator workflows, permissions, and features',
+            aspect: 'wide'
+          }
+        ]
+      },
+      {
+        number: '05',
+        badge: 'UI Design',
+        title: 'Designing The Solution',
+        subSections: [
+          {
+            title: 'The Challenge',
+            paragraphs: [
+              'Here I am thinking of a solution, how to maximize the use of red in our application which is identical to the color of the error state, if implemented for each element this will increase Cognitive Load.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/promote-apps/The_Existing_Brand.webp',
+                caption: 'Existing brand color analysis and dominant red color risks',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'The Solution',
+            images: [
+              {
+                url: '/assets/projects/promote-apps/The_Color_Solution.webp',
+                caption: 'Harmonized color palette introducing secondary CTA and chart accents',
+                aspect: 'wide'
+              }
+            ],
+            quotes: [
+              '01 Added secondary colors to be implemented in some of our components such as the CTA Button, and minimized the use of primary colors.',
+              '02 Added state info color to be used for several elements such as charts, etc.',
+              '03 Added a secondary logo color to implement on the topbar when it is in default condition, and the topbar display will appear transparent.'
+            ]
+          },
+          {
+            title: 'Implement The Solution — Solution 1: Sharing Referral Link',
+            paragraphs: [
+              'Coordinators and Account Executive Agents can promote our application services, by sharing the referral code attached to each account.',
+              'Apart from that, they can see the history of users who recently joined using the referral link. And can also display data based on the selected date filter.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/promote-apps/Solution_1.1.webp',
+                caption: 'Referral sharing screen with one-tap social and code generation',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/promote-apps/Solution_1.2.webp',
+                caption: 'Recent join history filtered by date range and referral status',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Solution 2: Achievement and Income Monitoring',
+            paragraphs: [
+              'Pada solusi ini saya membuat desain untuk halaman Achievement dan Income Monitoring untuk Coordinator Agent, maupun Agent Team.',
+              'Exploration Design Achievement Monitoring:'
+            ],
+            images: [
+              {
+                url: '/assets/projects/promote-apps/Solution_2.1.webp',
+                caption: 'Exploration for team and personal achievement visualization',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/promote-apps/Solution_2.1_Result.webp',
+                caption: 'The Result Achievement Page: Personal progress bar and Coordinator team overview',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/promote-apps/Solution_2.2.webp',
+                caption: 'The Result Income Monitoring: Agent Team income summary, statistics, and list',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/promote-apps/Solution_2.3.webp',
+                caption: 'Individual personal income breakdown accrued from completed cargo shipments',
+                aspect: 'wide'
+              }
+            ]
+          },
+          {
+            title: 'Solution 3: Voucher Sharing',
+            paragraphs: [
+              'Here I am making a design exploration for a voucher list, where our discounts have terms and conditions that apply to their use. and creating a discount filter.',
+              'The Result: The Account Executive team can create their own promos, without prior request to the admin to create promo vouchers with terms and conditions that apply to our potential users.'
+            ],
+            images: [
+              {
+                url: '/assets/projects/promote-apps/Solution_3_Design_Exploration.webp',
+                caption: 'Voucher list design explorations and filter states',
+                aspect: 'wide'
+              },
+              {
+                url: '/assets/projects/promote-apps/Solution_3.webp',
+                caption: 'Self-serve voucher creation with custom terms, conditions, and discounts',
+                aspect: 'wide'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        number: '06',
+        badge: 'Outcome',
+        title: 'Experiment Results',
+        paragraphs: [
+          "According to the data we got from our Data Engineer, within 6 months our delivery transactions increased by an average of 5.37% for all types of delivery vehicles. Apart from that, with this application, the Account Executive's job can now be easier in promoting our application to achieve predetermined targets."
+        ]
+      }
+    ],
+    lessonLearned: {
+      title: 'Lesson Learned',
+      paragraphs: [
+        'As a Jr. Designer, I am very happy to be able to learn many things such as collaborating with various divisions and solving problems by doing research, and also happy to be able to have an impact on the company.',
+        'Apart from that, the most valuable experience for me was designing a product that had a red brand color, because that color is identical to the error state color.'
+      ]
+    }
+  }
+};
+
+export const PLAYGROUND_ITEMS: PlaygroundItem[] = [
   {
-    id: 'exp-1',
-    title: 'Dashboard concept',
-    imageUrl: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=80',
-    dribbbleUrl: 'https://dribbble.com/aldoabieza',
-    source: 'Dribbble ↗'
+    id: 'design-tokens-studio',
+    title: 'Design Tokens Studio',
+    category: 'System Architecture',
+    year: '2024',
+    aspect: 'video',
+    description:
+      'Interactive token visualizer demonstrating multi-brand theme switching and WCAG AA contrast validation across DOKU payment products.',
+    figmaLink: 'https://www.figma.com/@aldoabieza',
+    previewType: 'interactive',
+    tags: ['Figma', 'Tokens', 'TypeScript', 'A11y']
   },
   {
-    id: 'exp-2',
-    title: 'Wallet app UI',
-    imageUrl: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=600&q=80',
-    dribbbleUrl: 'https://dribbble.com/aldoabieza',
-    source: 'Dribbble ↗'
+    id: 'fluid-type-calculator',
+    title: 'Fluid Typography Scale Calculator',
+    category: 'Design Systems Tool',
+    year: '2024',
+    aspect: 'standard',
+    description:
+      'Mathematical viewport-based typography generator used across OrderOnline storefronts for smooth responsive font scaling.',
+    figmaLink: 'https://www.figma.com/@aldoabieza',
+    previewType: 'embed',
+    tags: ['Math Scale', 'CSS Clamp', 'Responsive']
   },
   {
-    id: 'exp-3',
-    title: 'Landing page study',
-    imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600&q=80',
-    dribbbleUrl: 'https://dribbble.com/aldoabieza',
-    source: 'Dribbble ↗'
+    id: 'payment-stepper-micro-interaction',
+    title: 'Checkout Flow State Machine',
+    category: 'Micro-Interactions',
+    year: '2023',
+    aspect: 'video',
+    description:
+      'Finite state machine prototype for resilient checkout flows handling network lag, payment timeouts, and success celebrations.',
+    figmaLink: 'https://www.figma.com/@aldoabieza',
+    previewType: 'interactive',
+    tags: ['Framer Motion', 'State Machine', 'Fintech']
   },
   {
-    id: 'exp-4',
-    title: 'Card components',
-    imageUrl: 'https://images.unsplash.com/photo-1541462608143-7c9944af0d0e?w=600&q=80',
-    dribbbleUrl: 'https://dribbble.com/aldoabieza',
-    source: 'Dribbble ↗'
+    id: 'cargo-pricing-matrix',
+    title: 'Volumetric Freight Estimator',
+    category: 'Algorithmic UI',
+    year: '2022',
+    aspect: 'standard',
+    description:
+      'Dynamic 3D-assisted dimensional weight calculator built for Trawlbens truck drivers to calculate cargo quotes on the spot.',
+    figmaLink: 'https://www.figma.com/@aldoabieza',
+    previewType: 'embed',
+    tags: ['Logistics', 'Volume Matrix', 'React']
   }
 ];
 
@@ -782,8 +1258,8 @@ export const EXPERIENCES: ExperienceItem[] = [
     id: 'doku',
     company: 'DOKU',
     role: 'UI/UX Designer',
-    period: 'September 2024 - Current',
-    roleWithPeriod: 'September 2024 - Current | UI/UX Designer',
+    period: 'September 2024 - Now',
+    roleWithPeriod: 'September 2024 - Now | UI/UX Designer',
     logo: '/assets/logos/doku.svg',
     fallbackColor: '#E11931',
     fallbackLetter: 'D'
@@ -800,7 +1276,7 @@ export const EXPERIENCES: ExperienceItem[] = [
   },
   {
     id: 'trawlbens',
-    company: 'TrawlBens',
+    company: 'Trawlbens Teknologi Anak Indonesia',
     role: 'UI/UX Designer',
     period: 'November 2021 - June 2022',
     roleWithPeriod: 'November 2021 - June 2022 | UI/UX Designer',

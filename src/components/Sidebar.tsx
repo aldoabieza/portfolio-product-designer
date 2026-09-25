@@ -46,7 +46,7 @@ export default function Sidebar({
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('hello@aldoabieza.com');
+      await navigator.clipboard.writeText('aldo.abieza30@gmail.com');
       setCopied(true);
       setTimeout(() => {
         setCopied(false);
@@ -205,6 +205,12 @@ export default function Sidebar({
                 <p className="case__meta-label">Timeline</p>
                 <p className="case__meta-value">{currentCaseStudy.timeline}</p>
               </div>
+              {currentCaseStudy.tools && currentCaseStudy.tools.length > 0 && (
+                <div className="case__meta-item">
+                  <p className="case__meta-label">Tools</p>
+                  <p className="case__meta-value">{currentCaseStudy.tools.join(', ')}</p>
+                </div>
+              )}
             </div>
           )
         )}

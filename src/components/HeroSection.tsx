@@ -73,7 +73,7 @@ export default function HeroSection() {
           </a>{' '}
           and{' '}
           <a
-            href="https://troben.id/"
+            href="https://trawlbens.id/"
             target="_blank"
             rel="noopener noreferrer"
             className="hero__company-link"

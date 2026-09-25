@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Info, ChevronsRight, X, ZoomIn, ZoomOut } from 'lucide-react';
 import { CaseStudy, CaseStudyImage } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
 import { InconsistencyCards } from './InconsistencyCards';
+import { CaseVideoPlayer } from './CaseVideoPlayer';
 
 interface CaseStudyViewProps {
   caseStudy: CaseStudy;
@@ -22,6 +24,12 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
   const [currentSrc, setCurrentSrc] = useState(img.url);
   const [loadFailed, setLoadFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    setCurrentSrc(img.url);
+    setLoadFailed(false);
+    setAttempt(0);
+  }, [img.url]);
 
   const getNextFallback = (url: string, attemptCount: number): string | null => {
     const encoded = encodeURI(url);
@@ -70,7 +78,7 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
 
   if (loadFailed) {
     return (
-      <figure className="case__image-figure" style={{ width: '100%' }}>
+      <figure className="case__image-figure-failed" style={{ width: '100%', cursor: 'default' }}>
         <div
           className="case__image-container"
           style={{
@@ -137,11 +145,57 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
           referrerPolicy="no-referrer"
           onError={handleError}
         />
-        <div className="case__image-zoom-indicator" aria-hidden="true">
-          <span>🔍 Click to expand</span>
-        </div>
       </div>
     </figure>
+  );
+}
+
+function renderParagraph(p: string, pIndex: number) {
+  const colonIndex = p.indexOf(': ');
+  if (colonIndex > 0 && colonIndex < 45 && !p.startsWith('http')) {
+    const title = p.slice(0, colonIndex).trim();
+    const desc = p.slice(colonIndex + 2).trim();
+    return (
+      <p key={pIndex} className="case__block-text case__block-item">
+        <strong className="case__block-item-title">{title}</strong>
+        <span className="case__block-item-desc">{desc}</span>
+      </p>
+    );
+  }
+  return (
+    <p key={pIndex} className="case__block-text">{p}</p>
+  );
+}
+
+function renderQuotePoint(q: string, qIndex: number, hideIcon: boolean = false, isPrimaryTitle: boolean = false) {
+  const cleanText = q.replace(/^\d+\s*/, '');
+  const colonIndex = cleanText.indexOf(': ');
+  if (colonIndex > 0 && colonIndex < 50 && !cleanText.startsWith('http')) {
+    const title = cleanText.slice(0, colonIndex).trim();
+    const desc = cleanText.slice(colonIndex + 2).trim();
+    return (
+      <div key={qIndex} className={`case__point-item case__point-item--structured ${hideIcon ? 'case__point-item--no-icon' : ''}`}>
+        {!hideIcon && (
+          <span className="case__point-icon" aria-hidden="true">
+            <ChevronsRight size={18} strokeWidth={2.5} />
+          </span>
+        )}
+        <div className="case__point-content">
+          <strong className={`case__point-title ${isPrimaryTitle ? 'case__point-title--primary' : ''}`}>{title}</strong>
+          <span className="case__point-desc">{desc}</span>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div key={qIndex} className={`case__point-item ${hideIcon ? 'case__point-item--no-icon' : ''}`}>
+      {!hideIcon && (
+        <span className="case__point-icon" aria-hidden="true">
+          <ChevronsRight size={18} strokeWidth={2.5} />
+        </span>
+      )}
+      <p className="case__point-text">{cleanText}</p>
+    </div>
   );
 }
 
@@ -150,6 +204,105 @@ export default function CaseStudyView({
   onSelectCaseStudy
 }: CaseStudyViewProps) {
   const [activeImage, setActiveImage] = useState<CaseStudyImage | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const activeImageRef = useRef<CaseStudyImage | null>(null);
+  const lastPosRef = useRef<{ x: number; y: number } | null>(null);
+
+  activeImageRef.current = activeImage;
+
+  const hideCursor = () => {
+    if (cursorRef.current) {
+      cursorRef.current.classList.remove('case__preview-cursor--visible');
+    }
+  };
+
+  const showCursor = (x: number, y: number) => {
+    if (cursorRef.current) {
+      cursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      cursorRef.current.classList.add('case__preview-cursor--visible');
+    }
+  };
+
+  // Keyboard shortcut (Escape) for lightbox
+  useEffect(() => {
+    if (!activeImage) return;
+    setIsZoomed(false);
+    hideCursor();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveImage(null);
+        setIsZoomed(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeImage]);
+
+  // Robust Global Pointer & Scroll Listeners for the preview cursor pill
+  useEffect(() => {
+    const handlePointerMove = (e: PointerEvent) => {
+      // Ignore touch gestures
+      if (e.pointerType === 'touch') {
+        hideCursor();
+        return;
+      }
+
+      lastPosRef.current = { x: e.clientX, y: e.clientY };
+
+      // If lightbox modal is open, do not show preview cursor
+      if (activeImageRef.current) {
+        hideCursor();
+        return;
+      }
+
+      // Check if the pointer target is strictly inside a .case__image-figure
+      const target = (e.target as Element | null)?.closest?.('.case__image-figure');
+      if (target && sectionRef.current?.contains(target)) {
+        showCursor(e.clientX, e.clientY);
+      } else {
+        hideCursor();
+      }
+    };
+
+    // When scrolling with wheel/touchpad, immediately update cursor visibility
+    const handleScroll = () => {
+      if (!lastPosRef.current || activeImageRef.current) {
+        hideCursor();
+        return;
+      }
+      const el = document.elementFromPoint(lastPosRef.current.x, lastPosRef.current.y);
+      const target = el?.closest?.('.case__image-figure');
+      if (target && sectionRef.current?.contains(target)) {
+        showCursor(lastPosRef.current.x, lastPosRef.current.y);
+      } else {
+        hideCursor();
+      }
+    };
+
+    const handleWindowBlur = () => {
+      hideCursor();
+    };
+
+    const handleDocumentMouseLeave = () => {
+      hideCursor();
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('blur', handleWindowBlur);
+    document.addEventListener('mouseleave', handleDocumentMouseLeave);
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('blur', handleWindowBlur);
+      document.removeEventListener('mouseleave', handleDocumentMouseLeave);
+      hideCursor();
+    };
+  }, [caseStudy.id]);
 
   const currentIndex = CASE_STUDY_ORDER.indexOf(caseStudy.id);
   const prevIndex = (currentIndex - 1 + CASE_STUDY_ORDER.length) % CASE_STUDY_ORDER.length;
@@ -163,7 +316,10 @@ export default function CaseStudyView({
   };
 
   return (
-    <section className="section case-study">
+    <section
+      ref={sectionRef}
+      className="section case-study"
+    >
       {/* Case Header */}
       <motion.div
         className="case__head"
@@ -171,7 +327,9 @@ export default function CaseStudyView({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1 className="case__title">{caseStudy.title}</h1>
+        <h1 className="case__title">
+          {caseStudy.title}
+        </h1>
       </motion.div>
 
       {/* Cover Image */}
@@ -181,8 +339,25 @@ export default function CaseStudyView({
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        onClick={() => {
+          setActiveImage({ url: caseStudy.coverImage, caption: caseStudy.title });
+        }}
+        style={{ cursor: 'zoom-in' }}
+        role="button"
+        tabIndex={0}
+        aria-label={`Expand cover visual: ${caseStudy.title}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setActiveImage({ url: caseStudy.coverImage, caption: caseStudy.title });
+          }
+        }}
       >
-        <img src={caseStudy.coverImage} alt={caseStudy.title} />
+        <img
+          src={caseStudy.coverImage}
+          alt={caseStudy.title}
+          referrerPolicy="no-referrer"
+        />
       </motion.div>
 
       {/* Case Study Detailed Body */}
@@ -191,7 +366,7 @@ export default function CaseStudyView({
           caseStudy.sections.map((section, sIndex) => (
             <motion.section
               key={section.number || sIndex}
-              className="case__section"
+              className={`case__section ${section.hideBorderBottom ? 'case__section--no-border' : ''}`}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -199,27 +374,69 @@ export default function CaseStudyView({
             >
               {section.title && (
                 <div className="case__section-header">
-                  <h4 className="case__section-title">{section.title}</h4>
+                  <h4 className={`case__section-title ${section.isPrimaryTitle ? 'case__section-title--primary' : ''}`}>{section.title}</h4>
                 </div>
               )}
 
               {/* Section Paragraphs */}
               {section.paragraphs && section.paragraphs.length > 0 && (
                 <div className="case__section-paragraphs">
-                  {section.paragraphs.map((p, pIndex) => (
-                    <p key={pIndex} className="case__block-text">{p}</p>
+                  {section.paragraphs.map(renderParagraph)}
+                </div>
+              )}
+
+              {/* Section Quotes / Key Problem Points */}
+              {section.quotes && section.quotes.length > 0 && (
+                <div className={`case__quotes ${section.hidePointIcons ? 'case__quotes--no-icon' : ''}`}>
+                  {section.quotes.map((q, qIndex) => renderQuotePoint(q, qIndex, !!section.hidePointIcons, !!section.primaryPointTitles))}
+                </div>
+              )}
+
+              {/* Section Callouts / Alert Component */}
+              {section.callouts && section.callouts.length > 0 && (
+                <div className="case__callouts">
+                  {section.callouts.map((c, cIndex) => (
+                    <aside key={cIndex} className="case__alert-box" role="note" aria-label="Information">
+                      <div className="case__alert-icon" aria-hidden="true">
+                        <Info size={16} strokeWidth={2} />
+                      </div>
+                      <div className="case__alert-content">
+                        <p className="case__alert-text">{c.text}</p>
+                      </div>
+                    </aside>
+                  ))}
+                </div>
+              )}
+
+              {/* Section Lists */}
+              {section.lists && section.lists.length > 0 && (
+                <div className="case__lists">
+                  {section.lists.map((lst, lIndex) => (
+                    lst.type === 'number' ? (
+                      <ol key={lIndex} className="case__numbered-list">
+                        {lst.items.map((item, iIndex) => (
+                          <li key={iIndex}>{item}</li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <ul key={lIndex} className="case__bulleted-list">
+                        {lst.items.map((item, iIndex) => (
+                          <li key={iIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    )
                   ))}
                 </div>
               )}
 
               {/* Section Figures & Visuals (rendered before points if imagesBeforePoints is true) */}
               {section.imagesBeforePoints && section.images && section.images.length > 0 && (
-                <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
+                <div className={`case__section-images case__section-images--${section.imageLayout === 'vertical' ? 'vertical' : (section.images.length === 1 ? 'single' : 'grid')}`}>
                   {section.images.map((img, iIndex) => (
                     <CaseImageItem
                       key={iIndex}
                       img={img}
-                      title={section.title}
+                      title={section.title || ''}
                       index={iIndex}
                       onExpand={setActiveImage}
                     />
@@ -258,6 +475,22 @@ export default function CaseStudyView({
                 </div>
               )}
 
+              {/* How Might We Cards */}
+              {section.howMightWe && section.howMightWe.length > 0 && (
+                <div
+                  className="case__hmw-grid"
+                  role="list"
+                  aria-label={section.title ? `${section.title} cards` : 'How Might We cards'}
+                >
+                  {section.howMightWe.map((hmw, hIndex) => (
+                    <article key={hIndex} className="case__hmw-card" role="listitem">
+                      <span className="case__hmw-number" aria-hidden="true">{hmw.number}</span>
+                      <p className="case__hmw-text">{hmw.text}</p>
+                    </article>
+                  ))}
+                </div>
+              )}
+
               {/* Custom Variant: Inconsistency Cards */}
               {section.customVariant === 'inconsistency-cards' ? (
                 <InconsistencyCards
@@ -271,12 +504,12 @@ export default function CaseStudyView({
               ) : (
                 /* Section Figures & Visuals (rendered after points if not imagesBeforePoints) */
                 !section.imagesBeforePoints && section.images && section.images.length > 0 && (
-                  <div className={`case__section-images case__section-images--${section.images.length === 1 ? 'single' : 'grid'}`}>
+                  <div className={`case__section-images case__section-images--${section.imageLayout === 'vertical' ? 'vertical' : (section.images.length === 1 ? 'single' : 'grid')}`}>
                     {section.images.map((img, iIndex) => (
                       <CaseImageItem
                         key={iIndex}
                         img={img}
-                        title={section.title}
+                        title={section.title || ''}
                         index={iIndex}
                         onExpand={setActiveImage}
                       />
@@ -288,8 +521,186 @@ export default function CaseStudyView({
               {/* Section Paragraphs (rendered below image) */}
               {section.afterImageParagraphs && section.afterImageParagraphs.length > 0 && (
                 <div className="case__section-paragraphs case__section-paragraphs--after-image">
-                  {section.afterImageParagraphs.map((p, pIndex) => (
-                    <p key={pIndex} className="case__block-text">{p}</p>
+                  {section.afterImageParagraphs.map(renderParagraph)}
+                </div>
+              )}
+
+              {/* Section Lists (rendered below image paragraphs) */}
+              {section.afterImageLists && section.afterImageLists.length > 0 && (
+                <div className="case__lists case__lists--after-image">
+                  {section.afterImageLists.map((lst, lIndex) => (
+                    lst.type === 'number' ? (
+                      <ol key={lIndex} className="case__numbered-list">
+                        {lst.items.map((item, iIndex) => (
+                          <li key={iIndex}>{item}</li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <ul key={lIndex} className="case__bulleted-list">
+                        {lst.items.map((item, iIndex) => (
+                          <li key={iIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    )
+                  ))}
+                </div>
+              )}
+
+              {/* Section Points / Quotes (rendered below image paragraphs) */}
+              {section.afterImageQuotes && section.afterImageQuotes.length > 0 && (
+                <div className={`case__quotes case__quotes--sub-points ${section.hidePointIcons ? 'case__quotes--no-icon' : ''}`}>
+                  {section.afterImageQuotes.map((q, qIndex) => renderQuotePoint(q, qIndex, !!section.hidePointIcons, !!section.primaryPointTitles))}
+                </div>
+              )}
+
+              {/* Section Figures & Visuals (rendered below afterImage content) */}
+              {section.afterImages && section.afterImages.length > 0 && (
+                <div className={`case__section-images case__section-images--${section.imageLayout === 'vertical' ? 'vertical' : (section.afterImages.length === 1 ? 'single' : 'grid')}`}>
+                  {section.afterImages.map((img, iIndex) => (
+                    <CaseImageItem
+                      key={iIndex}
+                      img={img}
+                      title={section.title || ''}
+                      index={iIndex}
+                      onExpand={setActiveImage}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Section Video(s) */}
+              {section.video && !section.videos && (
+                <div className="case__section-video-wrapper">
+                  <CaseVideoPlayer video={section.video} />
+                </div>
+              )}
+              {section.videos && section.videos.length > 0 && (
+                <div className="case__section-videos-list">
+                  {section.videos.map((vid, vIdx) => (
+                    <div key={vIdx} className="case__section-video-wrapper">
+                      <CaseVideoPlayer video={vid} />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Sub-sections (H3 from Notion) */}
+              {section.subSections && section.subSections.length > 0 && (
+                <div className="case__subsections">
+                  {section.subSections.map((sub, subIndex) => (
+                    <div key={subIndex} className="case__subsection">
+                      {sub.title && (
+                        <h5 className={`case__subsection-title ${sub.isPrimaryTitle ? 'case__subsection-title--primary' : ''}`}>{sub.title}</h5>
+                      )}
+                      {sub.paragraphs && sub.paragraphs.length > 0 && (
+                        <div className="case__section-paragraphs">
+                          {sub.paragraphs.map(renderParagraph)}
+                        </div>
+                      )}
+                      {sub.quotes && sub.quotes.length > 0 && (
+                        <div className={`case__quotes ${sub.hidePointIcons ? 'case__quotes--no-icon' : ''}`}>
+                          {sub.quotes.map((q, qIndex) => renderQuotePoint(q, qIndex, !!sub.hidePointIcons, !!sub.primaryPointTitles))}
+                        </div>
+                      )}
+                      {sub.howMightWe && sub.howMightWe.length > 0 && (
+                        <div
+                          className="case__hmw-grid"
+                          role="list"
+                          aria-label={sub.title ? `${sub.title} cards` : 'How Might We cards'}
+                        >
+                          {sub.howMightWe.map((hmw, hIndex) => (
+                            <article key={hIndex} className="case__hmw-card" role="listitem">
+                              <span className="case__hmw-number" aria-hidden="true">{hmw.number}</span>
+                              <p className="case__hmw-text">{hmw.text}</p>
+                            </article>
+                          ))}
+                        </div>
+                      )}
+                      {sub.callouts && sub.callouts.length > 0 && (
+                        <div className="case__callouts">
+                          {sub.callouts.map((c, cIndex) => (
+                            <aside key={cIndex} className="case__alert-box" role="note" aria-label="Information">
+                              <div className="case__alert-icon" aria-hidden="true">
+                                <Info size={16} strokeWidth={2} />
+                              </div>
+                              <div className="case__alert-content">
+                                <p className="case__alert-text">{c.text}</p>
+                              </div>
+                            </aside>
+                          ))}
+                        </div>
+                      )}
+                      {sub.lists && sub.lists.length > 0 && (
+                        <div className="case__lists">
+                          {sub.lists.map((lst, lIndex) => (
+                            lst.type === 'number' ? (
+                              <ol key={lIndex} className="case__numbered-list">
+                                {lst.items.map((item, iIndex) => (
+                                  <li key={iIndex}>{item}</li>
+                                ))}
+                              </ol>
+                            ) : (
+                              <ul key={lIndex} className="case__bulleted-list">
+                                {lst.items.map((item, iIndex) => (
+                                  <li key={iIndex}>{item}</li>
+                                ))}
+                              </ul>
+                            )
+                          ))}
+                        </div>
+                      )}
+                      {sub.images && sub.images.length > 0 && (
+                        <div className={`case__section-images case__section-images--${sub.imageLayout === 'vertical' ? 'vertical' : (sub.images.length === 1 ? 'single' : 'grid')}`}>
+                          {sub.images.map((img, iIndex) => (
+                            <CaseImageItem
+                              key={iIndex}
+                              img={img}
+                              title={sub.title || ''}
+                              index={iIndex}
+                              onExpand={setActiveImage}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {/* Sub-section Paragraphs (rendered below image) */}
+                      {sub.afterImageParagraphs && sub.afterImageParagraphs.length > 0 && (
+                        <div className="case__section-paragraphs case__section-paragraphs--after-image">
+                          {sub.afterImageParagraphs.map(renderParagraph)}
+                        </div>
+                      )}
+                      {/* Sub-section Quotes (rendered below image) */}
+                      {sub.afterImageQuotes && sub.afterImageQuotes.length > 0 && (
+                        <div className="case__quotes case__quotes--sub-points">
+                          {sub.afterImageQuotes.map((q, qIndex) => renderQuotePoint(q, qIndex, !!sub.hidePointIcons, !!sub.primaryPointTitles))}
+                        </div>
+                      )}
+                      {/* Sub-section Custom Variant */}
+                      {sub.customVariant === 'inconsistency-cards' && (
+                        <InconsistencyCards
+                          onExpand={(url, caption) =>
+                            setActiveImage({
+                              url: url || '/assets/projects/doku/doku-product-inconsistency-breakdown.png',
+                              caption: caption || 'Cross-Product Inconsistency Breakdown'
+                            })
+                          }
+                        />
+                      )}
+                      {/* Sub-section Video (rendered below relocated description) */}
+                      {sub.video && !sub.videos && (
+                        <div className="case__section-video-wrapper">
+                          <CaseVideoPlayer video={sub.video} />
+                        </div>
+                      )}
+                      {sub.videos && sub.videos.length > 0 && (
+                        <div className="case__section-videos-list">
+                          {sub.videos.map((vid, vIndex) => (
+                            <div key={vIndex} className="case__section-video-wrapper">
+                              <CaseVideoPlayer video={vid} />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
@@ -310,30 +721,51 @@ export default function CaseStudyView({
               <p className="case__block-text">{caseStudy.overview}</p>
             </motion.div>
 
-            <motion.div
-              className="case__block"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="case__block-label">02. The Friction</p>
-              <h4 className="case__block-title">Identifying Core Bottlenecks</h4>
-              <p className="case__block-text">{caseStudy.problem}</p>
-            </motion.div>
+            {caseStudy.problem && (
+              <motion.div
+                className="case__block"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p className="case__block-label">02. The Friction</p>
+                <h4 className="case__block-title">Identifying Core Bottlenecks</h4>
+                <p className="case__block-text">{caseStudy.problem}</p>
+              </motion.div>
+            )}
 
-            <motion.div
-              className="case__block"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="case__block-label">03. The Solution</p>
-              <h4 className="case__block-title">Modular & Responsive Redesign</h4>
-              <p className="case__block-text">{caseStudy.solution}</p>
-            </motion.div>
+            {caseStudy.solution && (
+              <motion.div
+                className="case__block"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p className="case__block-label">03. The Solution</p>
+                <h4 className="case__block-title">Modular & Responsive Redesign</h4>
+                <p className="case__block-text">{caseStudy.solution}</p>
+              </motion.div>
+            )}
           </>
+        )}
+
+        {/* Coming Soon Project Banner */}
+        {caseStudy.isComingSoon && (
+          <motion.div
+            className="case__coming-soon-banner"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="case__coming-soon-badge">🚀 In Development</span>
+            <h3 className="case__coming-soon-title">Coming Soon Project</h3>
+            <p className="case__coming-soon-desc">
+              This case study is currently being documented and prepared for showcase. Stay tuned for the complete visual breakdown!
+            </p>
+          </motion.div>
         )}
 
         {/* Lesson Learned / Design Reflections */}
@@ -349,7 +781,19 @@ export default function CaseStudyView({
               <span className="case__lesson-badge">Takeaways & Reflection</span>
               <h4 className="case__lesson-title">{caseStudy.lessonLearned.title || 'Design Reflections'}</h4>
             </div>
-            <p className="case__lesson-text">{caseStudy.lessonLearned.text}</p>
+            {caseStudy.lessonLearned.paragraphs && caseStudy.lessonLearned.paragraphs.length > 0 ? (
+              <div className="case__lesson-paragraphs">
+                {caseStudy.lessonLearned.paragraphs.map((para, pIndex) => (
+                  <p key={pIndex} className="case__lesson-text">{para}</p>
+                ))}
+              </div>
+            ) : caseStudy.lessonLearned.text ? (
+              <div className="case__lesson-paragraphs">
+                {caseStudy.lessonLearned.text.split(/\n\n+/).map((para, pIndex) => (
+                  <p key={pIndex} className="case__lesson-text">{para}</p>
+                ))}
+              </div>
+            ) : null}
             {caseStudy.lessonLearned.bullets && (
               <ul className="case__lesson-list">
                 {caseStudy.lessonLearned.bullets.map((bullet, bIndex) => (
@@ -381,31 +825,58 @@ export default function CaseStudyView({
       <AnimatePresence>
         {activeImage && (
           <motion.div
-            className="case__lightbox"
+            className={`case__lightbox ${isZoomed ? 'case__lightbox--zoomed' : ''}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setActiveImage(null)}
+            onClick={() => {
+              setActiveImage(null);
+              setIsZoomed(false);
+            }}
           >
+            {/* Top Lightbox Actions */}
+            <div className="case__lightbox-toolbar" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                className="case__lightbox-zoom-btn"
+                onClick={() => setIsZoomed((prev) => !prev)}
+                aria-label={isZoomed ? "Fit to screen" : "View 100% actual size"}
+                title={isZoomed ? "Fit to screen" : "View 100% actual size"}
+              >
+                {isZoomed ? <ZoomOut size={15} /> : <ZoomIn size={15} />}
+                <span>{isZoomed ? 'Fit to Screen' : '100% Actual Size'}</span>
+              </button>
+
+              <button
+                type="button"
+                className="case__lightbox-close"
+                onClick={() => {
+                  setActiveImage(null);
+                  setIsZoomed(false);
+                }}
+                aria-label="Close image preview"
+                title="Close (Esc)"
+              >
+                <X size={20} strokeWidth={2.2} />
+              </button>
+            </div>
+
             <motion.div
-              className="case__lightbox-dialog"
-              initial={{ scale: 0.95, opacity: 0 }}
+              className={`case__lightbox-dialog ${isZoomed ? 'case__lightbox-dialog--zoomed' : ''}`}
+              initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                className="case__lightbox-close"
-                onClick={() => setActiveImage(null)}
-                aria-label="Close zoomed image"
-              >
-                ✕ Close
-              </button>
-              <img src={activeImage.url} alt={activeImage.caption || 'Project visual'} referrerPolicy="no-referrer" />
-              {activeImage.caption && (
-                <p className="case__lightbox-caption">{activeImage.caption}</p>
-              )}
+              <img
+                src={activeImage.url}
+                alt={activeImage.caption || 'Project visual'}
+                referrerPolicy="no-referrer"
+                className={`case__lightbox-img ${isZoomed ? 'case__lightbox-img--zoomed' : ''}`}
+                onClick={() => setIsZoomed((prev) => !prev)}
+                title={isZoomed ? 'Click to fit to screen' : 'Click to view 100% full details'}
+              />
             </motion.div>
           </motion.div>
         )}
@@ -445,6 +916,20 @@ export default function CaseStudyView({
           ↑ Back to top
         </button>
       </footer>
+
+      {/* Floating Custom Cursor Pill for Image Preview with Glassmorphism & Zoom-In */}
+      <div
+        ref={cursorRef}
+        className="case__preview-cursor"
+        aria-hidden="true"
+      >
+        <div className="case__preview-cursor-glass">
+          <span className="case__preview-cursor-icon">
+            <ZoomIn size={15} strokeWidth={2.4} />
+          </span>
+          <span className="case__preview-cursor-text">preview image</span>
+        </div>
+      </div>
     </section>
   );
 }

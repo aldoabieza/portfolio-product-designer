@@ -1,0 +1,1217 @@
+{
+  "result": {
+    "type": "reducer",
+    "reducerResults": {
+      "collection_group_results": {
+        "type": "results",
+        "blockIds": [
+          "37bebca8-1420-4c39-b4fe-ff4397421742",
+          "ef153b17-eec8-4e70-aa27-4f5f77f64d16",
+          "05eed555-f84c-473f-94fe-accfacff37c0",
+          "d398d788-1414-4fc5-a31c-1696ae14fbf6",
+          "9bfbdcbb-ca65-409d-9dcc-58f5dd2d0e38"
+        ],
+        "hasMore": false
+      }
+    },
+    "sizeHint": 6,
+    "rowCountStatus": "under"
+  },
+  "recordMap": {
+    "__version__": 3,
+    "block": {
+      "37bebca8-1420-4c39-b4fe-ff4397421742": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "37bebca8-1420-4c39-b4fe-ff4397421742",
+            "version": 1237,
+            "type": "page",
+            "properties": {
+              "OA}l": [
+                [
+                  "Google Sheets,Figma,Google Meet"
+                ]
+              ],
+              "btIG": [
+                [
+                  "2 Month"
+                ]
+              ],
+              "exW_": [
+                [
+                  "UI/UX,Web Apps,\ud83d\udd25Must Read"
+                ]
+              ],
+              "y`U{": [
+                [
+                  "Add your link here \u2192",
+                  [
+                    [
+                      "a",
+                      "Add your link here \u2192"
+                    ]
+                  ]
+                ]
+              ],
+              "{mdo": [
+                [
+                  "UI/UX Designer"
+                ]
+              ],
+              "title": [
+                [
+                  "Building New Seller Experience for Create The Website"
+                ]
+              ]
+            },
+            "content": [
+              "0f0d10f6-c9f9-4924-b818-de5365d9205e",
+              "ea92ad0a-61a6-48cc-a6dc-991a58333088",
+              "07eec20e-551a-4072-aa4c-d3fbb0e791de",
+              "62489679-62a2-4e3a-9098-9bec1ca00c54",
+              "83616278-6ea3-4a45-8505-63df46aa7985",
+              "073f2e12-284e-4fc0-8138-9443bb4ef66e",
+              "bb288136-e343-48db-ae2c-cd0403dc30e5",
+              "b120c32e-f838-43b5-ab46-f2c503111540",
+              "9bcb47cd-2e62-4de3-b821-6cb0b9950187",
+              "ce4a76c1-fc34-425b-b18a-e04dd10c5dec",
+              "ba89a907-3ae5-4ceb-a165-742f6a9459d4",
+              "c2195ab5-45ba-4981-896a-695db52153db",
+              "08c2653c-f4ab-4d69-9a97-27198b96d104",
+              "42719b4b-3b96-436a-9889-0032ae9e5172",
+              "374032ed-a5c1-408a-b750-b4f43d6a3a83",
+              "7b8de118-7ede-4d68-90fd-d9e5c799ef13",
+              "43485783-4cd9-4bbd-80a5-88a1f9adae28",
+              "df36e547-158f-44c1-9317-4292f477dfde",
+              "adcaf661-56f3-4310-8c32-99c7ab3a495b",
+              "110bd061-f6f5-4d46-9a04-38b060c93164",
+              "73eb55d7-bb31-4b2f-9505-240b6c8bd059",
+              "cf37244b-227c-4ed9-b6c6-a1722d8c0dd6",
+              "74df875b-a37a-42d9-9628-520f796dd4ba",
+              "543fad5b-acce-4eae-8a49-d04fc5147bd2",
+              "c3f46d85-9c71-4fe1-a264-a38cce5c4ed2",
+              "b1f3d7b6-9ba4-4194-9902-bfe34a8dc519",
+              "65dc94c9-8671-411e-9b5f-48478f537923",
+              "303c7ef1-20e9-49ac-8ad0-8b276aa89f2f",
+              "d9d788c3-2495-4079-bac0-1164aadac4a4",
+              "e1222369-1608-479e-b1fc-60ea5330dfbe",
+              "c155bd1c-2c95-4f00-8b2d-fff8bcf9942b",
+              "de4d1b4c-3216-4819-b67c-bea7b61de0a1",
+              "461fa30a-b50a-473d-b008-4c25352d541d",
+              "4537617e-5399-4024-8c99-5eb84aeb7c7e",
+              "c9d10782-35a4-49fd-9fa3-241347cc0367",
+              "049647e6-afa0-4f38-ae7b-022e955ea1a6",
+              "6b54b98d-828b-4362-89fa-68b5e896fb5c",
+              "b83482f4-53f5-412d-bb4c-e77ed51b2f50",
+              "e828af72-e5cf-4f1c-ac16-990649abe5f0",
+              "fd71a857-d143-4f3d-a59a-aa9d674dd9ad",
+              "99870847-719f-4a7f-9394-eca1786085c4",
+              "44a6dc8e-ed45-4a1d-b67b-792e887ab8e5",
+              "d54ed86a-f286-40fa-8340-0476925b60d3",
+              "f98c311d-3c16-42dd-a0f5-7b23b9b97bf1",
+              "3aa1a64e-3d8f-4736-a99a-f825a313b93c",
+              "26701c03-17ad-4315-b19c-bd29a8e2b0e9",
+              "4cc7827a-c4a8-47b7-bb08-64f7b878ab6a",
+              "e52f7306-82e2-4662-82eb-f3cccb656494",
+              "8b0f34d4-8dd6-4bb3-9655-8c5b28b908c6",
+              "44958817-2062-499d-bb7d-2db49d054da9",
+              "81ee0d5f-2616-47e3-940c-2387b471c9bb",
+              "09a4f283-242b-4afa-90b5-3783c798ff21",
+              "f27349ae-79a7-4eb7-b61f-fc24a45d9125",
+              "4ce5b083-457c-4243-b7ab-fa3c8d4b79f1",
+              "e947c571-2b71-4fd1-a975-9897a1a731bc",
+              "0f96c3d1-9360-4c18-b96c-6a89352fc086",
+              "ef154b49-bba2-4614-b99f-22da7b0578ea",
+              "ebeec4fd-7319-4566-9253-eee798f3ac16",
+              "938e32b5-8218-49e5-b362-c78e72847bbf",
+              "bb520e32-b19f-4632-a344-82b325888d47",
+              "873b9dae-a85b-4854-96ed-63c96af3c9fd",
+              "d33fb539-8120-4439-8dd1-92fbc50fb900",
+              "6677640a-2dca-4a39-8fdd-8844e43af30c",
+              "286fb6fd-418f-4df7-b440-5a434d017d4a",
+              "5ea740b7-6c45-4573-bf2d-7adcb44cd5fe",
+              "db15d039-35df-4b7c-9a49-65bcddcae9bf",
+              "5fdd12c2-95a6-448a-9f17-43fcadc84b30",
+              "09fdab59-f7c5-4803-8a6f-ef5253d4a28c",
+              "d9910f17-3c03-4f5c-b84a-91ed99da5ce1",
+              "ab593b38-acaa-49b9-bd09-35bf43728a35",
+              "bdfb714c-dfee-43f5-966a-e709f1633531",
+              "7335a866-eff1-455f-88fd-db59df186d59",
+              "09c85f48-11b2-4396-8cb6-430bea06efa5",
+              "659306ba-b253-42e3-8ec9-a92522e322bd",
+              "bdb68ebb-b1bf-4da5-89c8-e791789984e5",
+              "c29d9bdf-1075-4456-a6d2-58dcb90b791e",
+              "e7164963-876b-4ec9-a85b-0d6610619fe9",
+              "dc53df26-d927-4535-881b-e71e2fdbb105",
+              "84191661-e635-49fa-8425-34e2148c1fcb",
+              "e8fa51c2-e82a-451a-a9bb-90dc0565564e",
+              "9447321f-ff7b-417e-8dbe-40a7d8c01a7a",
+              "ca70f4f4-e2cf-4c53-889a-109e3917a95e",
+              "b9d328ea-0264-4561-b71c-4e4857726388",
+              "e15f580a-cd71-4846-9063-cc6437764fa9",
+              "69154504-abaf-4b5d-b5ee-2609e9dddcc7",
+              "c9c0a126-59b6-4116-a40a-5317d9c9fb29",
+              "c50bc333-fa93-4126-ab34-dcbc142c6089",
+              "315830df-eb53-489a-9c78-dbbbd8b0cb49",
+              "75e9f6e4-0f24-452a-b1b9-32d93099a116",
+              "0e58c636-4ea8-4087-96ef-bdc421912e44",
+              "83696ab2-fa4c-44e8-bafd-0275cd078aa3",
+              "4690f2e9-b84f-4d5e-8a5a-cb143fa6e8ba",
+              "a9fee518-461e-4b9e-9189-94a5c452b4db",
+              "3fc518ad-9f5d-4f86-8484-07a9ee3060c7",
+              "66f3b353-19ed-444b-8e1b-98c06ad92e31",
+              "66b5aa89-3f03-4c35-9b5e-ad0896da69c0",
+              "4a3b3dcf-4640-4bdc-896c-f737984c9f90",
+              "1a666d3b-3b70-42e4-b817-647b75a339e3",
+              "64f24312-8ba1-471b-89a5-f159fd3d52d7",
+              "bfb96e22-d480-4cba-bc35-1fc54628511d",
+              "40bebdfe-4c25-473d-a779-ff34e58e7eec",
+              "741cb265-b873-430b-af66-31c7be156a7d",
+              "9b3f4716-7c5c-41f2-9d6a-a779de572c16",
+              "19c99f38-11a4-45a8-a679-463c5a73a4cf",
+              "c0bcaaee-67bc-4f95-9059-05095fc187ad",
+              "05221502-a77e-4557-8f70-54e6897db5d6",
+              "ca29c156-e5c9-40b2-8e97-05f9135f78db",
+              "53615ff6-6762-4b51-9428-2e5a597753a9",
+              "a130708b-2740-47bb-a655-b70569c26e81",
+              "d5e6b699-d3eb-4c57-ab35-803d846e7105",
+              "8940dd1f-1ded-49e2-9f6a-0033271adfc8",
+              "98aad014-e7f1-4a48-a56c-62d134a258bc",
+              "27d0b7b5-2c3d-4f87-b1ec-8f86ec687b92",
+              "2e16dfcf-043f-46de-b661-178cfba3de61",
+              "4c7cdf4c-9c14-43fd-87fa-734f7fe65b70",
+              "bc85e7fc-fd7e-4cee-89c3-1da0d8242e42",
+              "11a4fba8-f847-449b-ac38-92785f791408",
+              "704c4266-a25c-4b3f-8bdd-049c304020ee",
+              "45fd9367-60e5-49f8-ad5a-f6a738e1bbaa",
+              "e80ace87-de5e-40bb-9732-c4f80f415275",
+              "d854591f-b422-4e6c-8776-151a9938026e",
+              "8e110c92-def9-417b-a575-bb60b1fae121",
+              "6010144b-e6e2-4c61-a0d1-b34cccdca620",
+              "5cdaddb5-a69d-458f-ab8c-4c81f985752b",
+              "6b62b44e-96e8-4341-9af7-a79928e59e0f",
+              "1e486364-3cec-4607-a60f-319a844259f7",
+              "176c14da-d70b-4873-9030-9b6e0547c9d3",
+              "9d302510-8ae9-4d29-a412-d3f056644d87",
+              "0e07c998-c56f-4815-8706-276ac4227b6b",
+              "f10d175d-655b-4251-9fed-990ccfd06907",
+              "053f4598-8bf1-4513-93ee-621176868edb",
+              "698abace-f26e-44cc-89e7-904d28d472c8",
+              "df074910-fd4b-4605-8b31-06056701961f",
+              "2dbd12ea-9ce5-48c0-badd-e2da12c1ddb9",
+              "49a18d78-850e-4f78-9f6f-fea3ffbb3837",
+              "9a4b43fa-9a44-4ff5-b4f7-e151692a2796",
+              "e3c24ecb-b2d4-43df-91d4-fc39699fb811",
+              "65680f0e-3721-49f2-9c75-7c4b5305ca32",
+              "bf8dfde4-fea4-41ea-8d5d-babb67b906b5",
+              "0159828a-49a4-4cc4-ad21-7fdb5da6a8e0",
+              "508c0b8a-114d-4ee2-89f7-b2d5450592e3",
+              "d650b0b2-b262-423a-a977-b1006a1b0ac1",
+              "214ea4c0-a5df-439b-ae55-185e214e8576",
+              "25dca611-53af-4de9-a61c-e8c79063782b",
+              "2f520770-e785-4c0c-a96d-a4067a760e70",
+              "16f5a266-95e4-47cf-bf7b-df3948f3dcbf",
+              "dd00db32-98d4-4055-915b-4d7056e1fdaa",
+              "5135df9b-0bd8-42ad-9d74-9f6a479a5608",
+              "745c5e91-67c9-433d-8206-820fa35c0f5a",
+              "6567c09e-3cbc-4cd9-9e34-584f5b633370",
+              "58156143-0520-4b11-9d2e-8c838ad7a454",
+              "cb60b189-13bd-496f-8e46-5d1c6a88c791",
+              "d19c2952-7a18-403f-83e3-3cb2fc4c1543",
+              "975afbab-3d7a-4e7f-a271-5008d871a7b9",
+              "f8179dee-361a-4f01-8f40-47aa3b2531f7",
+              "d5836dea-de71-41a9-8ccc-ddf2da8ddcff",
+              "f51a6423-3dd2-4dae-8608-6d383d783439",
+              "f14b1e4d-719e-4432-9114-814d9d76947a",
+              "369d1b53-f24b-4bb2-8de8-a2019d80bec9",
+              "e29adcf4-cdb3-46f9-a59a-ad7c8c89ec8c",
+              "e06a01ee-419f-4bdd-b541-eee603a2e158",
+              "28c95570-ce9f-4fd5-bec8-9c59e72600de",
+              "81dd52a9-f4c0-49e9-998d-ecb87aaa3039",
+              "f34111a5-0f28-40aa-b19f-1a5f41a51f48",
+              "7acc40fd-00d2-46ac-b765-3d992b43cfd7",
+              "89cf48e2-c421-46bf-98a7-263c9cd66023"
+            ],
+            "format": {
+              "page_font": "serif",
+              "page_icon": "\ud83d\udda5\ufe0f",
+              "page_full_width": false,
+              "card_cover_position": 0.3729,
+              "copied_from_pointer": {
+                "id": "05eed555-f84c-473f-94fe-accfacff37c0",
+                "table": "block",
+                "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4"
+              },
+              "page_cover_position": 0.1
+            },
+            "created_time": 1705117917065,
+            "last_edited_time": 1789008675155,
+            "parent_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "parent_table": "collection",
+            "alive": true,
+            "copied_from": "05eed555-f84c-473f-94fe-accfacff37c0",
+            "created_by_table": "notion_user",
+            "created_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "last_edited_by_table": "notion_user",
+            "last_edited_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "mcHxz3A93th4gDL59-tOAg,\"start\",\"end\"",
+                "n": {
+                  "mcHxz3A93th4gDL59-tOAg,\"start\",\"end\"": {
+                    "s": {
+                      "x": "mcHxz3A93th4gDL59-tOAg",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "DNb-KgHTAXch",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 53,
+                          "c": "Building New Seller Experience for Create The Website"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "ef153b17-eec8-4e70-aa27-4f5f77f64d16": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "ef153b17-eec8-4e70-aa27-4f5f77f64d16",
+            "version": 1234,
+            "type": "page",
+            "properties": {
+              "OA}l": [
+                [
+                  "Hotjar,Figma,Google Meet"
+                ]
+              ],
+              "btIG": [
+                [
+                  "1 Month"
+                ]
+              ],
+              "exW_": [
+                [
+                  "UI/UX,Web Apps,\ud83d\udd25Must Read"
+                ]
+              ],
+              "{mdo": [
+                [
+                  "UI/UX Designer"
+                ]
+              ],
+              "title": [
+                [
+                  "Increase Conversion Rate Store Settings "
+                ]
+              ]
+            },
+            "content": [
+              "f9f6ed1a-74a7-4214-a2d2-9d4a63ee5c86",
+              "bf53b9c9-d55d-4a75-b6c8-0453494d3cc8",
+              "07d211dd-4a63-4479-b675-fcb4c89b893d",
+              "a7fd8a31-705e-48fb-a497-79af82d2933f",
+              "68b89d91-183d-479f-8e4c-864fd3b16d4e",
+              "fa52e01f-9d7b-4376-81d2-5e1a602d122d",
+              "bc31bf61-f678-4d61-aa97-780a24d44630",
+              "6253a02b-5102-4de4-84f3-e909799c7246",
+              "b7bf8bff-a1d9-4050-84dd-196cd58cce3a",
+              "2b7b1fb7-5d93-4fce-9889-f6b00a2ee9ff",
+              "318ba396-31b1-4da2-897f-6eb2ac97bca2",
+              "66f13ffe-3f56-499f-9235-901c6bac5ded",
+              "f6136668-6c84-4192-a49c-e946af302ebb",
+              "05d8d3c2-ba92-4d33-988d-c9e1107df016",
+              "ed6db505-d915-43ac-8eca-4b01875961d5",
+              "cf8f9ddc-b8dd-40a9-9b1c-b58aa32592df",
+              "9f3a92b9-1f4a-408e-b74e-e7c4a8e77144",
+              "c53d0dcf-513c-42e3-85cd-b9524ae2a0d2",
+              "14e5fe94-596c-4c59-8ccf-a06190451b57",
+              "edfeed78-6927-45e7-acb6-4dee1045da20",
+              "4576c35d-a57a-4638-8268-68f8ffb258c4",
+              "b47cdc35-d596-438a-a0cc-44e5dc8d5062",
+              "693b1701-c1bf-41c4-a365-b64beb7ca33b",
+              "8a1618b5-8970-4623-80cb-5493c05645a4",
+              "570ebe1a-5433-4fd1-8ae7-3d243f500780",
+              "81fd5b4d-b039-4b9b-a72b-b243865a5362",
+              "cbf7dd3e-300f-4ff5-9e37-e8ad1a3fd7d1",
+              "0e00b0c5-74cb-4a82-b9ac-137c1052a012",
+              "4229044f-a285-4257-bc0c-7437c59cbc15",
+              "5a278960-a3a3-44bf-8eb4-f9fb15cd86f9",
+              "62531757-7f82-41ab-813f-28ed09a3acef",
+              "443a4d1f-38dd-402f-b605-70a29ec8f907",
+              "6bbf80ca-d88f-4d58-9cb6-ed1cc053a58c",
+              "993682a4-84c2-40cd-88d7-23a7e97b6676",
+              "fc525d21-4547-43f8-b5e0-fb35a063c440",
+              "72811d3f-b1f2-4662-a1f4-375589dfeb3a",
+              "17d49ecf-9bac-473e-be72-96bebbabfe21",
+              "1a3b24e2-1043-40a4-b8c9-06ed81d5a5bb",
+              "158e348c-100b-4df1-ac44-8c8de70136e7",
+              "995241ec-f60a-4462-a78d-4f88d054ce76",
+              "792e5156-9390-4112-86b0-23c649723c88",
+              "ab3c5ec1-094f-4644-92ca-2acd0fefff66",
+              "ddf55d93-8bfc-4a31-bbab-3a5c4a5bb072",
+              "223c668d-6746-4bc0-a242-89c03ff32269",
+              "db7d323a-c642-40e4-b449-0deb46e6790d",
+              "4e2acc8c-e37e-4f7d-892e-722e47411b60",
+              "3360cc17-4521-4907-a787-c3271a7fd0cf",
+              "63ae05f7-918a-44c8-a66d-abbf53cb3809",
+              "acf117fd-ac7a-44b7-82c8-32df398933e1",
+              "c7c251fc-15a6-483e-adb0-65f4bf3b94a9",
+              "d62c52eb-e1a3-4a23-8b95-ed2c6ee9ea87",
+              "3a53dcbc-4ce8-4d75-9add-62d228ee592a",
+              "d28570e4-9cdc-4f0d-b1ea-85a8ed2a4794",
+              "445961b5-d109-4520-bce4-503f8e83efea",
+              "917d79e5-ac30-4328-8b32-55a9804bd706",
+              "2a558c47-6278-4b73-ae55-3d96db78c8e1",
+              "6fef3690-9b78-4f4e-b708-451e0a53dbdf",
+              "38290b99-7c26-49cc-87bd-4f0fe021ee58",
+              "d632f8cd-983b-49eb-ab58-de9058565abb",
+              "ddd7211e-02ba-4ff6-9413-0904252ace6c",
+              "e3d2a305-c3ef-43e0-9824-5c4962f9c0a0",
+              "35a17dac-3efe-4222-9ea7-f65b4dc1c677",
+              "d6db4e38-4a09-493b-a052-09f10e68e9c3",
+              "d908ff4e-ef5d-4903-8c80-a73b6cd2b34c",
+              "58a08256-e8c9-47fe-9d7a-6acf3410f04f",
+              "cbef0cf0-93e6-4833-a7e1-51b011258571",
+              "cd5419e6-1b15-4af9-a0e3-2aeeafb05245",
+              "bc7e960c-739b-411e-a05f-b1cd3c7bc3e2",
+              "ce017cd6-4aa4-445e-b9a8-f85d060e520b",
+              "64579974-5b60-4f19-b54a-5f73c20141d1",
+              "3595774e-3a05-4a72-b633-49a5c0fc1157",
+              "21b675ac-bd13-4b0b-9997-c975ec7ea172",
+              "747ac478-0f33-402a-96fd-5947dec1f59b",
+              "ccc1b1a3-b130-4205-8e61-ea427955de49",
+              "7d9ca4a0-42b9-4387-b620-f1ac829768a4",
+              "d93d6a49-1f56-4c7c-be0b-294a26f578ef",
+              "bb993957-5aa0-44c9-9e73-6d807c784b54",
+              "dcdefe0f-d672-4748-a7e3-939ac129afb8",
+              "32eddc4a-19d7-4559-ac1a-32b6c544954b",
+              "fccfe7b1-06d5-495c-a999-59fb762c08e8",
+              "f33e1184-b946-4acd-bc4e-24c1c30fbc9d",
+              "094d0947-0354-4014-bad0-a56498a37c98",
+              "a16db88c-9642-42fc-9099-b6e2ef56f69c",
+              "270bce03-a49c-4d31-bda8-53928a4221d5",
+              "88775dee-8a51-4fe6-9104-8eb7fafb9fcc",
+              "01c70a7a-7578-457c-9f5c-5810784ff3e9",
+              "872fde19-4ae5-4c62-91f1-5da3b38b490c",
+              "ea6b53bf-0a7d-4b83-8b86-4307b75f595a",
+              "55a39118-398e-41d7-85c8-75eb421d78d4",
+              "a2d9e8ae-90c0-4424-9a50-ecbff3f7899c",
+              "43eba0c4-5198-41db-a8e5-b7ba24655e0d",
+              "b67569cf-0382-4077-af96-03a5c384636a",
+              "d11c6b54-53e0-4ce8-a742-3a112827a099",
+              "a48eb2df-4af4-4d6e-a137-3cbfa3f7cb68",
+              "8c97d4d8-5795-4bc7-8f94-f62835845135",
+              "d55f88d7-95ba-45d0-87b6-7c4264b7ce23",
+              "b317d9e9-64f3-46ba-b711-17388eaf854a"
+            ],
+            "format": {
+              "block_locked": false,
+              "block_locked_by": "ccb418b9-45a5-40da-965a-33fe950226b9",
+              "page_full_width": false,
+              "card_cover_position": 0.1994,
+              "copied_from_pointer": {
+                "id": "87f3ab89-46de-4615-b9d5-4b6ed5e40a70",
+                "table": "block",
+                "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4"
+              }
+            },
+            "created_time": 1708530318636,
+            "last_edited_time": 1789008743973,
+            "parent_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "parent_table": "collection",
+            "alive": true,
+            "copied_from": "87f3ab89-46de-4615-b9d5-4b6ed5e40a70",
+            "created_by_table": "notion_user",
+            "created_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "last_edited_by_table": "notion_user",
+            "last_edited_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "CZktFx5JTk49c05o_QwiDA,\"start\",\"end\"",
+                "n": {
+                  "CZktFx5JTk49c05o_QwiDA,\"start\",\"end\"": {
+                    "s": {
+                      "x": "CZktFx5JTk49c05o_QwiDA",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "AEVihWI1Bu6e",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 40,
+                          "c": "Increase Conversion Rate Store Settings "
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "05eed555-f84c-473f-94fe-accfacff37c0": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "05eed555-f84c-473f-94fe-accfacff37c0",
+            "version": 701,
+            "type": "page",
+            "properties": {
+              "OA}l": [
+                [
+                  "Google Sheets,Figma"
+                ]
+              ],
+              "exW_": [
+                [
+                  "UI/UX,Mobile Apps"
+                ]
+              ],
+              "y`U{": [
+                [
+                  "Add your link here \u2192",
+                  [
+                    [
+                      "a",
+                      "Add your link here \u2192"
+                    ]
+                  ]
+                ]
+              ],
+              "{mdo": [
+                [
+                  "UI/UX Designer"
+                ]
+              ],
+              "title": [
+                [
+                  "Increase Coordinator Productivity for Promote Apps"
+                ]
+              ]
+            },
+            "content": [
+              "8ed483d2-f279-4e89-a100-9cc3472db799",
+              "6394ea4b-1712-4a5c-9270-0dfbb83054ec",
+              "568328fe-acb7-4229-a206-97948956c500",
+              "a96edc08-59c7-445f-961e-e74e0642c1a7",
+              "68720eb8-d98a-49dc-b220-7731dd396e4a",
+              "e9b352c2-7ecc-403f-832f-ffb6d3d648d2",
+              "8f843824-8892-4fd7-817e-5978cae8b7ef",
+              "770be8d1-c6d0-4426-8ee0-3ca741fa631c",
+              "e6662dfd-e8f4-4220-8b4a-8710b4ed3dfa",
+              "452c073d-1484-40f5-874b-4938a4923f75",
+              "91110dc6-d5f0-43cc-a0cb-eac83f14ac6e",
+              "122cc827-cfa6-4549-b814-4cdc443ffc4e",
+              "a1b48340-c756-4977-ba9f-279622bef31c",
+              "7f53c27e-24ee-47ea-b1b0-23185582f75c",
+              "259b3c01-96bb-4b36-881d-a8e3d6d4ebf9",
+              "b9ddf530-3ca3-4864-a2ca-48c2468a8dcb",
+              "ffcb788c-6426-4b19-beb5-bed07bd65179",
+              "0f1a65f4-df54-4337-8ba0-7922c14c9096",
+              "d87b6907-ead9-4e7e-bfb4-e5ed935a24ee",
+              "c9b3cef8-a0c7-4510-962e-7fd21e1703c0",
+              "d55d1edf-0962-412c-a622-d84335d1b530",
+              "47b2275a-5a35-4215-aae2-1b888d51474a",
+              "e476b3a5-6764-4c87-8b22-5c50a8bac2eb",
+              "a06ad56e-4d5f-4659-941a-e2d38c90d0ce",
+              "430e4597-c12b-4f7c-bfb2-3bcde842c0fa",
+              "3c47996a-9de1-4bae-8840-f701900f9192",
+              "3d6d3de8-f1db-4add-80f3-386f02f217ef",
+              "a76f5a79-b27b-4d4e-bce4-77ad76e56f82",
+              "0bc738c6-af23-4ed4-a70a-eec75acb6940",
+              "56b09543-6164-4967-b3e5-6439119ed3c1",
+              "b32255c9-020c-4632-a35e-b7a4971cf15e",
+              "1e304779-6610-4439-828d-069b658e1b55",
+              "c88d2096-b8c6-4ce2-a204-286da0083dcc",
+              "d85d6492-bd4c-4d88-9a58-e3e56531ec9b",
+              "fe79e3af-dbca-4df3-badf-2343771040d2",
+              "23683c81-0122-46ec-80de-27936498ee0a",
+              "29d30738-cfb5-4310-84d3-8ef3bc4012eb",
+              "cedc3aa0-be12-46e0-9898-6bf64d72128a",
+              "81fdfc06-ac7f-45cc-9dbb-881aadec8c76",
+              "ba09ad0e-214e-48cd-8ca0-637f354a1acd",
+              "aa863bbb-c909-47c7-a1d2-19239ef1a1d0",
+              "c389e067-0fec-4223-9929-ae680a6bc630",
+              "ba9eb346-d96f-435a-b0ac-3365bb521cbe",
+              "6b3fc466-87ae-40f7-bc86-4eead7bb3184",
+              "a222d872-a391-4e3d-a332-0a734e414e65",
+              "1059ffeb-82b6-464b-8c5f-c2612c36f886",
+              "42583e86-d30e-49ea-8dd8-cd3fd5900317",
+              "d090a635-d7ae-4784-ba9b-366a11433a8f",
+              "43788e29-efb2-4510-8a44-50b79099a92b",
+              "721dd6a2-1594-4554-970c-95d528088415",
+              "4fc10f24-c910-4a2b-95d7-3816a6c492ab",
+              "7baa13eb-ce67-4789-aab5-9c8c708da265",
+              "eea7cc5d-6fa6-449b-9caa-7b8006932951",
+              "0b42df72-44da-4745-8067-075384155d28",
+              "90f16526-140f-4388-ade2-bc5907234bf7",
+              "f0edc424-e299-4fb6-b7a9-949e60643c14",
+              "99ad959e-acf6-4b0b-8cbb-d9fffa5d84ac",
+              "85405ae4-d985-44d6-a3c8-52ca33168c42",
+              "7c97a517-f97f-4d0c-80fd-8167c56b20de",
+              "be5797ae-ee59-4a53-8814-2a0da57191b9",
+              "5f5f2a53-8913-4b11-83cd-c01887cff4bf",
+              "ac969f31-fe27-4ece-858d-50a39f76a252",
+              "f3fb8e68-89a6-4cca-b95d-e9615fa2ea06",
+              "d02717a9-986f-4b77-a4b9-51954638e488",
+              "12ce5d19-3466-43ef-97bf-1b7f9fe4d706",
+              "68b1a659-ceb1-4e9a-be44-e960112a0b4f",
+              "5d0fdd6c-284c-4816-9c2d-36ef5f459a5d",
+              "43221810-5500-4f0d-b973-41cf59a499ed",
+              "3f48a800-1676-45b7-aaa2-5ce0c48ddff1",
+              "2f0d2bd4-d40d-451a-bd31-a991dc37083b",
+              "74b25d45-1818-49ad-b412-7f11b9845ba0",
+              "7cde38bf-c90f-4d92-b7ca-9bafb9de4187",
+              "e211b9ab-5201-4288-8eb3-25db2d58976a",
+              "5ec2b537-ad12-4ccd-8b5d-c55a593ddc3e",
+              "70a01f98-e863-4cbf-a874-7e4b48d09ad6",
+              "663e028d-1871-490f-955e-dbd78a0f7ffc",
+              "8c79b83b-7bb0-4d32-bc74-a1283c17c67e",
+              "9999ef5e-d219-4c8e-9ed0-aada3cce16c1",
+              "6b57b46e-eb6d-49af-81fa-267671a0308d"
+            ],
+            "format": {
+              "page_font": "serif",
+              "page_icon": "\ud83d\udcf1",
+              "card_cover_position": 0.3729,
+              "copied_from_pointer": {
+                "id": "494569fc-e16d-4247-a31d-8a833154ce07",
+                "table": "block",
+                "spaceId": "1f88cc90-92fd-4ce4-bfcd-25daec2ffbbe"
+              },
+              "page_cover_position": 0.1
+            },
+            "created_time": 1705079476945,
+            "last_edited_time": 1718851954396,
+            "parent_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "parent_table": "collection",
+            "alive": true,
+            "copied_from": "494569fc-e16d-4247-a31d-8a833154ce07",
+            "created_by_table": "notion_user",
+            "created_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "last_edited_by_table": "notion_user",
+            "last_edited_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "0ZIjKhHS71HmDWl4cwDHBg,\"start\",\"end\"",
+                "n": {
+                  "0ZIjKhHS71HmDWl4cwDHBg,\"start\",\"end\"": {
+                    "s": {
+                      "x": "0ZIjKhHS71HmDWl4cwDHBg",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "ZAJgc-0WRtvY",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 50,
+                          "c": "Increase Coordinator Productivity for Promote Apps"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "d398d788-1414-4fc5-a31c-1696ae14fbf6": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "d398d788-1414-4fc5-a31c-1696ae14fbf6",
+            "version": 350,
+            "type": "page",
+            "properties": {
+              "OA}l": [
+                [
+                  "Adobe XD,Google Sheets"
+                ]
+              ],
+              "btIG": [
+                [
+                  "2 Month"
+                ]
+              ],
+              "exW_": [
+                [
+                  "Coming Soon,UI/UX,Mobile Apps"
+                ]
+              ],
+              "{mdo": [
+                [
+                  "UI/UX Designer"
+                ]
+              ],
+              "title": [
+                [
+                  "Make Moving House Services Apps From Scratch"
+                ]
+              ]
+            },
+            "content": [
+              "5da55251-c6bb-4f52-9f02-5532e9b08d5c",
+              "dba37c55-bd33-4dff-b01d-ef1bbdfd84fe",
+              "68161b48-b461-46d4-964a-b55b839572d8",
+              "b09a3b8e-1051-41cf-80ee-3ad727622b2f",
+              "c436e042-148c-447e-9574-7637c8e6c306",
+              "913047f0-5fb5-4a2d-84e0-77a028ecf73a",
+              "01f9efd9-1479-473a-9c76-ae34014eb16a",
+              "c6acaa49-6b6c-4ffb-a8fa-c0276eb81866",
+              "da19769e-316b-4074-a6f0-075dbc8bb5cd"
+            ],
+            "created_time": 1718851647808,
+            "last_edited_time": 1718867179852,
+            "parent_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "parent_table": "collection",
+            "alive": true,
+            "created_by_table": "notion_user",
+            "created_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "last_edited_by_table": "notion_user",
+            "last_edited_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "LNsK9_d4-3lRNpZB-1xZMQ,\"start\",\"end\"",
+                "n": {
+                  "LNsK9_d4-3lRNpZB-1xZMQ,\"start\",\"end\"": {
+                    "s": {
+                      "x": "LNsK9_d4-3lRNpZB-1xZMQ",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "6DRPr7NfnBx4",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 44,
+                          "c": "Make Moving House Services Apps From Scratch"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "9bfbdcbb-ca65-409d-9dcc-58f5dd2d0e38": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "9bfbdcbb-ca65-409d-9dcc-58f5dd2d0e38",
+            "version": 223,
+            "type": "page",
+            "properties": {
+              "OA}l": [
+                [
+                  "Figma,Google Sheets"
+                ]
+              ],
+              "btIG": [
+                [
+                  "1 Month"
+                ]
+              ],
+              "exW_": [
+                [
+                  "Coming Soon,UI/UX,Web Apps"
+                ]
+              ],
+              "{mdo": [
+                [
+                  "UI/UX Designer"
+                ]
+              ],
+              "title": [
+                [
+                  "Increase Finance Productivity in Reimbursement Commission"
+                ]
+              ]
+            },
+            "content": [
+              "42825c30-0363-417a-aa44-905a872c0456",
+              "4b85f011-00a4-45d1-b3d3-91974be14c82",
+              "cc919f99-900b-48bc-9853-c9320640da37",
+              "a17ec4fd-0e51-489a-b2a1-f46896a0901b",
+              "146750e6-60be-4b87-952c-aa92da1d9228"
+            ],
+            "created_time": 1718955201326,
+            "last_edited_time": 1718981178047,
+            "parent_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "parent_table": "collection",
+            "alive": true,
+            "created_by_table": "notion_user",
+            "created_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "last_edited_by_table": "notion_user",
+            "last_edited_by_id": "ccb418b9-45a5-40da-965a-33fe950226b9",
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "0pcHBzbzs_gZgqAXsF6_vg,\"start\",\"end\"",
+                "n": {
+                  "0pcHBzbzs_gZgqAXsF6_vg,\"start\",\"end\"": {
+                    "s": {
+                      "x": "0pcHBzbzs_gZgqAXsF6_vg",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "tMH0GSHyey9K",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 57,
+                          "c": "Increase Finance Productivity in Reimbursement Commission"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "20aa486d-2129-413b-9321-441b6ab259ef": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "20aa486d-2129-413b-9321-441b6ab259ef",
+            "version": 57,
+            "type": "collection_view",
+            "view_ids": [
+              "f6c01fab-c424-4ea9-8cb0-ed0fe3906a98"
+            ],
+            "collection_id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "format": {
+              "collection_pointer": {
+                "id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+                "table": "collection",
+                "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4"
+              },
+              "copied_from_pointer": {
+                "id": "134eba8d-dfea-45c9-a6d0-dd6d7a34fb5e",
+                "table": "block",
+                "spaceId": "1f88cc90-92fd-4ce4-bfcd-25daec2ffbbe"
+              }
+            },
+            "created_time": 1705079476945,
+            "last_edited_time": 1718955201326,
+            "parent_id": "fe853c63-dc5d-4769-80bb-824422337e33",
+            "parent_table": "block",
+            "alive": true,
+            "copied_from": "134eba8d-dfea-45c9-a6d0-dd6d7a34fb5e",
+            "ignore_block_count": true,
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "wCGjdi7fhcirJPzDXsaOcg,\"start\",\"end\"",
+                "n": {
+                  "wCGjdi7fhcirJPzDXsaOcg,\"start\",\"end\"": {
+                    "s": {
+                      "x": "wCGjdi7fhcirJPzDXsaOcg",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      },
+      "fe853c63-dc5d-4769-80bb-824422337e33": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "fe853c63-dc5d-4769-80bb-824422337e33",
+            "version": 351,
+            "type": "page",
+            "properties": {
+              "title": [
+                [
+                  "Aldo Abieza - Designer Digital Products"
+                ]
+              ]
+            },
+            "content": [
+              "605f021a-9fdb-49d8-9158-44fe5e94bc9e",
+              "a377c075-8dda-4cdf-85e9-47fbbcde83af",
+              "8f162f8a-34bb-4731-bae3-d12aa336fe85",
+              "20aa486d-2129-413b-9321-441b6ab259ef",
+              "32137b7c-d3bd-4dd2-8703-499105572257",
+              "d7bac5d6-48ed-404e-944e-e9f2a1525a77",
+              "305edaa6-60d2-4b5a-8d8e-c37df324b833",
+              "ab7af08f-aee4-4813-a890-69112778c60b",
+              "06df6de6-ca46-4072-9251-df678523559c",
+              "3d10a91e-1d1b-8093-93d5-dee15c861196",
+              "5aa41c47-4de3-4778-8e4d-b4450f0fddd5",
+              "823734e0-390e-44b0-adae-f0ac2282823c",
+              "13b225af-6663-487f-adb4-d3f9cceee81c",
+              "71fa0c41-46e7-4f12-be6d-39d42f774f0c",
+              "ec2140f9-5f51-425f-a259-460dcf3923bc",
+              "f84305df-3374-44ed-bdc1-bc98e982731f",
+              "a6248431-a57a-4485-ae30-10c044dc9021"
+            ],
+            "format": {
+              "site_id": "1b5e4dd7-dd75-814f-bc12-0079f9bbeaba",
+              "page_font": "serif",
+              "page_icon": "https://prod-files-secure.s3.us-west-2.amazonaws.com/b21e4dd7-dd75-4182-b625-202c90102df4/ba8369a2-b249-4bdf-92bb-67d073730908/19093000_1272323296209668_7325695492027454487_o.jpg",
+              "page_cover": "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb",
+              "page_full_width": false,
+              "page_small_text": false,
+              "copied_from_pointer": {
+                "id": "06c04e85-a23f-411c-8134-7d75ae627ebb",
+                "table": "block",
+                "spaceId": "1f88cc90-92fd-4ce4-bfcd-25daec2ffbbe"
+              },
+              "page_cover_position": 0.5
+            },
+            "permissions": [
+              {
+                "role": "editor",
+                "type": "user_permission",
+                "user_id": "ccb418b9-45a5-40da-965a-33fe950226b9"
+              },
+              {
+                "role": "reader",
+                "type": "public_permission",
+                "is_site": true,
+                "added_timestamp": 1705079504733,
+                "allow_duplicate": false
+              }
+            ],
+            "created_time": 1705079476945,
+            "last_edited_time": 1788490995209,
+            "parent_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "parent_table": "space",
+            "alive": true,
+            "copied_from": "06c04e85-a23f-411c-8134-7d75ae627ebb",
+            "file_ids": [
+              "ba8369a2-b249-4bdf-92bb-67d073730908"
+            ],
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "crdt_format_version": 1,
+            "crdt_data": {
+              "title": {
+                "r": "tRsGx2_-KYNy-H6bFHJNlg,\"start\",\"end\"",
+                "n": {
+                  "tRsGx2_-KYNy-H6bFHJNlg,\"start\",\"end\"": {
+                    "s": {
+                      "x": "tRsGx2_-KYNy-H6bFHJNlg",
+                      "i": [
+                        {
+                          "t": "s"
+                        },
+                        {
+                          "t": "t",
+                          "i": [
+                            "uU2FA8ny8neo",
+                            1
+                          ],
+                          "o": "start",
+                          "l": 39,
+                          "c": "Aldo Abieza - Designer Digital Products"
+                        },
+                        {
+                          "t": "e"
+                        }
+                      ],
+                      "l": ""
+                    },
+                    "c": []
+                  }
+                }
+              }
+            }
+          },
+          "role": "reader"
+        }
+      }
+    },
+    "collection": {
+      "21a37d19-0409-47c7-ae19-5f35984d69b1": {
+        "spaceId": "b21e4dd7-dd75-4182-b625-202c90102df4",
+        "value": {
+          "value": {
+            "id": "21a37d19-0409-47c7-ae19-5f35984d69b1",
+            "version": 29,
+            "name": [
+              [
+                "My projects"
+              ]
+            ],
+            "schema": {
+              "OA}l": {
+                "name": "Tools",
+                "type": "multi_select",
+                "options": [
+                  {
+                    "id": "c9a6144e-0144-40c1-b2f2-36dd94dedcdf",
+                    "color": "green",
+                    "value": "Google Sheets"
+                  },
+                  {
+                    "id": "c57c8eab-29fc-44c7-b0b1-fcdb69253edc",
+                    "color": "gray",
+                    "value": "Figma"
+                  },
+                  {
+                    "id": "ef9a63aa-639e-4c31-9d63-4cd51ec73ba0",
+                    "color": "red",
+                    "value": "Jetbrains Space"
+                  },
+                  {
+                    "id": "9d8b7c72-72c8-4a0c-bb78-821ca15636c0",
+                    "color": "pink",
+                    "value": "Google Meet"
+                  },
+                  {
+                    "id": "b33bd7c1-68bd-4979-b7a4-30225e6c238b",
+                    "color": "yellow",
+                    "value": "Hotjar"
+                  },
+                  {
+                    "id": "256f145e-3da8-40c1-807b-ad1e64634820",
+                    "color": "orange",
+                    "value": "Adobe XD"
+                  }
+                ]
+              },
+              "btIG": {
+                "name": "Timeline",
+                "type": "text"
+              },
+              "exW_": {
+                "name": "Tags",
+                "type": "multi_select",
+                "options": [
+                  {
+                    "id": "99269291-a8e9-487a-8472-77ea8edd639a",
+                    "color": "pink",
+                    "value": "UI/UX"
+                  },
+                  {
+                    "id": "09aeeb4a-bd94-49d9-9eef-9bc44b42045c",
+                    "color": "red",
+                    "value": "Icon design"
+                  },
+                  {
+                    "id": "d83e43c9-5500-48f7-8239-4e11fe4e4dc5",
+                    "color": "pink",
+                    "value": "3D"
+                  },
+                  {
+                    "id": "5f1dd5d2-fd4e-483d-b5df-7fc872e61574",
+                    "color": "purple",
+                    "value": "Brand"
+                  },
+                  {
+                    "id": "6be9a4ad-ad33-4dc8-90bb-fed28e35c449",
+                    "color": "brown",
+                    "value": "Graphic design"
+                  },
+                  {
+                    "id": "43e5304e-c74d-458d-b629-19e204e609be",
+                    "color": "blue",
+                    "value": "Blender"
+                  },
+                  {
+                    "id": "7fd5ae68-b2bd-44a7-add4-43966c050f4a",
+                    "color": "default",
+                    "value": "Marketing"
+                  },
+                  {
+                    "id": "bf9d1e00-d2fe-4614-afea-1fa349c32bf4",
+                    "color": "orange",
+                    "value": "Mobile Apps"
+                  },
+                  {
+                    "id": "af76cfd5-0bd4-4221-8234-b0c4f1c5f3b4",
+                    "color": "green",
+                    "value": "Android"
+                  },
+                  {
+                    "id": "85add544-1778-48ac-aca1-d23268693187",
+                    "color": "yellow",
+                    "value": "Web Apps"
+                  },
+                  {
+                    "id": "170f52db-bae4-4f6a-b1cc-6d438f0e2ac4",
+                    "color": "gray",
+                    "value": "Hotjar"
+                  },
+                  {
+                    "id": "c4f1db57-9786-4f93-a7a0-30bdb65be06f",
+                    "color": "orange",
+                    "value": "\ud83d\udd25Must Read"
+                  },
+                  {
+                    "id": "b456d76c-6eab-48c9-b2be-a35f1d153b05",
+                    "color": "blue",
+                    "value": "Coming Soon"
+                  }
+                ]
+              },
+              "{mdo": {
+                "name": "Role",
+                "type": "text"
+              },
+              "title": {
+                "name": "Name",
+                "type": "title"
+              }
+            },
+            "format": {
+              "copied_from_pointer": {
+                "id": "4d1e2896-1aa7-476a-8132-829fc7b57f37",
+                "table": "collection",
+                "spaceId": "1f88cc90-92fd-4ce4-bfcd-25daec2ffbbe"
+              },
+              "collection_page_properties": [
+                {
+                  "visible": false,
+                  "property": "btIG"
+                },
+                {
+                  "visible": false,
+                  "property": "{mdo"
+                },
+                {
+                  "visible": true,
+                  "property": "exW_"
+                },
+                {
+                  "visible": false,
+                  "property": "OA}l"
+                }
+              ]
+            },
+            "parent_id": "20aa486d-2129-413b-9321-441b6ab259ef",
+            "parent_table": "block",
+            "alive": true,
+            "copied_from": "4d1e2896-1aa7-476a-8132-829fc7b57f37",
+            "template_pages": [
+              "87f3ab89-46de-4615-b9d5-4b6ed5e40a70"
+            ],
+            "migrated": true,
+            "space_id": "b21e4dd7-dd75-4182-b625-202c90102df4",
+            "deleted_schema": {
+              "gqb>": {
+                "name": "Created",
+                "type": "created_time"
+              },
+              "y`U{": {
+                "name": "Link",
+                "type": "url"
+              }
+            }
+          },
+          "role": "reader"
+        }
+      }
+    }
+  },
+  "collectionIds": [
+    "21a37d19-0409-47c7-ae19-5f35984d69b1"
+  ],
+  "allBlockIds": [
+    "05eed555-f84c-473f-94fe-accfacff37c0",
+    "37bebca8-1420-4c39-b4fe-ff4397421742",
+    "9bfbdcbb-ca65-409d-9dcc-58f5dd2d0e38",
+    "d398d788-1414-4fc5-a31c-1696ae14fbf6",
+    "ef153b17-eec8-4e70-aa27-4f5f77f64d16"
+  ],
+  "shouldUseClientMode": true,
+  "isViewSpecificClientMode": false,
+  "tags": {
+    "permissionMode": "all_rows_visible_by_default",
+    "backendUsed": [
+      "collectionRouter",
+      "collectionApi"
+    ]
+  }
+}

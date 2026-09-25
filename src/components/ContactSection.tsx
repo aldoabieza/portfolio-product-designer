@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 
 const CONTACT_LINKS = [
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/aldo-abieza', isExternal: true },
-  { label: 'Email', url: 'mailto:hello@aldoabieza.com', isExternal: false }
+  { label: 'Email', url: 'mailto:aldo.abieza30@gmail.com', isExternal: false },
+  { label: 'Linkedin', url: 'https://www.linkedin.com/in/aldo-abieza/', isExternal: true }
 ];
 
 export default function ContactSection() {
@@ -15,9 +15,9 @@ export default function ContactSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h4 className="section__title">Have a project in mind?</h4>
+          <h4 className="section__title">🤝 Let’s Connect!</h4>
           <p className="section__sub">
-            Feel free to reach out via email or connect with me on LinkedIn
+            Any time I’m looking for new opportunity, and we will work together in the future
           </p>
         </motion.div>
 

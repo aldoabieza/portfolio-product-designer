@@ -25,11 +25,27 @@ export default function App() {
 
   // Sync with URL hash on initial load and when hash changes
   useEffect(() => {
-    const parseHash = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      const validCaseStudies = ['doku', 'orderonline', 'orderonline-settings', 'trawlbens'];
+    const initialHash = window.location.hash.replace('#', '').toLowerCase();
+    
+    // Only direct case study deep-links (e.g. #doku, #orderonline-settings) open directly.
+    // By default, opening the website always lands on 'intro'.
+    if (initialHash in CASE_STUDIES) {
+      setActiveView(initialHash as ViewType);
+    } else {
+      setActiveView('intro');
+      if (initialHash) {
+        // Clean stale hash like #experience from initial load
+        try {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch {
+          // ignore in restricted environments
+        }
+      }
+    }
 
-      if (validCaseStudies.includes(hash)) {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash in CASE_STUDIES) {
         setActiveView(hash as ViewType);
       } else if (['work', 'experiment', 'experience', 'contact'].includes(hash)) {
         setActiveView(hash as ViewType);
@@ -38,9 +54,8 @@ export default function App() {
       }
     };
 
-    parseHash();
-    window.addEventListener('hashchange', parseHash);
-    return () => window.removeEventListener('hashchange', parseHash);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const currentCaseStudy = CASE_STUDIES[activeView];
@@ -74,7 +89,15 @@ export default function App() {
 
   const handleNavigate = (view: ViewType | string) => {
     setActiveView(view as ViewType);
-    window.location.hash = view === 'intro' ? '' : view;
+    if (view === 'intro') {
+      try {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } catch {
+        window.location.hash = '';
+      }
+    } else {
+      window.location.hash = view;
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
@@ -86,8 +109,8 @@ export default function App() {
       {/* Fixed Site-wide Grid Pattern - disabled on case study details page for improved accessibility & readability */}
       {!currentCaseStudy && <div className="site-grid" aria-hidden="true" />}
 
-      {/* Desktop Cursor Spotlight Glow */}
-      <Spotlight />
+      {/* Desktop Cursor Spotlight Glow - disabled on case study details page for improved readability */}
+      {!currentCaseStudy && <Spotlight />}
 
       {/* Fixed Sidebar Navigation */}
       <Sidebar

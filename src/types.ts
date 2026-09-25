@@ -30,6 +30,46 @@ export interface CaseStudyCallout {
   text: string;
 }
 
+export interface CaseStudyList {
+  type: 'bullet' | 'number';
+  items: string[];
+}
+
+export interface CaseStudyVideo {
+  id?: string;
+  url: string;
+  sourceUrl?: string;
+  caption?: string;
+  poster?: string;
+  aspect?: string;
+  title?: string;
+  label?: string;
+}
+
+export interface CaseStudySubSection {
+  title?: string;
+  isPrimaryTitle?: boolean;
+  paragraphs?: string[];
+  afterImageParagraphs?: string[];
+  quotes?: string[];
+  howMightWe?: CaseStudyHmwCard[];
+  hidePointIcons?: boolean;
+  primaryPointTitles?: boolean;
+  callouts?: CaseStudyCallout[];
+  images?: CaseStudyImage[];
+  imageLayout?: 'grid' | 'vertical';
+  lists?: CaseStudyList[];
+  video?: CaseStudyVideo;
+  videos?: CaseStudyVideo[];
+  afterImageQuotes?: string[];
+  customVariant?: 'inconsistency-cards';
+}
+
+export interface CaseStudyHmwCard {
+  number: string;
+  text: string;
+}
+
 export interface CaseStudyImage {
   url: string;
   caption?: string;
@@ -43,10 +83,24 @@ export interface CaseStudySection {
   summary?: string;
   paragraphs?: string[];
   afterImageParagraphs?: string[];
+  afterImageLists?: CaseStudyList[];
+  afterImageQuotes?: string[];
+  afterImages?: CaseStudyImage[];
   keyPoints?: CaseStudyKeyPoint[];
+  quotes?: string[];
+  hidePointIcons?: boolean;
+  hideBorderBottom?: boolean;
+  primaryPointTitles?: boolean;
+  isPrimaryTitle?: boolean;
+  howMightWe?: CaseStudyHmwCard[];
   callouts?: CaseStudyCallout[];
+  lists?: CaseStudyList[];
+  subSections?: CaseStudySubSection[];
   images?: CaseStudyImage[];
+  imageLayout?: 'grid' | 'vertical';
   imagesBeforePoints?: boolean;
+  video?: CaseStudyVideo;
+  videos?: CaseStudyVideo[];
   customVariant?: 'inconsistency-cards';
   comparison?: {
     beforeTitle?: string;
@@ -63,13 +117,18 @@ export interface CaseStudy {
   id: string;
   title: string;
   tag: string;
+  tags?: string[];
   category: string;
   client: string;
   role: string;
   year: string;
   timeline: string;
+  tools?: string[];
+  icon?: string;
+  isComingSoon?: boolean;
   summary: string;
   coverImage: string;
+  coverObjectPosition?: string;
   stats: StatMetric[];
   overview: string;
   problem: string;
@@ -89,7 +148,8 @@ export interface CaseStudy {
   sections?: CaseStudySection[];
   lessonLearned?: {
     title?: string;
-    text: string;
+    text?: string;
+    paragraphs?: string[];
     bullets?: string[];
   };
 }

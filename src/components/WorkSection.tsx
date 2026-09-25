@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { CaseStudy } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
 
@@ -16,13 +16,6 @@ interface WorkCardProps {
 
 function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ['start end', 'end start']
-  });
-
-  // Subtle image parallax inside the media container frame (does not affect layout or text)
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
   return (
     <motion.article
@@ -54,7 +47,9 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
           onClick={() => onSelectCaseStudy(item.id)}
           aria-label={`See case study for ${item.title}`}
         >
-          <span className="btn__label">See Case Study</span>
+          <span className="btn__label">
+            {item.isComingSoon ? 'Coming Soon' : 'See Case Study'}
+          </span>
           <span className="btn__icon">
             <span className="btn__icon-viewport">
               <span className="btn__icon-roll">
@@ -90,19 +85,19 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
         </button>
       </div>
 
-      {/* Right Column: Visual Preview Media with automatic zoom on hover (display only) */}
+      {/* Right Column: Visual Preview Media without click action (display only with hover zoom) */}
       <div className="work-item__media">
-        <motion.div
-          className="work-item__media-inner"
-          style={{ y: imageY }}
-        >
+        <div className="work-item__media-inner">
           <img
             src={item.coverImage}
             alt={item.title}
             loading="lazy"
             className="work-item__img"
+            style={{
+              objectPosition: item.coverObjectPosition || 'center center'
+            }}
           />
-        </motion.div>
+        </div>
       </div>
     </motion.article>
   );
@@ -134,6 +129,37 @@ export default function WorkSection({ onSelectCaseStudy }: WorkSectionProps) {
           );
         })}
       </div>
+
+      {/* Other Works from Notion */}
+      <motion.div
+        className="other-works"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <h4 className="other-works__title">Other Works</h4>
+        <div className="other-works__grid">
+          <a
+            href="https://dribbble.com/aldoabieza"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="other-works__card"
+          >
+            <span>🏀 Dribbble</span>
+            <span className="other-works__arrow">↗</span>
+          </a>
+          <a
+            href="http://github.com/aldoabieza"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="other-works__card"
+          >
+            <span>😺 Github</span>
+            <span className="other-works__arrow">↗</span>
+          </a>
+        </div>
+      </motion.div>
     </section>
   );
 }
