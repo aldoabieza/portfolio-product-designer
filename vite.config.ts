@@ -15,7 +15,8 @@ export default defineConfig(() => {
           // Serve static assets directly from public/assets with video range support
           server.middlewares.use((req, res, next) => {
             if (req.url && req.url.startsWith('/assets/')) {
-              const filePath = path.resolve(__dirname, 'public', req.url.replace(/^\//, '').split('?')[0]);
+              const cleanUrl = decodeURIComponent(req.url.replace(/^\//, '').split('?')[0]);
+              const filePath = path.resolve(__dirname, 'public', cleanUrl);
               if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
                 const ext = path.extname(filePath).toLowerCase();
                 const mimeTypes: Record<string, string> = {
@@ -93,9 +94,20 @@ export default defineConfig(() => {
                   fs.writeFileSync(path.join(targetDirPublic, safeFilename), buffer);
                   fs.writeFileSync(path.join(targetDirDist, safeFilename), buffer);
 
+                  const assetPath = `/assets/projects/doku/${safeFilename}`;
+                  const { isCover } = JSON.parse(body);
+                  if (isCover) {
+                    const pDataPath = path.resolve(__dirname, 'src/data/portfolioData.ts');
+                    if (fs.existsSync(pDataPath)) {
+                      let content = fs.readFileSync(pDataPath, 'utf8');
+                      content = content.replace(/(id:\s*'doku'[\s\S]*?coverImage:\s*')([^']+)'/, `$1${assetPath}'`);
+                      fs.writeFileSync(pDataPath, content, 'utf8');
+                    }
+                  }
+
                   res.setHeader('Content-Type', 'application/json');
                   res.statusCode = 200;
-                  res.end(JSON.stringify({ success: true, path: `/assets/projects/doku/${safeFilename}` }));
+                  res.end(JSON.stringify({ success: true, path: assetPath }));
                 } catch (err: any) {
                   res.statusCode = 500;
                   res.setHeader('Content-Type', 'application/json');

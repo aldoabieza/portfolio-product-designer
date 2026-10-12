@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import {
-  Maximize2,
-  Play
-} from 'lucide-react';
 import { CaseVideoPlayer } from './CaseVideoPlayer';
 
 interface InconsistencyCardsProps {
@@ -204,54 +200,37 @@ const InconsistencyCardItem: React.FC<InconsistencyCardItemProps> = ({
 }) => {
   return (
     <div className="inconsistency-group">
-      {/* Header section with clean title */}
-      <div className="inconsistency-group__header">
-        <h5 className="inconsistency-group__title">{card.title}</h5>
+      {/* 1. Title */}
+      <h5 className="inconsistency-group__title">{card.title}</h5>
+
+      {/* 2. Tab */}
+      <div className="inconsistency-card__tabs" role="tablist" aria-label={`${card.title} Views`}>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeTab === 'foundation'}
+          className={`inconsistency-card__tab ${
+            activeTab === 'foundation' ? 'inconsistency-card__tab--active' : ''
+          }`}
+          onClick={() => onTabChange('foundation')}
+        >
+          <span>Foundation</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeTab === 'behaviour'}
+          className={`inconsistency-card__tab ${
+            activeTab === 'behaviour' ? 'inconsistency-card__tab--active' : ''
+          }`}
+          onClick={() => onTabChange('behaviour')}
+        >
+          <span>Behaviour</span>
+        </button>
       </div>
 
-      <div className="inconsistency-card">
-        {/* Top Control Bar: Tabs (Foundation first, Behaviour second) + Variant Selector */}
-        <div className="flex items-center justify-between flex-wrap gap-2">
-          <div className="inconsistency-card__tabs" role="tablist" aria-label={`${card.title} Views`}>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'foundation'}
-              className={`inconsistency-card__tab ${
-                activeTab === 'foundation' ? 'inconsistency-card__tab--active' : ''
-              }`}
-              onClick={() => onTabChange('foundation')}
-            >
-              <span>Foundation Spec</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeTab === 'behaviour'}
-              className={`inconsistency-card__tab ${
-                activeTab === 'behaviour' ? 'inconsistency-card__tab--active' : ''
-              }`}
-              onClick={() => onTabChange('behaviour')}
-            >
-              <span className="flex items-center gap-1.5">
-                <Play size={12} className={activeTab === 'behaviour' ? 'text-teal-600 fill-teal-600' : 'text-gray-400'} />
-                <span>Behaviour (Video)</span>
-              </span>
-            </button>
-          </div>
-
-          {activeTab === 'foundation' && (
-            <button
-              type="button"
-              onClick={() => onTabChange('behaviour')}
-              className="text-xs font-medium text-teal-700 hover:text-teal-800 bg-teal-50 hover:bg-teal-100/70 border border-teal-200/80 px-2.5 py-1 rounded-[4px] flex items-center gap-1.5 transition-colors cursor-pointer"
-            >
-              <Play size={11} className="fill-teal-700" />
-              <span>Tonton Video Walkthrough</span>
-            </button>
-          )}
-        </div>
-
+      {/* 3. Content */}
+      <div className="inconsistency-card__content">
         {/* Tab 1: FOUNDATION (Unaltered, Clean Original Image) */}
         {activeTab === 'foundation' && (
           <FoundationSpecView
@@ -290,28 +269,28 @@ function FoundationSpecView({
   const displaySrc = customSrc || variant.imageSrc;
 
   return (
-    <div className="flex flex-col gap-4 w-full pt-1">
-      {/* Image container: nested corner radius R_inner = R_outer - spacing = 16px - 12px = 4px, border border-gray-200 */}
-      <div className="relative group rounded-[4px] overflow-hidden border border-gray-200 bg-white">
+    <figure
+      className="case__image-figure"
+      role="button"
+      tabIndex={0}
+      aria-label={`Expand visual: ${variant.caption}`}
+      onClick={() => onExpand?.(displaySrc, variant.caption)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onExpand?.(displaySrc, variant.caption);
+        }
+      }}
+    >
+      <div className="case__image-container">
         <img
           src={displaySrc}
           alt={variant.caption}
-          className="w-full h-auto block mx-auto cursor-zoom-in select-none rounded-[4px] border border-gray-200 object-contain"
           loading="lazy"
           referrerPolicy="no-referrer"
-          onClick={() => onExpand?.(displaySrc, variant.caption)}
         />
-
-        {/* Floating Zoom Action Badge */}
-        <div
-          className="absolute bottom-3 right-3 bg-black/80 hover:bg-black text-white text-xs px-3 py-1.5 rounded-[4px] flex items-center gap-1.5 cursor-pointer backdrop-blur-sm transition-opacity opacity-90 sm:opacity-0 sm:group-hover:opacity-100 shadow-md select-none"
-          onClick={() => onExpand?.(displaySrc, variant.caption)}
-        >
-          <Maximize2 size={13} />
-          <span>Perbesar Gambar Asli</span>
-        </div>
       </div>
-    </div>
+    </figure>
   );
 }
 
@@ -329,7 +308,9 @@ function BehaviourVideoSection({
       : 'Payment Link Settings Modal (Detail Page)',
     label: card.id === 'card-1' ? 'Without Return Nav' : 'With Return Nav',
     url: card.videoSrc || '',
-    poster: card.variants[0]?.imageSrc,
+    poster: card.id === 'card-1' 
+      ? '/assets/projects/doku/doku-component-1-poster.webp' 
+      : '/assets/projects/doku/doku-component-2-poster.webp',
     caption: card.id === 'card-1'
       ? 'Walkthrough perilaku interaksi: Halaman konfigurasi checkout tidak menyediakan kontrol navigasi kembali di header sehingga pengguna terpaksa mencari dan mengklik breadcrumb "Settings".'
       : 'Walkthrough perilaku interaksi: Modal konfigurasi Payment Link menyediakan kontrol navigasi kembali eksplisit berupa tombol silang (X) di pojok header untuk menutup dan kembali ke daftar.'
@@ -339,7 +320,7 @@ function BehaviourVideoSection({
     <div className="flex flex-col w-full pt-1">
       {/* Consistent CaseVideoPlayer Component (same as Portfolio Settings) */}
       <div className="case__section-video-wrapper !mt-0">
-        <CaseVideoPlayer video={videoData} />
+        <CaseVideoPlayer video={videoData} hideHeader />
       </div>
     </div>
   );

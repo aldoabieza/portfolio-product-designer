@@ -43,8 +43,20 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
     const kebabUrl = `${dir}/${kebab}`;
     if (attemptCount <= 1 && kebabUrl !== url) return kebabUrl;
 
-    // Inverted names support (Missing Component Update vs Missing Update Component)
+    // Spaces <-> underscores support
     if (attemptCount === 2) {
+      if (filename.includes('_')) {
+        const spaced = filename.replace(/_/g, ' ');
+        return encodeURI(`${dir}/${spaced}`);
+      }
+      if (filename.includes(' ')) {
+        const underscored = filename.replace(/\s+/g, '_');
+        return `${dir}/${underscored}`;
+      }
+    }
+
+    // Inverted names support (Missing Component Update vs Missing Update Component)
+    if (attemptCount === 3) {
       if (filename.includes('Missing Component Update')) {
         return `${dir}/${filename.replace('Missing Component Update', 'Missing Update Component')}`;
       }
@@ -57,8 +69,8 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
     const baseName = filename.replace(/\.[^/.]+$/, '');
     const ext = filename.split('.').pop()?.toLowerCase();
     const exts = ['png', 'jpg', 'jpeg', 'webp'].filter(e => e !== ext);
-    if (attemptCount - 3 < exts.length && attemptCount >= 3) {
-      return `${dir}/${baseName}.${exts[attemptCount - 3]}`;
+    if (attemptCount - 4 < exts.length && attemptCount >= 4) {
+      return encodeURI(`${dir}/${baseName}.${exts[attemptCount - 4]}`);
     }
 
     return null;
@@ -112,7 +124,7 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
           </div>
           <div>
             <div style={{ fontWeight: 600, fontSize: '15px', color: 'var(--ink)', marginBottom: '4px' }}>
-              Menunggu File: <code style={{ background: 'rgba(0,0,0,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{filename}</code>
+              Menunggu File: <code style={{ background: 'rgba(0,0,0,0.06)', padding: '4px 8px', borderRadius: '4px' }}>{filename}</code>
             </div>
             <div style={{ fontSize: '13px', color: 'var(--ink-soft)', maxWidth: '460px', lineHeight: 1.5 }}>
               File belum terdeteksi di server. Silakan upload file asli ke folder <code style={{ color: 'var(--accent)' }}>public/assets/projects/doku/</code> lewat File Explorer.
@@ -150,16 +162,16 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
   );
 }
 
-function renderParagraph(p: string, pIndex: number) {
+function renderParagraph(p: string, pIndex: number, isPrimaryTitle: boolean = false) {
   const colonIndex = p.indexOf(': ');
-  if (colonIndex > 0 && colonIndex < 45 && !p.startsWith('http')) {
+  if (colonIndex > 0 && colonIndex <= 60 && !p.startsWith('http')) {
     const title = p.slice(0, colonIndex).trim();
     const desc = p.slice(colonIndex + 2).trim();
     return (
-      <p key={pIndex} className="case__block-text case__block-item">
-        <strong className="case__block-item-title">{title}</strong>
+      <div key={pIndex} className="case__block-text case__block-item">
+        <h5 className={`case__block-item-title ${isPrimaryTitle ? 'case__block-item-title--primary' : ''}`}>{title}</h5>
         <span className="case__block-item-desc">{desc}</span>
-      </p>
+      </div>
     );
   }
   return (
@@ -167,10 +179,41 @@ function renderParagraph(p: string, pIndex: number) {
   );
 }
 
+function renderParagraphs(paragraphs: string[], isPrimaryTitle: boolean = false) {
+  const elements: React.ReactNode[] = [];
+  let currentGroup: { p: string; index: number }[] = [];
+
+  const flushGroup = () => {
+    if (currentGroup.length > 0) {
+      const groupKey = `group-${currentGroup[0].index}`;
+      elements.push(
+        <div key={groupKey} className="case__block-items-group">
+          {currentGroup.map(({ p, index }) => renderParagraph(p, index, isPrimaryTitle))}
+        </div>
+      );
+      currentGroup = [];
+    }
+  };
+
+  paragraphs.forEach((p, pIndex) => {
+    const colonIndex = p.indexOf(': ');
+    const isBlockItem = colonIndex > 0 && colonIndex <= 60 && !p.startsWith('http');
+    if (isBlockItem) {
+      currentGroup.push({ p, index: pIndex });
+    } else {
+      flushGroup();
+      elements.push(renderParagraph(p, pIndex, isPrimaryTitle));
+    }
+  });
+
+  flushGroup();
+  return elements;
+}
+
 function renderQuotePoint(q: string, qIndex: number, hideIcon: boolean = false, isPrimaryTitle: boolean = false) {
   const cleanText = q.replace(/^\d+\s*/, '');
   const colonIndex = cleanText.indexOf(': ');
-  if (colonIndex > 0 && colonIndex < 50 && !cleanText.startsWith('http')) {
+  if (colonIndex > 0 && colonIndex <= 60 && !cleanText.startsWith('http')) {
     const title = cleanText.slice(0, colonIndex).trim();
     const desc = cleanText.slice(colonIndex + 2).trim();
     return (
@@ -258,8 +301,8 @@ export default function CaseStudyView({
         return;
       }
 
-      // Check if the pointer target is strictly inside a .case__image-figure
-      const target = (e.target as Element | null)?.closest?.('.case__image-figure');
+      // Check if the pointer target is strictly inside a .case__image-figure or .case__cover
+      const target = (e.target as Element | null)?.closest?.('.case__image-figure, .case__cover');
       if (target && sectionRef.current?.contains(target)) {
         showCursor(e.clientX, e.clientY);
       } else {
@@ -274,7 +317,7 @@ export default function CaseStudyView({
         return;
       }
       const el = document.elementFromPoint(lastPosRef.current.x, lastPosRef.current.y);
-      const target = el?.closest?.('.case__image-figure');
+      const target = el?.closest?.('.case__image-figure, .case__cover');
       if (target && sectionRef.current?.contains(target)) {
         showCursor(lastPosRef.current.x, lastPosRef.current.y);
       } else {
@@ -381,7 +424,7 @@ export default function CaseStudyView({
               {/* Section Paragraphs */}
               {section.paragraphs && section.paragraphs.length > 0 && (
                 <div className="case__section-paragraphs">
-                  {section.paragraphs.map(renderParagraph)}
+                  {renderParagraphs(section.paragraphs, !!section.primaryPointTitles)}
                 </div>
               )}
 
@@ -521,7 +564,7 @@ export default function CaseStudyView({
               {/* Section Paragraphs (rendered below image) */}
               {section.afterImageParagraphs && section.afterImageParagraphs.length > 0 && (
                 <div className="case__section-paragraphs case__section-paragraphs--after-image">
-                  {section.afterImageParagraphs.map(renderParagraph)}
+                  {renderParagraphs(section.afterImageParagraphs, !!section.primaryPointTitles)}
                 </div>
               )}
 
@@ -594,7 +637,7 @@ export default function CaseStudyView({
                       )}
                       {sub.paragraphs && sub.paragraphs.length > 0 && (
                         <div className="case__section-paragraphs">
-                          {sub.paragraphs.map(renderParagraph)}
+                          {renderParagraphs(sub.paragraphs, !!sub.primaryPointTitles)}
                         </div>
                       )}
                       {sub.quotes && sub.quotes.length > 0 && (
@@ -665,7 +708,71 @@ export default function CaseStudyView({
                       {/* Sub-section Paragraphs (rendered below image) */}
                       {sub.afterImageParagraphs && sub.afterImageParagraphs.length > 0 && (
                         <div className="case__section-paragraphs case__section-paragraphs--after-image">
-                          {sub.afterImageParagraphs.map(renderParagraph)}
+                          {renderParagraphs(sub.afterImageParagraphs, !!sub.primaryPointTitles)}
+                        </div>
+                      )}
+                      {/* Sub-section Images (rendered below afterImageParagraphs) */}
+                      {sub.afterImages && sub.afterImages.length > 0 && (
+                        <div className={`case__section-images case__section-images--${sub.imageLayout === 'vertical' ? 'vertical' : (sub.afterImages.length === 1 ? 'single' : 'grid')}`}>
+                          {sub.afterImages.map((img, iIndex) => (
+                            <CaseImageItem
+                              key={iIndex}
+                              img={img}
+                              title={sub.title || ''}
+                              index={iIndex}
+                              onExpand={setActiveImage}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {/* Sub-section Blocks */}
+                      {sub.blocks && sub.blocks.length > 0 && (
+                        <div className="case__sub-blocks">
+                          {sub.blocks.map((block, bIndex) => (
+                            <div key={bIndex} className="case__sub-block">
+                              {block.title && (
+                                <h6 className={`case__sub-block-title ${block.isPrimaryTitle ? 'case__sub-block-title--primary' : ''}`}>
+                                  {block.title}
+                                </h6>
+                              )}
+                              {block.paragraphs && block.paragraphs.length > 0 && (
+                                <div className="case__section-paragraphs">
+                                  {renderParagraphs(block.paragraphs, false)}
+                                </div>
+                              )}
+                              {block.images && block.images.length > 0 && (
+                                <div className="case__section-images case__section-images--vertical">
+                                  {block.images.map((img, iIndex) => (
+                                    <CaseImageItem
+                                      key={iIndex}
+                                      img={img}
+                                      title={block.title || sub.title || ''}
+                                      index={iIndex}
+                                      onExpand={setActiveImage}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                              {block.afterImageParagraphs && block.afterImageParagraphs.length > 0 && (
+                                <div className="case__section-paragraphs case__section-paragraphs--after-image">
+                                  {renderParagraphs(block.afterImageParagraphs, false)}
+                                </div>
+                              )}
+                              {block.afterImages && block.afterImages.length > 0 && (
+                                <div className="case__section-images case__section-images--vertical">
+                                  {block.afterImages.map((img, iIndex) => (
+                                    <CaseImageItem
+                                      key={iIndex}
+                                      img={img}
+                                      title={block.title || sub.title || ''}
+                                      index={iIndex}
+                                      onExpand={setActiveImage}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
                         </div>
                       )}
                       {/* Sub-section Quotes (rendered below image) */}

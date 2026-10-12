@@ -4,9 +4,10 @@ import { CaseStudyVideo } from '../types';
 
 interface CaseVideoPlayerProps {
   video: CaseStudyVideo;
+  hideHeader?: boolean;
 }
 
-export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
+export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video, hideHeader = false }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
 
   const activeUrl = video.url;
 
-  // Guarantee continuous looping, reliable loading, and autoplay
+  // Guarantee continuous looping, reliable loading, and autoplay without freezing
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -24,29 +25,33 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
     el.defaultMuted = true;
     el.muted = true;
     el.playsInline = true;
-    setHasStarted(false);
-    el.load();
 
-    const attemptPlay = () => {
-      const p = el.play();
-      if (p !== undefined) {
-        p.then(() => {
-          setIsPlaying(true);
-          setHasStarted(true);
-        }).catch(() => {
-          setIsPlaying(false);
-        });
+    const playVideo = () => {
+      if (el.paused) {
+        const p = el.play();
+        if (p !== undefined) {
+          p.then(() => {
+            setIsPlaying(true);
+            setHasStarted(true);
+          }).catch(() => {
+            setIsPlaying(false);
+          });
+        }
       }
     };
 
-    attemptPlay();
+    if (el.readyState >= 2) {
+      playVideo();
+    } else {
+      el.addEventListener('canplay', playVideo, { once: true });
+    }
 
     // Intersection observer ensures playback whenever user scrolls into this section
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            attemptPlay();
+            playVideo();
           }
         });
       },
@@ -56,6 +61,7 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
     observer.observe(el);
 
     return () => {
+      el.removeEventListener('canplay', playVideo);
       observer.disconnect();
     };
   }, [activeUrl]);
@@ -79,26 +85,36 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
     }
   };
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (videoRef.current.paused) {
-      videoRef.current.play().then(() => {
-        setIsPlaying(true);
-        setHasStarted(true);
-      }).catch(() => {});
+  const togglePlay = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.paused) {
+      const p = el.play();
+      if (p !== undefined) {
+        p.then(() => {
+          setIsPlaying(true);
+          setHasStarted(true);
+        }).catch(() => {});
+      }
     } else {
-      videoRef.current.pause();
+      el.pause();
       setIsPlaying(false);
     }
   };
 
-  const handleRestart = () => {
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = 0;
-    videoRef.current.play().then(() => {
-      setIsPlaying(true);
-      setHasStarted(true);
-    }).catch(() => {});
+  const handleRestart = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const el = videoRef.current;
+    if (!el) return;
+    el.currentTime = 0;
+    const p = el.play();
+    if (p !== undefined) {
+      p.then(() => {
+        setIsPlaying(true);
+        setHasStarted(true);
+      }).catch(() => {});
+    }
   };
 
   const isEmbed =
@@ -119,7 +135,11 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
     if (url.includes('youtu.be/')) {
       return url.replace('youtu.be/', 'www.youtube.com/embed/');
     }
-    if (url.includes('drive.google.com/file/d/')) {
+    if (url.includes('drive.google.com')) {
+      const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        return `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
       return url.replace(/\/view(\?.*)?$/, '/preview');
     }
     if (url.includes('vimeo.com/') && !url.includes('player.vimeo.com')) {
@@ -135,7 +155,7 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
 
   return (
     <figure className="case__video-figure">
-      {(video.label || (video.title && video.title !== video.label)) && (
+      {!hideHeader && (video.label || (video.title && video.title !== video.label)) && (
         <div className="case__video-header">
           {video.label && (
             <span
@@ -171,7 +191,7 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
             <video
               ref={videoRef}
               src={activeUrl}
-              poster={!hasStarted && video.poster ? video.poster : undefined}
+              poster={video.poster}
               autoPlay
               loop
               muted
@@ -187,11 +207,7 @@ export const CaseVideoPlayer: React.FC<CaseVideoPlayerProps> = ({ video }) => {
               className="case__video-element"
               onClick={togglePlay}
               aria-label={video.caption || video.title || 'Product interaction demo video'}
-            >
-              {webmUrl && <source src={webmUrl} type="video/webm" />}
-              <source src={activeUrl} type="video/mp4" />
-              Your browser does not support HTML5 video playback.
-            </video>
+            />
 
             {/* Bottom Control Bar */}
             <div className={`case__video-controls ${isHovered ? 'case__video-controls--visible' : ''}`}>

@@ -80,7 +80,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     tools: ['Figma', 'Token Studio', 'Storybook', 'Zeroheight'],
     summary:
       'Standardizing DOKU’s multi-product ecosystem through an enterprise-grade token architecture, accessibility-first component standards, and cross-functional governance.',
-    coverImage: '/assets/projects/doku-design-system-cover.jpg',
+    coverImage: '/assets/projects/doku/Cover_DS.png',
     stats: [
       { value: '38+', label: 'Digital Products' },
       { value: '98%', label: 'WCAG AA Compliance' },
@@ -94,7 +94,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     solution:
       'Architected and deployed the next-generation DOKU Design System: a multi-tier token schema, 250+ accessible headless-backed components, interactive Storybook documentation, and automated Figma-to-code syncing.',
     galleryImages: [
-      '/assets/projects/doku-design-system-cover.jpg',
+      '/assets/projects/doku/Cover_DS.png',
       '/assets/projects/doku/The Workshop Image.webp',
       '/assets/projects/doku/Missing Component Update.webp',
       '/assets/projects/doku/doku-product-inconsistency-breakdown.webp'
@@ -516,7 +516,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Exploration_Design.webp',
                 caption: 'Exploring new designs for browsing and selecting templates',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ],
             afterImageParagraphs: [
@@ -528,7 +529,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Result_Exploration.webp',
                 caption: "Internal team testing result: intuitive card format with device tags",
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ],
             afterImageParagraphs: [
@@ -543,7 +545,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Store_Design_Silhouette_Result.webp',
                 caption: 'The Result: Instant silhouette preview of active template in "Desain Toko Kamu"',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -560,7 +563,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Explain_About_Navbar_Editor.webp',
                 caption: 'Navbar structure and controls in the Store Design Editor',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -573,7 +577,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Sidebar_Only.webp',
                 caption: 'Consolidated sidebar menu with intuitive header navigation tabs',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -587,12 +592,14 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Editor_Display_Menus.webp',
                 caption: 'Display Menus — Real-time component controls and styling',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               },
               {
                 url: '/assets/projects/storefront/Editor_HomePage_Config.webp',
                 caption: 'Home Page Config — Direct layout and section customization with live preview',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -607,12 +614,14 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Explain_New_Config_Dashboard.webp',
                 caption: 'Contextual configuration information and helper copy',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               },
               {
                 url: '/assets/projects/storefront/Tooltip_Solution.webp',
                 caption: 'Tooltip solution providing clarity for complex settings without visual clutter',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -626,12 +635,14 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/storefront/Config_Information_Result_1.webp',
                 caption: 'The Result: Informative configuration cards with inline helper hints',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               },
               {
                 url: '/assets/projects/storefront/Config_Information_Result_2.webp',
                 caption: 'The Result: Detailed setting tooltips and user guidance in action',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           }
@@ -751,7 +762,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Analysis_Data_Menu_Settings.webp',
                 caption: 'Heatmap data on settings menu navigation scroll & click intensity',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -768,7 +780,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Analysis_Data_Sub_Menu_Settings.webp',
                 caption: 'Heatmap data on sub-menu settings scroll & click intensity',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           }
@@ -841,7 +854,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Audit_Component_1.webp',
                 caption: 'Audit: Vertically stacked menus causing excessive scroll debt',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -854,7 +868,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Audit_Component_2_(1).webp',
                 caption: 'Audit: Missing microcopy leaving sellers guessing functionality',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -867,7 +882,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Audit_Component_3.webp',
                 caption: 'Audit: Redundant save buttons on every sub-section',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           }
@@ -890,17 +906,20 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Untitled.webp',
                 caption: 'Sidebar and category card layout explorations',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               },
               {
                 url: '/assets/projects/settings/layout_exploration_menu.webp',
                 caption: 'Settings menu grid and high-priority grouping',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               },
               {
                 url: '/assets/projects/settings/layout_exploration_sub_menu_(3).webp',
                 caption: 'Sub-menu navigation tabs minimizing vertical scroll',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -913,7 +932,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/result_eploration_menu_settings.webp',
                 caption: 'Final restructured Settings Menu with Online Store positioned prominently at top',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ],
             afterImageParagraphs: [
@@ -948,7 +968,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/settings/Interaction_Solution_(1).webp',
                 caption: 'Contextual guidance labels and helper tips implemented directly beside controls',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -996,7 +1017,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     client: 'Trawlbens',
     role: 'UI/UX Designer',
     year: '2021 - 2022',
-    timeline: '7 Months',
+    timeline: '2 Months',
     tools: ['Google Sheets', 'Figma'],
     summary:
       'Trawlbens is a company operating in the cargo sector that provides an application platform for sending goods at low prices and can reach all regions of Indonesia.',
@@ -1059,6 +1080,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         number: '03',
         badge: 'Field Research',
         title: 'Validate The Problem',
+        primaryPointTitles: true,
+        hideBorderBottom: true,
         paragraphs: [
           'In collaboration with Product Manager, I conducted an in-depth interview with the Account Executive team to find out the problems and needs of the Account Executive Team in promoting our application services.',
           'Referring Apps to new users: So far the account executive team has marketed our application by just distributing brochures. And they find it difficult to know whether they have succeeded or not in inviting potential users to use our application services.',
@@ -1070,6 +1093,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         number: '04',
         badge: 'Synthesis',
         title: 'Building The Ideas',
+        hideBorderBottom: true,
         paragraphs: [
           'Concept Model: To make it easier for me to visualize the features in this application, I created a concept model, the purpose of which was to explore the idea further, and also detail what the coordinator would do in carrying out his duties.'
         ],
@@ -1085,6 +1109,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         number: '05',
         badge: 'UI Design',
         title: 'Designing The Solution',
+        hideBorderBottom: true,
         subSections: [
           {
             title: 'The Challenge',
@@ -1095,7 +1120,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/promote-apps/The_Existing_Brand.webp',
                 caption: 'Existing brand color analysis and dominant red color risks',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
@@ -1105,7 +1131,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               {
                 url: '/assets/projects/promote-apps/The_Color_Solution.webp',
                 caption: 'Harmonized color palette introducing secondary CTA and chart accents',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ],
             quotes: [
@@ -1113,78 +1140,130 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               '02 Added state info color to be used for several elements such as charts, etc.',
               '03 Added a secondary logo color to implement on the topbar when it is in default condition, and the topbar display will appear transparent.'
             ]
-          },
+          }
+        ]
+      },
+      {
+        number: '06',
+        badge: 'Implementation',
+        title: 'Implementation The Solution',
+        hideBorderBottom: true,
+        subSections: [
           {
-            title: 'Implement The Solution — Solution 1: Sharing Referral Link',
+            title: 'Solution 1: Sharing Referral Link',
+            isPrimaryTitle: true,
             paragraphs: [
-              'Coordinators and Account Executive Agents can promote our application services, by sharing the referral code attached to each account.',
-              'Apart from that, they can see the history of users who recently joined using the referral link. And can also display data based on the selected date filter.'
+              'Coordinators and Account Executive Agents can promote our application services, by sharing the referral code attached to each account.'
             ],
             images: [
               {
                 url: '/assets/projects/promote-apps/Solution_1.1.webp',
                 caption: 'Referral sharing screen with one-tap social and code generation',
-                aspect: 'wide'
-              },
+                aspect: 'wide',
+                borderless: true
+              }
+            ],
+            afterImageParagraphs: [
+              'Apart from that, they can see the history of users who recently joined using the referral link. And can also display data based on the selected date filter.'
+            ],
+            afterImages: [
               {
                 url: '/assets/projects/promote-apps/Solution_1.2.webp',
                 caption: 'Recent join history filtered by date range and referral status',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           },
           {
             title: 'Solution 2: Achievement and Income Monitoring',
+            isPrimaryTitle: true,
             paragraphs: [
-              'Pada solusi ini saya membuat desain untuk halaman Achievement dan Income Monitoring untuk Coordinator Agent, maupun Agent Team.',
-              'Exploration Design Achievement Monitoring:'
+              'For this solution, I designed the Achievement and Income Monitoring pages for both Coordinator Agents and Agent Teams.'
             ],
-            images: [
+            blocks: [
               {
-                url: '/assets/projects/promote-apps/Solution_2.1.webp',
-                caption: 'Exploration for team and personal achievement visualization',
-                aspect: 'wide'
+                title: 'Exploration Design Achievement Monitoring',
+                images: [
+                  {
+                    url: '/assets/projects/promote-apps/Solution_2.1.webp',
+                    caption: 'Exploration for team and personal achievement visualization',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
               },
               {
-                url: '/assets/projects/promote-apps/Solution_2.1_Result.webp',
-                caption: 'The Result Achievement Page: Personal progress bar and Coordinator team overview',
-                aspect: 'wide'
+                title: 'The Result Achievement Page',
+                paragraphs: [
+                  'On this page, the Coordinator / Agent Team can see their Personal Achievement process, and a special page for the Agent Coordinator to monitor the target agent team process that is handled every month.'
+                ],
+                images: [
+                  {
+                    url: '/assets/projects/promote-apps/Solution_2.1_Result.webp',
+                    caption: 'The Result Achievement Page: Personal progress bar and Coordinator team overview',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
               },
               {
-                url: '/assets/projects/promote-apps/Solution_2.2.webp',
-                caption: 'The Result Income Monitoring: Agent Team income summary, statistics, and list',
-                aspect: 'wide'
-              },
-              {
-                url: '/assets/projects/promote-apps/Solution_2.3.webp',
-                caption: 'Individual personal income breakdown accrued from completed cargo shipments',
-                aspect: 'wide'
+                title: 'The Result Income Monitoring',
+                paragraphs: [
+                  'Coordinators can see details of their team\'s income on the "Agent Team Income" menu page. Where the coordinator can see data such as Summary, Statistics, and List of agent income. As well as statistics on referral agents who have succeeded in getting new users.'
+                ],
+                images: [
+                  {
+                    url: '/assets/projects/promote-apps/Solution_2.2.webp',
+                    caption: 'The Result Income Monitoring: Agent Team income summary, statistics, and list',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ],
+                afterImageParagraphs: [
+                  'Apart from that, Coordinators and Agents can also see details of their income personally, obtained from the transactions of their referral users who make deliveries.'
+                ],
+                afterImages: [
+                  {
+                    url: '/assets/projects/promote-apps/Solution_2.3.webp',
+                    caption: 'Individual personal income breakdown accrued from completed cargo shipments',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
               }
             ]
           },
           {
             title: 'Solution 3: Voucher Sharing',
+            isPrimaryTitle: true,
             paragraphs: [
-              'Here I am making a design exploration for a voucher list, where our discounts have terms and conditions that apply to their use. and creating a discount filter.',
-              'The Result: The Account Executive team can create their own promos, without prior request to the admin to create promo vouchers with terms and conditions that apply to our potential users.'
+              'Here I am making a design exploration for a voucher list, where our discounts have terms and conditions that apply to their use. and creating a discount filter.'
             ],
             images: [
               {
                 url: '/assets/projects/promote-apps/Solution_3_Design_Exploration.webp',
                 caption: 'Voucher list design explorations and filter states',
-                aspect: 'wide'
-              },
+                aspect: 'wide',
+                borderless: true
+              }
+            ],
+            afterImageParagraphs: [
+              'The Result: The Account Executive team can create their own promos, without prior request to the admin to create promo vouchers with terms and conditions that apply to our potential users.'
+            ],
+            afterImages: [
               {
                 url: '/assets/projects/promote-apps/Solution_3.webp',
                 caption: 'Self-serve voucher creation with custom terms, conditions, and discounts',
-                aspect: 'wide'
+                aspect: 'wide',
+                borderless: true
               }
             ]
           }
         ]
       },
       {
-        number: '06',
+        number: '07',
         badge: 'Outcome',
         title: 'Experiment Results',
         paragraphs: [

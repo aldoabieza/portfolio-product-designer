@@ -46,6 +46,15 @@ export interface CaseStudyVideo {
   label?: string;
 }
 
+export interface SubSectionBlock {
+  title?: string;
+  isPrimaryTitle?: boolean;
+  paragraphs?: string[];
+  images?: CaseStudyImage[];
+  afterImageParagraphs?: string[];
+  afterImages?: CaseStudyImage[];
+}
+
 export interface CaseStudySubSection {
   title?: string;
   isPrimaryTitle?: boolean;
@@ -57,6 +66,8 @@ export interface CaseStudySubSection {
   primaryPointTitles?: boolean;
   callouts?: CaseStudyCallout[];
   images?: CaseStudyImage[];
+  afterImages?: CaseStudyImage[];
+  blocks?: SubSectionBlock[];
   imageLayout?: 'grid' | 'vertical';
   lists?: CaseStudyList[];
   video?: CaseStudyVideo;
@@ -74,6 +85,7 @@ export interface CaseStudyImage {
   url: string;
   caption?: string;
   aspect?: 'wide' | 'video' | 'standard' | 'auto';
+  borderless?: boolean;
 }
 
 export interface CaseStudySection {
@@ -123,6 +135,7 @@ export interface CaseStudy {
   role: string;
   year: string;
   timeline: string;
+  platform?: string;
   tools?: string[];
   icon?: string;
   isComingSoon?: boolean;

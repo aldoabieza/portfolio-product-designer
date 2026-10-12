@@ -190,27 +190,19 @@ export default function Sidebar({
           currentCaseStudy && (
             <div className="sidebar__case-meta">
               <div className="case__meta-item">
-                <p className="case__meta-label">Client</p>
-                <p className="case__meta-value">{currentCaseStudy.client}</p>
-              </div>
-              <div className="case__meta-item">
                 <p className="case__meta-label">Role</p>
                 <p className="case__meta-value">{currentCaseStudy.role}</p>
               </div>
               <div className="case__meta-item">
-                <p className="case__meta-label">Year</p>
-                <p className="case__meta-value">{currentCaseStudy.year}</p>
+                <p className="case__meta-label">Platform</p>
+                <p className="case__meta-value">
+                  {currentCaseStudy.platform || currentCaseStudy.metaDetails?.platform || 'Web & Mobile'}
+                </p>
               </div>
               <div className="case__meta-item">
                 <p className="case__meta-label">Timeline</p>
                 <p className="case__meta-value">{currentCaseStudy.timeline}</p>
               </div>
-              {currentCaseStudy.tools && currentCaseStudy.tools.length > 0 && (
-                <div className="case__meta-item">
-                  <p className="case__meta-label">Tools</p>
-                  <p className="case__meta-value">{currentCaseStudy.tools.join(', ')}</p>
-                </div>
-              )}
             </div>
           )
         )}
