@@ -45,16 +45,6 @@ export default function ContactSection() {
           ))}
         </div>
       </div>
-
-      <motion.footer
-        className="footer"
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-20px' }}
-        transition={{ duration: 0.5, delay: 0.35 }}
-      >
-        <span>© 2026 Aldo Abieza. Designed &amp; built with care.</span>
-      </motion.footer>
     </section>
   );
 }

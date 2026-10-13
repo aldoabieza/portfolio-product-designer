@@ -129,37 +129,6 @@ export default function WorkSection({ onSelectCaseStudy }: WorkSectionProps) {
           );
         })}
       </div>
-
-      {/* Other Works from Notion */}
-      <motion.div
-        className="other-works"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <h4 className="other-works__title">Other Works</h4>
-        <div className="other-works__grid">
-          <a
-            href="https://dribbble.com/aldoabieza"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="other-works__card"
-          >
-            <span>🏀 Dribbble</span>
-            <span className="other-works__arrow">↗</span>
-          </a>
-          <a
-            href="http://github.com/aldoabieza"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="other-works__card"
-          >
-            <span>😺 Github</span>
-            <span className="other-works__arrow">↗</span>
-          </a>
-        </div>
-      </motion.div>
     </section>
   );
 }

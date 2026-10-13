@@ -209,9 +209,7 @@ const InconsistencyCardItem: React.FC<InconsistencyCardItemProps> = ({
           type="button"
           role="tab"
           aria-selected={activeTab === 'foundation'}
-          className={`inconsistency-card__tab ${
-            activeTab === 'foundation' ? 'inconsistency-card__tab--active' : ''
-          }`}
+          className={`inconsistency-card__tab ${activeTab === 'foundation' ? 'inconsistency-card__tab--active' : ''}`}
           onClick={() => onTabChange('foundation')}
         >
           <span>Foundation</span>
@@ -220,9 +218,7 @@ const InconsistencyCardItem: React.FC<InconsistencyCardItemProps> = ({
           type="button"
           role="tab"
           aria-selected={activeTab === 'behaviour'}
-          className={`inconsistency-card__tab ${
-            activeTab === 'behaviour' ? 'inconsistency-card__tab--active' : ''
-          }`}
+          className={`inconsistency-card__tab ${activeTab === 'behaviour' ? 'inconsistency-card__tab--active' : ''}`}
           onClick={() => onTabChange('behaviour')}
         >
           <span>Behaviour</span>
@@ -231,20 +227,14 @@ const InconsistencyCardItem: React.FC<InconsistencyCardItemProps> = ({
 
       {/* 3. Content */}
       <div className="inconsistency-card__content">
-        {/* Tab 1: FOUNDATION (Unaltered, Clean Original Image) */}
-        {activeTab === 'foundation' && (
+        {activeTab === 'foundation' ? (
           <FoundationSpecView
             variant={currentVariant}
             cardId={card.id}
             onExpand={onExpand}
           />
-        )}
-
-        {/* Tab 2: BEHAVIOUR */}
-        {activeTab === 'behaviour' && (
-          <BehaviourVideoSection
-            card={card}
-          />
+        ) : (
+          <BehaviourVideoSection card={card} />
         )}
       </div>
     </div>

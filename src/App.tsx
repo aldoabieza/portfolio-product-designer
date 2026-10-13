@@ -16,7 +16,6 @@ import ExperimentSection from './components/ExperimentSection';
 import ExperienceSection from './components/ExperienceSection';
 import ContactSection from './components/ContactSection';
 import CaseStudyView from './components/CaseStudyView';
-import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 
 export default function App() {
@@ -106,8 +105,8 @@ export default function App() {
       {/* Subtle Grain Texture Overlay */}
       <div className="grain" aria-hidden="true" />
 
-      {/* Fixed Site-wide Grid Pattern - disabled on case study details page for improved accessibility & readability */}
-      {!currentCaseStudy && <div className="site-grid" aria-hidden="true" />}
+      {/* Fixed Grid Pattern - only visible on Intro, hidden on Work, Experiment, Experience, Contact */}
+      {activeView === 'intro' && !currentCaseStudy && <div className="site-grid" aria-hidden="true" />}
 
       {/* Desktop Cursor Spotlight Glow - disabled on case study details page for improved readability */}
       {!currentCaseStudy && <Spotlight />}
@@ -145,33 +144,15 @@ export default function App() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             >
-              {activeView === 'intro' && (
-                <>
-                  <HeroSection />
-                  <Footer standalone={true} />
-                </>
-              )}
+              {activeView === 'intro' && <HeroSection />}
 
               {activeView === 'work' && (
-                <>
-                  <WorkSection onSelectCaseStudy={(id) => handleNavigate(id)} />
-                  <Footer standalone={true} />
-                </>
+                <WorkSection onSelectCaseStudy={(id) => handleNavigate(id)} />
               )}
 
-              {activeView === 'experiment' && (
-                <>
-                  <ExperimentSection />
-                  <Footer standalone={true} />
-                </>
-              )}
+              {activeView === 'experiment' && <ExperimentSection />}
 
-              {activeView === 'experience' && (
-                <>
-                  <ExperienceSection />
-                  <Footer standalone={true} />
-                </>
-              )}
+              {activeView === 'experience' && <ExperienceSection />}
 
               {activeView === 'contact' && <ContactSection />}
             </motion.div>
