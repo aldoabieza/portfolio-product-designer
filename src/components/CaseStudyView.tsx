@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Info, ChevronsRight, X, ZoomIn, ZoomOut } from 'lucide-react';
+import { Info, ChevronsRight, X, ZoomIn, ZoomOut, Clock } from 'lucide-react';
 import { CaseStudy, CaseStudyImage } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
 import { InconsistencyCards } from './InconsistencyCards';
@@ -875,39 +875,27 @@ export default function CaseStudyView({
           </motion.div>
         )}
 
-        {/* Lesson Learned / Design Reflections */}
-        {caseStudy.lessonLearned && (
+        {/* Portfolio In Progress Card (Matching user screenshot) */}
+        {caseStudy.lessonLearned && caseStudy.lessonLearned.title === 'PORTFOLIO IN PROGRESS' && (
           <motion.div
-            className="case__lesson-card"
-            initial={{ opacity: 0, y: 28 }}
+            className="case__progress-card"
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="case__lesson-header">
-              <span className="case__lesson-badge">Takeaways & Reflection</span>
-              <h4 className="case__lesson-title">{caseStudy.lessonLearned.title || 'Design Reflections'}</h4>
+            <div className="case__progress-header">
+              <Clock className="case__progress-icon" size={18} strokeWidth={2} aria-hidden="true" />
+              <span className="case__progress-title">
+                {caseStudy.lessonLearned.title || 'PORTFOLIO IN PROGRESS'}
+              </span>
             </div>
-            {caseStudy.lessonLearned.paragraphs && caseStudy.lessonLearned.paragraphs.length > 0 ? (
-              <div className="case__lesson-paragraphs">
-                {caseStudy.lessonLearned.paragraphs.map((para, pIndex) => (
-                  <p key={pIndex} className="case__lesson-text">{para}</p>
-                ))}
-              </div>
-            ) : caseStudy.lessonLearned.text ? (
-              <div className="case__lesson-paragraphs">
-                {caseStudy.lessonLearned.text.split(/\n\n+/).map((para, pIndex) => (
-                  <p key={pIndex} className="case__lesson-text">{para}</p>
-                ))}
-              </div>
-            ) : null}
-            {caseStudy.lessonLearned.bullets && (
-              <ul className="case__lesson-list">
-                {caseStudy.lessonLearned.bullets.map((bullet, bIndex) => (
-                  <li key={bIndex}>{bullet}</li>
-                ))}
-              </ul>
-            )}
+            <div className="case__progress-body">
+              <p className="case__progress-text">
+                {caseStudy.lessonLearned.text ||
+                  "I'm continuously refining my portfolio to better showcase my design process, decisions, and impact."}
+              </p>
+            </div>
           </motion.div>
         )}
 

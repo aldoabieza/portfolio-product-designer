@@ -1,7 +1,16 @@
-import { useRef } from 'react';
-import { motion } from 'motion/react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { CaseStudy } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
+
+type WorkCategory = 'All' | 'Design System' | 'Website' | 'Mobile Apps';
+
+const WORK_CATEGORIES: WorkCategory[] = [
+  'All',
+  'Design System',
+  'Website',
+  'Mobile Apps'
+];
 
 interface WorkSectionProps {
   onSelectCaseStudy: (id: string) => void;
@@ -20,14 +29,15 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
   return (
     <motion.article
       ref={cardRef}
+      layout
       className="work-item"
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.08
+        duration: 0.45,
+        ease: [0.16, 1, 0.3, 1],
+        delay: index * 0.05
       }}
     >
       {/* Left Column: Clean Focused Portfolio Information */}
@@ -97,6 +107,15 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
               objectPosition: item.coverObjectPosition || 'center center'
             }}
           />
+
+          {(item.isOnProgress || item.id === 'doku') && (
+            <div className="work-item__overlay" aria-label="On Progress project">
+              <div className="work-item__progress-badge">
+                <span className="work-item__progress-dot" aria-hidden="true" />
+                <span className="work-item__progress-text">On Progress</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.article>
@@ -104,6 +123,15 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
 }
 
 export default function WorkSection({ onSelectCaseStudy }: WorkSectionProps) {
+  const [activeCategory, setActiveCategory] = useState<WorkCategory>('All');
+
+  const filteredKeys = CASE_STUDY_ORDER.filter((key) => {
+    const item: CaseStudy = CASE_STUDIES[key];
+    if (!item) return false;
+    if (activeCategory === 'All') return true;
+    return item.category === activeCategory;
+  });
+
   return (
     <section className="section work">
       <motion.div
@@ -113,21 +141,62 @@ export default function WorkSection({ onSelectCaseStudy }: WorkSectionProps) {
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
         <h4 className="section__title section__title--h4">Selected Work</h4>
+
+        {/* Tab Filter Component (Consistent with details of portfolio tabs) */}
+        <div
+          className="inconsistency-card__tabs work-filter-tabs"
+          role="tablist"
+          aria-label="Work Categories"
+        >
+          {WORK_CATEGORIES.map((category) => {
+            const isActive = activeCategory === category;
+            return (
+              <motion.button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`inconsistency-card__tab ${
+                  isActive ? 'inconsistency-card__tab--active' : ''
+                }`}
+                onClick={() => setActiveCategory(category)}
+                whileTap={!isActive ? { scale: 0.96 } : undefined}
+                transition={{ duration: 0.15 }}
+              >
+                <span className="inconsistency-card__tab-label">{category}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="work-category-tab-indicator"
+                    className="inconsistency-card__tab-indicator"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 450,
+                      damping: 32,
+                      mass: 0.75
+                    }}
+                  />
+                )}
+              </motion.button>
+            );
+          })}
+        </div>
       </motion.div>
 
       <div className="work-list">
-        {CASE_STUDY_ORDER.map((key, index) => {
-          const item: CaseStudy = CASE_STUDIES[key];
-          if (!item) return null;
-          return (
-            <WorkCard
-              key={item.id}
-              item={item}
-              index={index}
-              onSelectCaseStudy={onSelectCaseStudy}
-            />
-          );
-        })}
+        <AnimatePresence mode="popLayout">
+          {filteredKeys.map((key, index) => {
+            const item: CaseStudy = CASE_STUDIES[key];
+            if (!item) return null;
+            return (
+              <WorkCard
+                key={item.id}
+                item={item}
+                index={index}
+                onSelectCaseStudy={onSelectCaseStudy}
+              />
+            );
+          })}
+        </AnimatePresence>
       </div>
     </section>
   );

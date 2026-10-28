@@ -139,6 +139,7 @@ export interface CaseStudy {
   tools?: string[];
   icon?: string;
   isComingSoon?: boolean;
+  isOnProgress?: boolean;
   summary: string;
   coverImage: string;
   coverObjectPosition?: string;

@@ -24,34 +24,34 @@ export interface PlaygroundItem {
 export const EXPERIMENTS: ExperimentItem[] = [
   {
     id: '1',
-    title: 'Storefront Website Builder',
-    category: 'E-Commerce Platform',
+    title: 'Gojo Satoru (五条悟) — Character Illustration',
+    category: 'Vector Illustration',
     source: 'Dribbble',
-    imageUrl: '/assets/projects/storefront/Cover_Portfolio_Storefront_Fix.webp',
+    imageUrl: '/assets/aistudio/illustration_aldo_ceba0920.webp',
     dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
   {
     id: '2',
-    title: 'Store Settings Conversion Optimization',
-    category: 'Product Settings',
+    title: 'NFT Marketplace Mobile App Concept',
+    category: 'Mobile UI & 3D',
     source: 'Dribbble',
-    imageUrl: '/assets/projects/settings/Cover_Portfolio_Settings.webp',
+    imageUrl: '/assets/aistudio/original-d091b048d60984e8e988dcd3af652d90_ac246c11.webp',
     dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
   {
     id: '3',
-    title: 'Coordinator Promote Mobile App',
-    category: 'Logistics Mobile',
+    title: 'Custom Iconography System Exploration',
+    category: 'Icon Design',
     source: 'Dribbble',
-    imageUrl: '/assets/projects/promote-apps/Cover_Portfolio_Coordinator_Fix.webp',
+    imageUrl: '/assets/aistudio/eksplorasicon2_d2a06aae.png',
     dribbbleUrl: 'https://dribbble.com/aldoabieza'
   },
   {
     id: '4',
-    title: 'Moving House Services App Concept',
-    category: 'On-Demand Delivery',
+    title: 'Health & Task Management Ecosystem',
+    category: 'Product Design',
     source: 'Dribbble',
-    imageUrl: '/assets/projects/moving-house-cover.webp',
+    imageUrl: '/assets/aistudio/original-c440fccf8a1b0f9ddad2dbb3986573bf_65cf09ca.webp',
     dribbbleUrl: 'https://dribbble.com/aldoabieza'
   }
 ];
@@ -75,11 +75,13 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     category: 'Design System',
     client: 'DOKU',
     role: 'Design System Lead',
+    platform: 'Design System',
     year: '2024 - Present',
-    timeline: 'Ongoing',
+    timeline: 'Q1 - Q3',
     tools: ['Figma', 'Token Studio', 'Storybook', 'Zeroheight'],
     summary:
       'Standardizing DOKU’s multi-product ecosystem through an enterprise-grade token architecture, accessibility-first component standards, and cross-functional governance.',
+    isOnProgress: true,
     coverImage: '/assets/projects/doku/Cover_DS.png',
     stats: [
       { value: '38+', label: 'Digital Products' },
@@ -99,12 +101,6 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       '/assets/projects/doku/Missing Component Update.webp',
       '/assets/projects/doku/doku-product-inconsistency-breakdown.webp'
     ],
-    testimonial: {
-      quote:
-        'The design system overhaul transformed our product engineering velocity. What used to take two sprints now takes days, and our consistency across checkout flows has reached an all-time high.',
-      author: 'Head of Engineering',
-      role: 'DOKU Infrastructure'
-    },
     metaDetails: {
       platform: 'Web, iOS, Android, Merchant Portal',
       responsibilities: [
@@ -140,7 +136,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           }
         ],
         afterImageParagraphs: [
-          'During the workshop, I get the more insight from the participant about design system. Here are the paint points that I get'
+          'During the workshop, I gained many insights from other designers on how to build a new design system strategy, and I identified the current issues affecting our existing design system workflow.'
         ]
       },
       {
@@ -149,7 +145,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         title: 'Pain Points',
         subSections: [
           {
-            title: '1. Missing Component Update Flow',
+            title: 'Missing Component Update Flow',
             isPrimaryTitle: true,
             paragraphs: [
               'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system.'
@@ -167,7 +163,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
             ]
           },
           {
-            title: '2. Inconsistency design across products',
+            title: 'Inconsistency design across products',
             isPrimaryTitle: true,
             paragraphs: [
               'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',
@@ -179,35 +175,22 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       },
       {
         number: '04',
-        badge: 'Objectives',
-        title: 'Our Goals',
-        paragraphs: [
-          'Mencari tahu lebih jelas spesifik keinginan, serta tujuan kami & stakeholder lainnya untuk design system di DOKU'
-        ],
-        quotes: [
-          'Source of truth design system: Mempunyai source of truth design system yang dapat digunakan oleh temen-temen designer dan ter-update',
-          'Creating a Sustainable Design System: Menciptakan design system yang dapat di maintain dengan mudah, scalable, dan predictable oleh user kami.',
-          'Increase faster development: Mempercepat waktu development, dan konsisten antar produk. Sehingga kami designers fokus pada strategi dan hal-hal paling penting untuk mengembangkan produk yang membantu bisnis dan pengguna.'
-        ]
-      },
-      {
-        number: '05',
-        badge: 'Execution',
-        title: 'Time to Solve the Problems',
+        badge: 'Strategy',
+        title: 'Defining the Design System Strategy',
         subSections: [
           {
             title: 'Create dedicated teams and new flow',
             isPrimaryTitle: true,
             paragraphs: [
-              'Pembentukan tim ini terdiri dari beberapa role, dan masing-masing responsibility untuk menghandle design system. Dan membuat workflow baru agar design kami selalu up to date, mudah di maintaince, dan memudahkan engineer untuk reusable design system kami.'
+              'We defined dedicated responsibilities and introduced a structured workflow to keep the Design System up to date, simplify maintenance, and improve component reusability across design and engineering teams.'
             ]
           }
         ]
       }
     ],
     lessonLearned: {
-      title: 'Design System Governance & Scale',
-      text: 'A design system is 20% UI design and 80% communication, change management, and alignment. Establishing trust with engineering and providing friction-free onboarding was the key factor in achieving organization-wide adoption.'
+      title: 'PORTFOLIO IN PROGRESS',
+      text: "I'm continuously refining my portfolio to better showcase my design process, decisions, and impact."
     }
   },
 
@@ -1269,15 +1252,17 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         paragraphs: [
           "According to the data we got from our Data Engineer, within 6 months our delivery transactions increased by an average of 5.37% for all types of delivery vehicles. Apart from that, with this application, the Account Executive's job can now be easier in promoting our application to achieve predetermined targets."
         ]
+      },
+      {
+        number: '08',
+        badge: 'Reflection',
+        title: 'Lesson Learned',
+        paragraphs: [
+          'As a Jr. Designer, I am very happy to be able to learn many things such as collaborating with various divisions and solving problems by doing research, and also happy to be able to have an impact on the company.',
+          'Apart from that, the most valuable experience for me was designing a product that had a red brand color, because that color is identical to the error state color.'
+        ]
       }
-    ],
-    lessonLearned: {
-      title: 'Lesson Learned',
-      paragraphs: [
-        'As a Jr. Designer, I am very happy to be able to learn many things such as collaborating with various divisions and solving problems by doing research, and also happy to be able to have an impact on the company.',
-        'Apart from that, the most valuable experience for me was designing a product that had a red brand color, because that color is identical to the error state color.'
-      ]
-    }
+    ]
   }
 };
 

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ChevronDown } from 'lucide-react';
 import { CaseVideoPlayer } from './CaseVideoPlayer';
 
 interface InconsistencyCardsProps {
@@ -6,310 +8,276 @@ interface InconsistencyCardsProps {
 }
 
 type TabType = 'foundation' | 'behaviour';
+type DesignerId = 'card-1' | 'card-2';
 
-interface VariantImage {
-  id: string;
-  name: string;
-  badge: string;
-  imageSrc: string;
+interface DesignerData {
+  id: DesignerId;
+  label: string;
+  description: string;
   caption: string;
+  imageSrc: string;
+  videoSrc: string;
 }
 
-interface CardData {
-  id: string;
-  title: string;
-  subtitle: string;
-  variants: VariantImage[];
-  videoSrc?: string;
-  foundationSpecs: {
-    typography: { style: string; size: string; weight: string; color: string };
-    icon?: { size: string; variant: string; color: string };
-    margins: { label: string; value: string }[];
-    padding: string;
-    description: string;
-  };
-  behaviourNotes: {
-    summary: string;
-    steps: string[];
-    frictionPoint: string;
-  };
-}
-
-const CARDS_DATA: CardData[] = [
+const DESIGNERS: DesignerData[] = [
   {
     id: 'card-1',
-    title: 'Detail Page: Without Return Nav',
-    subtitle: 'Checkout Page Configuration',
-    variants: [
-      {
-        id: 'v1',
-        name: 'Checkout Page Configuration',
-        badge: 'Without Return Nav',
-        imageSrc: '/assets/projects/doku/Screenshot 2026-09-22 at 10.35.13.png',
-        caption: 'Detail Page: Without Return Navigation (Checkout Page Configuration)'
-      }
-    ],
-    videoSrc: '/assets/projects/doku/doku-component-1-without-return.mp4',
-    foundationSpecs: {
-      typography: {
-        style: 'H4',
-        size: '24px',
-        weight: '900 (Black)',
-        color: 'Neutral-80 (#1F2937)'
-      },
-      icon: {
-        size: '-',
-        variant: 'None (Missing Return Navigation)',
-        color: '-'
-      },
-      margins: [
-        { label: 'Breadcrumb to Title', value: '16px' },
-        { label: 'Title to Subtitle & Tabs', value: '16px' },
-        { label: 'Tabs to Content Card', value: '16px' }
-      ],
-      padding: '16px Container Padding',
-      description:
-        'Halaman tidak memiliki tombol atau aksi navigasi kembali (return nav) di area header. Pengguna hanya dapat kembali ke menu utama dengan mengklik breadcrumb teks kecil "Settings" atau tombol browser back.'
-    },
-    behaviourNotes: {
-      summary:
-        'Alur navigasi masuk dari menu Settings ke Checkout Appearance. Pada halaman Checkout Page Configuration, pengguna menyelesaikan konfigurasi pembayaran, lalu kebingungan mencari tombol kembali di header (tidak ada tombol return), sehingga terpaksa mengklik breadcrumb teks kecil.',
-      steps: [
-        'Pengguna membuka menu Settings pada sidebar',
-        'Memilih "Checkout Appearance" pada section Accept Payments',
-        'Masuk ke halaman Checkout Page Configuration',
-        'Mencari tombol aksi kembali pada area header (tidak ditemukan)',
-        'Terpaksa mengklik breadcrumb teks kecil "Settings" untuk kembali'
-      ],
-      frictionPoint:
-        'Ketiadaan tombol kembali eksplisit meningkatkan beban kognitif dan memperlambat alur kerja merchant saat berpindah antar menu pengaturan.'
-    }
+    label: 'Designer 1',
+    description:
+      'First designer have approach to designing foundation of the child menu, and design the behaviour for user navigation return to parent menu using the breadcrumb.',
+    caption: 'Detail Page: Without Return Navigation (Checkout Page Configuration)',
+    imageSrc: '/assets/projects/doku/screenshot-1-checkout.png',
+    videoSrc: '/assets/projects/doku/doku-component-1-without-return.mp4'
   },
   {
     id: 'card-2',
-    title: 'Detail Page: With Return Nav',
-    subtitle: 'Payment Link Settings & Promo Form',
-    variants: [
-      {
-        id: 'v1',
-        name: 'Detail Page: With Return Navigation',
-        badge: 'With Return Nav',
-        imageSrc: '/assets/projects/doku/Screenshot 2026-09-22 at 10.43.25.png',
-        caption: 'Detail Page: With Return Navigation (Screenshot 2026-09-22 at 10.43.25)'
-      }
-    ],
-    videoSrc: '/assets/projects/doku/doku-component-2-with-return.mp4',
-    foundationSpecs: {
-      typography: {
-        style: 'H5',
-        size: '20px',
-        weight: '700 (Bold)',
-        color: 'Neutral-80 (#1F2937)'
-      },
-      icon: {
-        size: '18px (Close) / 16px (Arrow)',
-        variant: 'Times (✕ Close) vs Arrow Left (←)',
-        color: 'Neutral-80'
-      },
-      margins: [
-        { label: 'Top Margin', value: '4px' },
-        { label: 'Title to Tabs / Stepper', value: '16px' },
-        { label: 'Tab to Banner / Content', value: '16px' }
-      ],
-      padding: '16px Container Padding',
-      description:
-        'Halaman memiliki tombol kembali eksplisit di area header, namun variannya tidak konsisten antar produk: satu halaman menggunakan ikon silang "✕ Settings" (modal-style close), sementara halaman lain menggunakan ikon panah "← Back to Promo List".'
-    },
-    behaviourNotes: {
-      summary:
-        'Dari halaman Payment Link, pengguna membuka tombol Settings (ikon gerigi) di pojok kanan atas tabel. Di halaman konfigurasi Bot, pengguna meninjau aktivasi WhatsApp Bot dan daftar nomor telepon, lalu menutup halaman dengan mengklik tombol "✕ Settings" untuk kembali ke tabel utama.',
-      steps: [
-        'Pengguna berada di halaman Payment Link tabel',
-        'Mengklik tombol Settings (ikon gerigi) di atas tabel',
-        'Masuk ke halaman konfigurasi Payment Link Settings (tab Bot)',
-        'Meninjau integrasi WhatsApp Bot dan daftar nomor telepon',
-        'Mengklik tombol "✕ Settings" di pojok kiri atas untuk kembali ke tabel'
-      ],
-      frictionPoint:
-        'Pola return navigation terfragmentasi: beberapa halaman menggunakan ikon Close silang, sementara halaman lain menggunakan panah Arrow Back.'
-    }
+    label: 'Designer 2',
+    description:
+      'Second designer have different approach to designing the behaviour for user navigation return by close button',
+    caption: 'Detail Page: With Return Navigation (Payment Link Settings)',
+    imageSrc: '/assets/projects/doku/screenshot-2-payment-link.png',
+    videoSrc: '/assets/projects/doku/doku-component-2-with-return.mp4'
   }
 ];
 
 export function InconsistencyCards({ onExpand }: InconsistencyCardsProps) {
-  const [cardTabs, setCardTabs] = useState<Record<string, TabType>>({
-    'card-1': 'foundation',
-    'card-2': 'foundation'
-  });
+  // Which parent menu accordion is currently open (Designer 1 is open by default)
+  const [openDesigner, setOpenDesigner] = useState<DesignerId | null>('card-1');
 
-  const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({
-    'card-1': 'v1',
-    'card-2': 'v1'
-  });
+  // Which designer and child menu is currently selected / active
+  const [selectedDesigner, setSelectedDesigner] = useState<DesignerId>('card-1');
+  const [selectedTab, setSelectedTab] = useState<TabType>('foundation');
 
-  const handleTabChange = (cardId: string, tab: TabType) => {
-    setCardTabs((prev) => ({ ...prev, [cardId]: tab }));
+  const currentDesigner =
+    DESIGNERS.find((d) => d.id === selectedDesigner) || DESIGNERS[0];
+
+  const storageKey = `custom_foundation_image_${currentDesigner.id}`;
+  const customImage = (() => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return null;
+    }
+  })();
+
+  const activeImageSrc = customImage || currentDesigner.imageSrc;
+
+  const handleSelectSubTab = (designerId: DesignerId, tab: TabType) => {
+    setSelectedDesigner(designerId);
+    setSelectedTab(tab);
   };
 
-  const handleVariantChange = (cardId: string, variantId: string) => {
-    setSelectedVariants((prev) => ({ ...prev, [cardId]: variantId }));
+  const handleToggleDesigner = (designerId: DesignerId) => {
+    if (openDesigner === designerId) {
+      setOpenDesigner(null);
+    } else {
+      // 1. When user clicks Designer 2, Designer 1 collapses and Designer 2 expands
+      // 2. The right panel content continues showing the currently active view (e.g. Designer 1 Foundation)
+      //    until the user explicitly selects a child menu in Designer 2
+      setOpenDesigner(designerId);
+    }
   };
 
   return (
-    <div className="inconsistency-section">
-      {CARDS_DATA.map((card) => {
-        const activeVariantId = selectedVariants[card.id] || card.variants[0].id;
-        const currentVariant =
-          card.variants.find((v) => v.id === activeVariantId) || card.variants[0];
+    <div className="inconsistency-merged">
+      {/* LEFT: Accordion Parent & Sub Menu */}
+      <div className="inconsistency-menu-card" role="tablist" aria-label="Design Inconsistency Switcher">
+        {DESIGNERS.map((designer, index) => {
+          const isOpen = openDesigner === designer.id;
+          const isSelected = selectedDesigner === designer.id;
 
-        return (
-          <InconsistencyCardItem
-            key={card.id}
-            card={card}
-            currentVariant={currentVariant}
-            activeTab={cardTabs[card.id] || 'foundation'}
-            onTabChange={(tab) => handleTabChange(card.id, tab)}
-            onVariantChange={(variantId) => handleVariantChange(card.id, variantId)}
-            onExpand={onExpand}
-          />
-        );
-      })}
+          return (
+            <React.Fragment key={designer.id}>
+              {index > 0 && <div className="inconsistency-menu-divider" />}
+              <div className="inconsistency-menu-group">
+                {/* Parent Menu Header */}
+                <button
+                  type="button"
+                  onClick={() => handleToggleDesigner(designer.id)}
+                  className={`inconsistency-menu-header ${isOpen ? 'inconsistency-menu-header--active' : ''}`}
+                  aria-expanded={isOpen}
+                >
+                  <span className="inconsistency-menu-title">{designer.label}</span>
+                  <ChevronDown
+                    className={`inconsistency-menu-chevron ${isOpen ? 'inconsistency-menu-chevron--open' : ''}`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {/* Sub-menu (Foundation / Behaviour) */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="inconsistency-menu-subitems">
+                        {/* Foundation Sub-tab */}
+                        <button
+                          type="button"
+                          role="tab"
+                          aria-selected={isOpen && isSelected && selectedTab === 'foundation'}
+                          onClick={() => handleSelectSubTab(designer.id, 'foundation')}
+                          className={`inconsistency-menu-subitem ${
+                            isOpen && isSelected && selectedTab === 'foundation'
+                              ? 'inconsistency-menu-subitem--active'
+                              : ''
+                          }`}
+                        >
+                          {isOpen && isSelected && selectedTab === 'foundation' && (
+                            <span className="inconsistency-menu-indicator" aria-hidden="true" />
+                          )}
+                          <span className="inconsistency-menu-subitem-label">Foundation</span>
+                        </button>
+
+                        {/* Behaviour Sub-tab */}
+                        <button
+                          type="button"
+                          role="tab"
+                          aria-selected={isOpen && isSelected && selectedTab === 'behaviour'}
+                          onClick={() => handleSelectSubTab(designer.id, 'behaviour')}
+                          className={`inconsistency-menu-subitem ${
+                            isOpen && isSelected && selectedTab === 'behaviour'
+                              ? 'inconsistency-menu-subitem--active'
+                              : ''
+                          }`}
+                        >
+                          {isOpen && isSelected && selectedTab === 'behaviour' && (
+                            <span className="inconsistency-menu-indicator" aria-hidden="true" />
+                          )}
+                          <span className="inconsistency-menu-subitem-label">Behaviour</span>
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+
+      {/* RIGHT: Description & Visual Content */}
+      <div className="inconsistency-merged__content">
+        {/* Description text on top */}
+        <p className="inconsistency-merged__desc">
+          {currentDesigner.description}
+        </p>
+
+        {/* Visual Frame */}
+        <div className="inconsistency-merged__visual">
+          <AnimatePresence mode="wait">
+            {selectedTab === 'foundation' ? (
+              <motion.div
+                key={`${selectedDesigner}-foundation`}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <figure
+                  className="case__image-figure !m-0 !p-0 cursor-zoom-in"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Expand visual: ${currentDesigner.caption}`}
+                  onClick={() => onExpand?.(activeImageSrc, currentDesigner.caption)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onExpand?.(activeImageSrc, currentDesigner.caption);
+                    }
+                  }}
+                >
+                  <div className="case__image-container">
+                    <InconsistencyImage
+                      src={activeImageSrc}
+                      alt={currentDesigner.caption}
+                    />
+                  </div>
+                </figure>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`${selectedDesigner}-behaviour`}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <BehaviourVideoSection designer={currentDesigner} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }
 
 // ----------------------------------------------------------------------------------
-// INDIVIDUAL CARD ITEM
+// INCONSISTENCY IMAGE WITH FALLBACK
 // ----------------------------------------------------------------------------------
-interface InconsistencyCardItemProps {
-  card: CardData;
-  currentVariant: VariantImage;
-  activeTab: TabType;
-  onTabChange: (tab: TabType) => void;
-  onVariantChange: (variantId: string) => void;
-  onExpand?: (imageUrl: string, caption?: string) => void;
-}
-
-const InconsistencyCardItem: React.FC<InconsistencyCardItemProps> = ({
-  card,
-  currentVariant,
-  activeTab,
-  onTabChange,
-  onVariantChange,
-  onExpand
-}) => {
-  return (
-    <div className="inconsistency-group">
-      {/* 1. Title */}
-      <h5 className="inconsistency-group__title">{card.title}</h5>
-
-      {/* 2. Tab */}
-      <div className="inconsistency-card__tabs" role="tablist" aria-label={`${card.title} Views`}>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeTab === 'foundation'}
-          className={`inconsistency-card__tab ${activeTab === 'foundation' ? 'inconsistency-card__tab--active' : ''}`}
-          onClick={() => onTabChange('foundation')}
-        >
-          <span>Foundation</span>
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeTab === 'behaviour'}
-          className={`inconsistency-card__tab ${activeTab === 'behaviour' ? 'inconsistency-card__tab--active' : ''}`}
-          onClick={() => onTabChange('behaviour')}
-        >
-          <span>Behaviour</span>
-        </button>
-      </div>
-
-      {/* 3. Content */}
-      <div className="inconsistency-card__content">
-        {activeTab === 'foundation' ? (
-          <FoundationSpecView
-            variant={currentVariant}
-            cardId={card.id}
-            onExpand={onExpand}
-          />
-        ) : (
-          <BehaviourVideoSection card={card} />
-        )}
-      </div>
-    </div>
-  );
-};
-
-// ----------------------------------------------------------------------------------
-// FOUNDATION SPEC VIEW (Original Uploaded Image Display)
-// ----------------------------------------------------------------------------------
-function FoundationSpecView({
-  variant,
-  onExpand
+function InconsistencyImage({
+  src,
+  alt
 }: {
-  variant: VariantImage;
-  cardId?: string;
-  onExpand?: (imageUrl: string, caption?: string) => void;
+  src: string;
+  alt: string;
 }) {
-  const [customSrc] = useState<string>(() => {
-    return localStorage.getItem(`custom_asset_${variant.imageSrc}`) || '';
-  });
+  const [currentSrc, setCurrentSrc] = useState(src);
 
-  const displaySrc = customSrc || variant.imageSrc;
+  useEffect(() => {
+    setCurrentSrc(src);
+  }, [src]);
+
+  const handleError = () => {
+    if (src.includes('checkout') || src.includes('10.35.13')) {
+      setCurrentSrc('/assets/projects/doku/Screenshot%202026-09-22%20at%2010.35.13.png');
+    } else if (src.includes('payment-link') || src.includes('10.43.25')) {
+      setCurrentSrc('/assets/projects/doku/Screenshot%202026-09-22%20at%2010.43.25.png');
+    } else {
+      setCurrentSrc(encodeURI(src));
+    }
+  };
 
   return (
-    <figure
-      className="case__image-figure"
-      role="button"
-      tabIndex={0}
-      aria-label={`Expand visual: ${variant.caption}`}
-      onClick={() => onExpand?.(displaySrc, variant.caption)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onExpand?.(displaySrc, variant.caption);
-        }
-      }}
-    >
-      <div className="case__image-container">
-        <img
-          src={displaySrc}
-          alt={variant.caption}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-    </figure>
+    <img
+      src={currentSrc}
+      alt={alt}
+      loading="lazy"
+      className="case__image"
+      onError={handleError}
+    />
   );
 }
 
 // ----------------------------------------------------------------------------------
-// BEHAVIOUR VIDEO SECTION (Consistent with Portfolio Settings CaseVideoPlayer)
+// BEHAVIOUR VIDEO SECTION
 // ----------------------------------------------------------------------------------
-function BehaviourVideoSection({
-  card
-}: {
-  card: CardData;
-}) {
+function BehaviourVideoSection({ designer }: { designer: DesignerData }) {
   const videoData = {
-    title: card.id === 'card-1' 
-      ? 'Checkout Page Configuration (Detail Page)' 
-      : 'Payment Link Settings Modal (Detail Page)',
-    label: card.id === 'card-1' ? 'Without Return Nav' : 'With Return Nav',
-    url: card.videoSrc || '',
-    poster: card.id === 'card-1' 
-      ? '/assets/projects/doku/doku-component-1-poster.webp' 
-      : '/assets/projects/doku/doku-component-2-poster.webp',
-    caption: card.id === 'card-1'
-      ? 'Walkthrough perilaku interaksi: Halaman konfigurasi checkout tidak menyediakan kontrol navigasi kembali di header sehingga pengguna terpaksa mencari dan mengklik breadcrumb "Settings".'
-      : 'Walkthrough perilaku interaksi: Modal konfigurasi Payment Link menyediakan kontrol navigasi kembali eksplisit berupa tombol silang (X) di pojok header untuk menutup dan kembali ke daftar.'
+    title:
+      designer.id === 'card-1'
+        ? 'Checkout Page Configuration (Detail Page)'
+        : 'Payment Link Settings Modal (Detail Page)',
+    label: designer.id === 'card-1' ? 'Without Return Nav' : 'With Return Nav',
+    url: designer.videoSrc,
+    poster:
+      designer.id === 'card-1'
+        ? '/assets/projects/doku/doku-component-1-poster.webp'
+        : '/assets/projects/doku/doku-component-2-poster.webp',
+    caption:
+      designer.id === 'card-1'
+        ? 'Walkthrough perilaku interaksi: Halaman konfigurasi checkout tidak menyediakan kontrol navigasi kembali di header sehingga pengguna terpaksa mencari dan mengklik breadcrumb "Settings".'
+        : 'Walkthrough perilaku interaksi: Modal konfigurasi Payment Link menyediakan kontrol navigasi kembali eksplisit berupa tombol silang (X) di pojok header untuk menutup dan kembali ke daftar.'
   };
 
   return (
-    <div className="flex flex-col w-full pt-1">
-      {/* Consistent CaseVideoPlayer Component (same as Portfolio Settings) */}
-      <div className="case__section-video-wrapper !mt-0">
+    <div className="flex flex-col w-full">
+      <div className="case__section-video-wrapper !mt-0 !border-0">
         <CaseVideoPlayer video={videoData} hideHeader />
       </div>
     </div>
