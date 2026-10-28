@@ -893,13 +893,13 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
                 borderless: true
               },
               {
-                url: '/assets/projects/settings/layout_exploration_menu.webp',
+                url: '/assets/aistudio/layout_exploration_menu__1__2aad4274.png',
                 caption: 'Settings menu grid and high-priority grouping',
                 aspect: 'wide',
                 borderless: true
               },
               {
-                url: '/assets/projects/settings/layout_exploration_sub_menu_(3).webp',
+                url: '/assets/aistudio/layout_exploration_sub_menu__3___1__1418ed1c.png',
                 caption: 'Sub-menu navigation tabs minimizing vertical scroll',
                 aspect: 'wide',
                 borderless: true

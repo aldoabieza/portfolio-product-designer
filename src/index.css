@@ -213,21 +213,55 @@ img { max-width: 100%; display: block; }
 .sidebar__back {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   width: fit-content;
   font-size: 14px;
   font-weight: 500;
   color: var(--ink-soft);
-  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
   background: none;
   border: none;
   padding: 4px 0;
   cursor: pointer;
   font-family: inherit;
+  text-decoration: none !important;
+  transition: color 0.2s var(--ease);
 }
-.sidebar__back:hover {
-  color: var(--ink);
-  transform: translateX(-3px);
+
+.sidebar__back-icon {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none !important;
+  line-height: 1;
+  transition: color 0.2s var(--ease);
+}
+
+.sidebar__back-text {
+  display: inline;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+}
+
+.sidebar__back:hover,
+.sidebar__back.hero__company-link:hover {
+  color: var(--accent);
+  text-decoration: none !important;
+  transform: none !important;
+}
+
+.sidebar__back:hover .sidebar__back-text,
+.sidebar__back.hero__company-link:hover .sidebar__back-text {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.sidebar__back:hover .sidebar__back-icon,
+.sidebar__back.hero__company-link:hover .sidebar__back-icon {
+  color: var(--accent);
+  text-decoration: none !important;
 }
 
 .sidebar__case-meta {
@@ -530,8 +564,8 @@ img { max-width: 100%; display: block; }
   text-wrap: balance;
 }
 .hero__title--em {
-  font-weight: 600;
-  color: var(--accent);
+  font-weight: 700;
+  color: var(--ink);
 }
 
 .hero__title-intro {

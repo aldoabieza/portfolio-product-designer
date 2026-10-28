@@ -184,9 +184,10 @@ export default function Sidebar({
             <div className="sidebar__case-nav">
               <button
                 onClick={() => onNavigate('work')}
-                className="sidebar__back"
+                className="sidebar__back hero__company-link"
               >
-                ← Back to work
+                <span className="sidebar__back-icon" aria-hidden="true">←</span>
+                <span className="sidebar__back-text">Back</span>
               </button>
             </div>
           )}
@@ -237,9 +238,10 @@ export default function Sidebar({
                         onNavigate('work');
                         setIsMenuOpen(false);
                       }}
-                      className="sidebar__back"
+                      className="sidebar__back hero__company-link"
                     >
-                      ← Back to work
+                      <span className="sidebar__back-icon" aria-hidden="true">←</span>
+                      <span className="sidebar__back-text">Back</span>
                     </button>
                   </div>
                 )}
