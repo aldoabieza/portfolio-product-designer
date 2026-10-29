@@ -4077,8 +4077,16 @@ h5.case__block-item-title--primary,
   display: flex;
   flex-direction: column;
   gap: 36px;
-  margin-top: 16px;
+  margin-top: 12px;
   width: 100%;
+}
+
+.case__subsection:has(> .case__sub-blocks) {
+  gap: 0;
+}
+
+.case__subsection-title + .case__sub-blocks {
+  margin-top: 12px !important;
 }
 
 .case__sub-block {

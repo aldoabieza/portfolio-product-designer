@@ -141,7 +141,6 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         subSections: [
           {
             title: 'Key Insight',
-            isPrimaryTitle: true,
             paragraphs: [
               'We agreed to prioritize improving the internal Design System workflow to strengthen communication and collaboration among designers, making the system easier to maintain and scale.'
             ]
@@ -151,7 +150,6 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         number: '03',
         badge: 'Discovery',
-        title: 'Pain Points',
         subSections: [
           {
             title: 'Missing Component Update Flow',
@@ -544,54 +542,55 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           },
           {
             title: 'Ideas 3: Create Store Design Editor',
-            isPrimaryTitle: true
-          },
-          {
-            title: 'Navbar Editor',
-            paragraphs: [
-              'Streamlined top navigation with intuitive breadcrumbs, responsive viewport toggle, store page selector, and instant preview actions.'
-            ],
-            images: [
+            isPrimaryTitle: true,
+            blocks: [
               {
-                url: '/assets/projects/storefront/Explain_About_Navbar_Editor.webp',
-                caption: 'Navbar structure and controls in the Store Design Editor',
-                aspect: 'wide',
-                borderless: true
-              }
-            ]
-          },
-          {
-            title: 'Sidebar Menu',
-            paragraphs: [
-              'Combined sidebar menus, and added a header navigation. So that users can easily move to the menu they want to go for change the store design.'
-            ],
-            images: [
-              {
-                url: '/assets/projects/storefront/Sidebar_Only.webp',
-                caption: 'Consolidated sidebar menu with intuitive header navigation tabs',
-                aspect: 'wide',
-                borderless: true
-              }
-            ]
-          },
-          {
-            title: 'The Result',
-            paragraphs: [
-              'Here are the results of the editor I created, where users can design their stores with a new experience using the live editor.'
-            ],
-            imageLayout: 'vertical',
-            images: [
-              {
-                url: '/assets/projects/storefront/Editor_Display_Menus.webp',
-                caption: 'Display Menus — Real-time component controls and styling',
-                aspect: 'wide',
-                borderless: true
+                title: 'Navbar Editor',
+                paragraphs: [
+                  'Streamlined top navigation with intuitive breadcrumbs, responsive viewport toggle, store page selector, and instant preview actions.'
+                ],
+                images: [
+                  {
+                    url: '/assets/projects/storefront/Explain_About_Navbar_Editor.webp',
+                    caption: 'Navbar structure and controls in the Store Design Editor',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
               },
               {
-                url: '/assets/projects/storefront/Editor_HomePage_Config.webp',
-                caption: 'Home Page Config — Direct layout and section customization with live preview',
-                aspect: 'wide',
-                borderless: true
+                title: 'Sidebar Menu',
+                paragraphs: [
+                  'Combined sidebar menus, and added a header navigation. So that users can easily move to the menu they want to go for change the store design.'
+                ],
+                images: [
+                  {
+                    url: '/assets/projects/storefront/Sidebar_Only.webp',
+                    caption: 'Consolidated sidebar menu with intuitive header navigation tabs',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
+              },
+              {
+                title: 'The Result',
+                paragraphs: [
+                  'Here are the results of the editor I created, where users can design their stores with a new experience using the live editor.'
+                ],
+                images: [
+                  {
+                    url: '/assets/projects/storefront/Editor_Display_Menus.webp',
+                    caption: 'Display Menus — Real-time component controls and styling',
+                    aspect: 'wide',
+                    borderless: true
+                  },
+                  {
+                    url: '/assets/projects/storefront/Editor_HomePage_Config.webp',
+                    caption: 'Home Page Config — Direct layout and section customization with live preview',
+                    aspect: 'wide',
+                    borderless: true
+                  }
+                ]
               }
             ]
           },
