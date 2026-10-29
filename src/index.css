@@ -2198,7 +2198,7 @@ h5.case__block-item-title--primary,
   flex-direction: column;
   gap: 14px;
   padding: 24px 20px;
-  background: var(--surface);
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 14px;
   height: 100%;

@@ -136,7 +136,16 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           }
         ],
         afterImageParagraphs: [
-          'During the workshop, I gained many insights from other designers on how to build a new design system strategy, and I identified the current issues affecting our existing design system workflow.'
+          'Through discussions with participants, I gained insights into the challenges of maintaining the Design System, particularly around internal collaboration and component management.'
+        ],
+        subSections: [
+          {
+            title: 'Key Insight',
+            isPrimaryTitle: true,
+            paragraphs: [
+              'We agreed to prioritize improving the internal Design System workflow to strengthen communication and collaboration among designers, making the system easier to maintain and scale.'
+            ]
+          }
         ]
       },
       {
@@ -698,7 +707,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
       '/assets/projects/settings/layout_exploration_menu.webp',
       '/assets/projects/settings/layout_exploration_sub_menu_(3).webp',
       '/assets/projects/settings/result_eploration_menu_settings.webp',
-      '/assets/projects/settings/Interaction_Solution_(1).webp'
+      '/assets/aistudio/Interaction_Solution__1__b92a814a.png'
     ],
     metaDetails: {
       platform: 'Web Dashboard',
@@ -949,7 +958,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
             ],
             images: [
               {
-                url: '/assets/projects/settings/Interaction_Solution_(1).webp',
+                url: '/assets/aistudio/Interaction_Solution__1__b92a814a.png',
                 caption: 'Contextual guidance labels and helper tips implemented directly beside controls',
                 aspect: 'wide',
                 borderless: true
@@ -976,6 +985,15 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         title: 'User Testing',
         paragraphs: [
           'Because my project load was full, this design was immediately sliced and deployed to get feedback at a later date. The impact of the design I made, the use of the main setting (Store Online) increased by 5.72% according to the data I got from Data Science.'
+        ]
+      },
+      {
+        number: '10',
+        badge: 'Reflection',
+        title: 'Lesson Learned',
+        paragraphs: [
+          'This project challenged for me, to carry out data analysis and existing designs to find out more about the problems that occur to sellers.',
+          'Apart from that, I can implement what I learned from design principles to make the settings display more concise, simple, and easy to use for sellers. And provide impact for sellersand businesses.'
         ]
       }
     ],
