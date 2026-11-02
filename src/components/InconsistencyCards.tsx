@@ -24,7 +24,7 @@ const DESIGNERS: DesignerData[] = [
     id: 'card-1',
     label: 'Designer 1',
     description:
-      'First designer have approach to designing foundation of the child menu, and design the behaviour for user navigation return to parent menu using the breadcrumb.',
+      'First designer have approach to designing foundation of header page, and design the behaviour for user navigation return to parent menu using the breadcrumb.',
     caption: 'Detail Page: Without Return Navigation (Checkout Page Configuration)',
     imageSrc: '/assets/projects/doku/screenshot-1-checkout.png',
     videoSrc: '/assets/projects/doku/doku-component-1-without-return.mp4'
@@ -33,7 +33,7 @@ const DESIGNERS: DesignerData[] = [
     id: 'card-2',
     label: 'Designer 2',
     description:
-      'Second designer have different approach to designing the behaviour for user navigation return by close button',
+      'Second designer have different approach to designing the foundation of header page and the behaiour for user navigation return by close button',
     caption: 'Detail Page: With Return Navigation (Payment Link Settings)',
     imageSrc: '/assets/projects/doku/screenshot-2-payment-link.png',
     videoSrc: '/assets/projects/doku/doku-component-2-with-return.mp4'

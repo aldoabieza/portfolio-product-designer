@@ -126,7 +126,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         badge: 'Alignment',
         title: 'The Workshop',
         paragraphs: [
-          'As designers and writer, we held a design system strategy workshop—facilitated by me and sponsored by my lead—to brainstorm and plan the design system. The workshop aims to identify the vision and mission, pain points, goals, and more.'
+          'Together with fellow designers and a UX writer, we held a Design System Strategy Workshop, facilitated by me and supported by my lead. The goal was to identify our vision, goals, and key pain points within the existing Design System workflow.'
         ],
         images: [
           {
@@ -135,14 +135,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
             aspect: 'wide'
           }
         ],
-        afterImageParagraphs: [
-          'Through discussions with participants, I gained insights into the challenges of maintaining the Design System, particularly around internal collaboration and component management.'
-        ],
         subSections: [
           {
             title: 'Key Insight',
             paragraphs: [
-              'We agreed to prioritize improving the internal Design System workflow to strengthen communication and collaboration among designers, making the system easier to maintain and scale.'
+              'The workshop revealed broader Design System challenges involving discovery, technical alignment, and cross-functional collaboration.',
+              'As a first step, we prioritized improving the internal workflow by clarifying processes, responsibilities, and communication among designers, creating a stronger foundation for future improvements.'
             ]
           }
         ]
