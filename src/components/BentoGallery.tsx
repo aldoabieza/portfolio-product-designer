@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ZoomIn, ZoomOut, X } from 'lucide-react';
+import { SmartImage } from './SmartImage';
 
 export interface BentoPhoto {
   id: string;
@@ -197,7 +198,7 @@ export function BentoGallery({ photos = BENTO_PHOTOS }: BentoGalleryProps) {
                 className="bento-photo-card__frame"
                 style={{ backgroundColor: photo.bgTone || '#0B0D0F' }}
               >
-                <img
+                <SmartImage
                   src={photo.imageUrl}
                   alt={photo.alt}
                   className={`bento-photo-card__img ${
@@ -208,7 +209,10 @@ export function BentoGallery({ photos = BENTO_PHOTOS }: BentoGalleryProps) {
                   style={{
                     objectPosition: photo.objectPosition || 'center center'
                   }}
+                  objectFit={photo.objectFit || 'cover'}
+                  objectPosition={photo.objectPosition || 'center center'}
                   loading="lazy"
+                  reloadDescription="Reload image"
                 />
               </div>
             </motion.div>
@@ -247,9 +251,13 @@ export function BentoGallery({ photos = BENTO_PHOTOS }: BentoGalleryProps) {
             {/* Top Minimalist Controls Toolbar */}
             <div
               className="bento-photo-lightbox__toolbar"
+              style={{ justifyContent: 'flex-end' }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bento-photo-lightbox__controls">
+              <div
+                className="bento-photo-lightbox__controls"
+                style={{ marginLeft: 'auto' }}
+              >
                 <button
                   type="button"
                   onClick={() => setZoomLevel((z) => Math.max(0.6, z - 0.25))}
@@ -299,10 +307,11 @@ export function BentoGallery({ photos = BENTO_PHOTOS }: BentoGalleryProps) {
                   backgroundColor: activePhoto.bgTone || 'transparent'
                 }}
               >
-                <img
+                <SmartImage
                   src={activePhoto.imageUrl}
                   alt={activePhoto.alt}
                   className="bento-photo-lightbox__img"
+                  reloadDescription="Reload image"
                 />
               </motion.div>
             </div>

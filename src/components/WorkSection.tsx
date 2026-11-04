@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CaseStudy } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
+import { SmartImage } from './SmartImage';
 
 type WorkCategory = 'All' | 'Design System' | 'Website' | 'Mobile Apps';
 
@@ -98,7 +99,7 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
       {/* Right Column: Visual Preview Media without click action (display only with hover zoom) */}
       <div className="work-item__media">
         <div className="work-item__media-inner">
-          <img
+          <SmartImage
             src={item.coverImage}
             alt={item.title}
             loading="lazy"
@@ -106,6 +107,8 @@ function WorkCard({ item, index, onSelectCaseStudy }: WorkCardProps) {
             style={{
               objectPosition: item.coverObjectPosition || 'center center'
             }}
+            objectPosition={item.coverObjectPosition || 'center center'}
+            reloadDescription="Reload image"
           />
 
           {(item.isOnProgress || item.id === 'doku') && (

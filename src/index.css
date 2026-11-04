@@ -1036,6 +1036,7 @@ img { max-width: 100%; display: block; }
   gap: clamp(60px, 7vw, 88px);
 }
 
+/* Classic Work Item */
 .work-item {
   display: grid;
   grid-template-columns: 1fr 1.35fr;
@@ -1235,6 +1236,7 @@ img { max-width: 100%; display: block; }
   }
 }
 
+
 /* ===================================================
    EXPERIMENTAL
 =================================================== */
@@ -1288,23 +1290,30 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===================================================
-   EXPERIENCE — TIMELINE
-=================================================== */
-.timeline {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===================================================
    EXPERIENCE / MY CAREER JOURNEY
 =================================================== */
+.experience {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(36px, 5vw, 72px);
+  align-items: flex-start;
+}
+
+.experience .section__head {
+  position: sticky;
+  top: 110px;
+  max-width: 380px;
+  margin-bottom: 0;
+}
+
 .timeline {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: var(--content-read);
+  max-width: 100%;
   width: 100%;
 }
+
 
 .timeline__item {
   display: flex;
@@ -1312,6 +1321,7 @@ img { max-width: 100%; display: block; }
   gap: 16px;
   position: relative;
   padding-bottom: 24px;
+  width: 100%;
 }
 
 .timeline__item:last-child {
@@ -1371,14 +1381,27 @@ img { max-width: 100%; display: block; }
   z-index: 1;
 }
 
-/* Content Hierarchy: Title (16px), Role (14px), Duration (12px) with 8px Spacing */
+/* Content Hierarchy: Title (16px), Role (14px), Duration (12px) with Right-aligned Period Date */
 .timeline__content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex: 1;
+  width: 100%;
   padding-top: 2px;
+}
+
+.timeline__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+}
+
+.timeline__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .timeline__company {
@@ -1400,6 +1423,15 @@ img { max-width: 100%; display: block; }
   line-height: 1.35;
 }
 
+.timeline__date {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
 .timeline__period {
   font-family: var(--font-body);
   font-size: 12px;
@@ -1407,12 +1439,35 @@ img { max-width: 100%; display: block; }
   color: var(--ink-soft);
   margin: 0;
   line-height: 1.35;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .experience {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .experience .section__head {
+    position: static;
+    max-width: var(--content-read);
+    margin-bottom: clamp(32px, 4vw, 44px);
+  }
 }
 
 @media (max-width: 640px) {
   .timeline__item {
     gap: 12px;
     padding-bottom: 24px;
+  }
+  .timeline__header {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .timeline__date {
+    margin-left: 0;
+    justify-content: flex-start;
+    text-align: left;
   }
 }
 
@@ -4722,6 +4777,7 @@ h6.case__sub-block-title--primary,
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: auto;
 }
 
 .bento-photo-lightbox__btn,
@@ -4854,38 +4910,12 @@ h6.case__sub-block-title--primary,
   padding: 4px 0 20px;
 }
 
-/* Photography Bento Grid (Desktop: 3 Columns per Row in Asymmetric Bento Rhythm) */
+/* Photography Grid: Clean, consistent 3-column grid layout */
 .photo-bento-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 28px 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 24px;
   width: 100%;
-}
-
-/* 3 columns in Row 1: 5 cols (Hero) + 3 cols (Portrait) + 4 cols (Medium) = 12 cols */
-.polaroid-bento-card:nth-child(6n + 1) {
-  grid-column: span 5;
-}
-
-.polaroid-bento-card:nth-child(6n + 2) {
-  grid-column: span 3;
-}
-
-.polaroid-bento-card:nth-child(6n + 3) {
-  grid-column: span 4;
-}
-
-/* 3 columns in Row 2: 4 cols (Medium) + 5 cols (Hero) + 3 cols (Portrait) = 12 cols */
-.polaroid-bento-card:nth-child(6n + 4) {
-  grid-column: span 4;
-}
-
-.polaroid-bento-card:nth-child(6n + 5) {
-  grid-column: span 5;
-}
-
-.polaroid-bento-card:nth-child(6n + 6) {
-  grid-column: span 3;
 }
 
 /* Polaroid Card Item */
@@ -4895,7 +4925,9 @@ h6.case__sub-block-title--primary,
   transform-origin: center center;
   transition: z-index 0.2s ease;
   will-change: transform;
+  grid-column: span 1 !important;
 }
+
 
 .polaroid-bento-card:hover {
   z-index: 10;
@@ -5090,33 +5122,31 @@ h6.case__sub-block-title--primary,
   }
 }
 
-/* Responsive Breakpoints for Photography Bento */
+/* Responsive Breakpoints for Photography Gallery Grid */
 @media (max-width: 960px) {
   .photo-bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
   }
-  .polaroid-bento-card:nth-child(n),
-  .photo-bento-card:nth-child(n) {
+  .polaroid-bento-card {
     grid-column: span 1 !important;
+    transform: rotate(0deg) !important;
   }
-  .polaroid-bento-card .polaroid-frame__window,
-  .photo-bento-card .polaroid-frame__window {
+  .polaroid-frame__window {
     height: 300px;
   }
 }
 
 @media (max-width: 640px) {
   .photo-bento-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
-  .polaroid-bento-card:nth-child(n),
-  .photo-bento-card:nth-child(n) {
+  .polaroid-bento-card {
     grid-column: span 1 !important;
+    transform: rotate(0deg) !important;
   }
-  .polaroid-bento-card .polaroid-frame__window,
-  .photo-bento-card .polaroid-frame__window {
+  .polaroid-frame__window {
     height: 250px;
   }
   .polaroid-frame__chin {
@@ -5126,5 +5156,115 @@ h6.case__sub-block-title--primary,
     font-size: 14px;
   }
 }
+
+/* ===================================================
+   SMART IMAGE & RELOAD FALLBACK (PURE WHITE, CARDLESS)
+=================================================== */
+.smart-image-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+  padding: 16px;
+  color: #FFFFFF !important;
+}
+
+.smart-image-reload-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #FFFFFF !important;
+  outline: none;
+  user-select: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.smart-image-reload-btn:hover {
+  transform: scale(1.06);
+  opacity: 0.95;
+}
+
+.smart-image-reload-btn:active {
+  transform: scale(0.92);
+}
+
+.smart-image-reload-icon {
+  width: 24px;
+  height: 24px;
+  color: #FFFFFF !important;
+  stroke-width: 2.3;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smart-image-reload-btn:hover .smart-image-reload-icon {
+  transform: rotate(-35deg);
+}
+
+/* Continuous smooth spin when retrying or reloading */
+.smart-image-reload-icon.is-spinning,
+.smart-image-reload-btn.is-retrying .smart-image-reload-icon {
+  animation: smartReloadSpin 0.75s linear infinite !important;
+}
+
+@keyframes smartReloadSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.smart-image-reload-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #FFFFFF !important;
+  letter-spacing: 0.01em;
+}
+
+/* Image reveal animation on reload interaction */
+.smart-image--reloaded {
+  animation: smartImageReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes smartImageReveal {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.96);
+    filter: blur(5px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.01);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+
 
 

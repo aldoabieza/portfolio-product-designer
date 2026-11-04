@@ -150,10 +150,10 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         badge: 'Discovery',
         subSections: [
           {
-            title: 'Missing Component Update Flow',
+            title: '01. Missing Component Update Flow',
             isPrimaryTitle: true,
             paragraphs: [
-              'Our existing workflow lacked a proper process for distributing and updating components across teams, leading to inconsistencies in the design system.'
+              'Our existing workflow lacked a structured approach to managing component updates. Designers had no clear guidance on how to handle new component requests or modifications, resulting in fragmented communication and inconsistent component usage across products.'
             ],
             images: [
               {
@@ -163,12 +163,12 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
               }
             ],
             afterImageQuotes: [
-              'Lack of Component Visibility Across Designers: Limited visibility across designers led to duplicate components with inconsistent variations, making the design system harder to maintain, update, and scale consistently.',
-              'Missing Design System Synchronization Flow: Updated components implemented during development were often not synchronized back to the design system repository, resulting in outdated libraries and misalignment across teams.'
+              'Lack of Component Visibility Across Designers: Designers had limited visibility into components created or used by others. This led to duplicate components and inconsistent variations, making the design system harder to maintain and scale.',
+              'Missing Design System Synchronization Flow: Components developed or updated by engineering were not synchronized with the Design System repository, while new or updated components from designers were not communicated to engineers. This led to outdated references and inconsistent component implementations across products.'
             ]
           },
           {
-            title: 'Inconsistency design across products',
+            title: '02. Inconsistency design across products',
             isPrimaryTitle: true,
             paragraphs: [
               'Each designer had their own approach when designing product interfaces. Without clearly defined design foundations and standards, inconsistencies appeared across products, including foundations, behaviors, and component usage.',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { CaseVideoPlayer } from './CaseVideoPlayer';
+import { SmartImage } from './SmartImage';
 
 interface InconsistencyCardsProps {
   onExpand?: (imageUrl: string, caption?: string) => void;
@@ -227,29 +228,13 @@ function InconsistencyImage({
   src: string;
   alt: string;
 }) {
-  const [currentSrc, setCurrentSrc] = useState(src);
-
-  useEffect(() => {
-    setCurrentSrc(src);
-  }, [src]);
-
-  const handleError = () => {
-    if (src.includes('checkout') || src.includes('10.35.13')) {
-      setCurrentSrc('/assets/projects/doku/Screenshot%202026-09-22%20at%2010.35.13.png');
-    } else if (src.includes('payment-link') || src.includes('10.43.25')) {
-      setCurrentSrc('/assets/projects/doku/Screenshot%202026-09-22%20at%2010.43.25.png');
-    } else {
-      setCurrentSrc(encodeURI(src));
-    }
-  };
-
   return (
-    <img
-      src={currentSrc}
+    <SmartImage
+      src={src}
       alt={alt}
       loading="lazy"
       className="case__image"
-      onError={handleError}
+      reloadDescription="Reload image"
     />
   );
 }

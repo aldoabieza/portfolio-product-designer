@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ZoomIn, ZoomOut, X } from 'lucide-react';
+import { SmartImage } from './SmartImage';
 
 export interface PhotoItem {
   id: string;
@@ -83,10 +84,20 @@ interface PhotographyGalleryProps {
 export function PhotographyGallery({ photos = PHOTOGRAPHY_ITEMS }: PhotographyGalleryProps) {
   const [activePhoto, setActivePhoto] = useState<PhotoItem | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const activePhotoRef = useRef<PhotoItem | null>(null);
   const lastPosRef = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 960);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   activePhotoRef.current = activePhoto;
 
@@ -192,18 +203,24 @@ export function PhotographyGallery({ photos = PHOTOGRAPHY_ITEMS }: PhotographyGa
         role="region"
         aria-label="Photography Bento Collection"
       >
-        {photos.map((photo, index) => (
-          <motion.div
-            key={photo.id}
-            className={`polaroid-bento-card polaroid-bento-card--${photo.gridSpan || 'half'}`}
-            initial={{ opacity: 0, y: 24, rotate: photo.rotation }}
-            animate={{ opacity: 1, y: 0, rotate: photo.rotation }}
-              whileHover={{
-                rotate: 0,
-                y: -6,
-                scale: 1.015,
-                transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] }
-              }}
+        {photos.map((photo, index) => {
+          const cardRotation = isMobile ? 0 : photo.rotation;
+          return (
+            <motion.div
+              key={photo.id}
+              className="polaroid-bento-card"
+              initial={{ opacity: 0, y: 24, rotate: cardRotation }}
+              animate={{ opacity: 1, y: 0, rotate: cardRotation }}
+              whileHover={
+                isMobile
+                  ? { y: -2, transition: { duration: 0.2 } }
+                  : {
+                      rotate: 0,
+                      y: -6,
+                      scale: 1.015,
+                      transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] }
+                    }
+              }
               transition={{
                 duration: 0.5,
                 delay: index * 0.06,
@@ -224,12 +241,14 @@ export function PhotographyGallery({ photos = PHOTOGRAPHY_ITEMS }: PhotographyGa
               <div className="polaroid-frame">
                 {/* Image Window */}
                 <div className="polaroid-frame__window">
-                  <img
+                  <SmartImage
                     src={photo.imageUrl}
                     alt={photo.alt}
                     className="polaroid-frame__img"
                     style={{ objectPosition: photo.objectPosition || 'center center' }}
+                    objectPosition={photo.objectPosition || 'center center'}
                     loading="lazy"
+                    reloadDescription="Reload image"
                   />
                   {/* Subtle photographic sheen reflection overlay */}
                   <div className="polaroid-frame__sheen" aria-hidden="true" />
@@ -241,7 +260,8 @@ export function PhotographyGallery({ photos = PHOTOGRAPHY_ITEMS }: PhotographyGa
                 </div>
               </div>
             </motion.div>
-          ))}
+          );
+        })}
       </div>
 
       {/* Floating Custom Cursor Pill for Image Preview with Glassmorphism & "See Details" Copy */}
@@ -331,10 +351,11 @@ export function PhotographyGallery({ photos = PHOTOGRAPHY_ITEMS }: PhotographyGa
                 exit={{ scale: 0.94, opacity: 0 }}
                 transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
               >
-                <img
+                <SmartImage
                   src={activePhoto.imageUrl}
                   alt={activePhoto.alt}
                   className="bento-photo-lightbox__img"
+                  reloadDescription="Reload image"
                 />
               </motion.div>
             </div>

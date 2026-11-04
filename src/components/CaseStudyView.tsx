@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Info, ChevronsRight, X, ZoomIn, ZoomOut, Clock } from 'lucide-react';
+import { Info, ChevronsRight, X, ZoomIn, ZoomOut, Clock, RotateCcw } from 'lucide-react';
 import { CaseStudy, CaseStudyImage } from '../types';
 import { CASE_STUDIES, CASE_STUDY_ORDER } from '../data/portfolioData';
 import { InconsistencyCards } from './InconsistencyCards';
 import { CaseVideoPlayer } from './CaseVideoPlayer';
+import { SmartImage } from './SmartImage';
+
 
 interface CaseStudyViewProps {
   caseStudy: CaseStudy;
@@ -86,7 +88,13 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
     }
   };
 
-  const filename = decodeURIComponent(img.url.split('/').pop() || '');
+  const handleManualRetry = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setLoadFailed(false);
+    setAttempt(0);
+    const clean = img.url.split('?')[0];
+    setCurrentSrc(`${clean}?reload=${Date.now()}`);
+  };
 
   if (loadFailed) {
     return (
@@ -107,29 +115,25 @@ function CaseImageItem({ img, title, index, onExpand }: CaseImageProps) {
             minHeight: '200px'
           }}
         >
-          <div
-            style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              background: 'rgba(0, 128, 128, 0.08)',
-              color: 'var(--accent)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '20px'
-            }}
+          <button
+            type="button"
+            onClick={handleManualRetry}
+            className="smart-image-reload-btn"
+            title="Click to reload image"
+            aria-label={`Reload ${img.caption || title}`}
           >
-            🖼️
-          </div>
-          <div>
-            <div style={{ fontWeight: 600, fontSize: '15px', color: 'var(--ink)', marginBottom: '4px' }}>
-              Menunggu File: <code style={{ background: 'rgba(0,0,0,0.06)', padding: '4px 8px', borderRadius: '4px' }}>{filename}</code>
-            </div>
-            <div style={{ fontSize: '13px', color: 'var(--ink-soft)', maxWidth: '460px', lineHeight: 1.5 }}>
-              File belum terdeteksi di server. Silakan upload file asli ke folder <code style={{ color: 'var(--accent)' }}>public/assets/projects/doku/</code> lewat File Explorer.
-            </div>
-          </div>
+            <RotateCcw
+              size={24}
+              className="smart-image-reload-icon"
+              style={{ width: 24, height: 24 }}
+            />
+            <span className="smart-image-reload-text">Reload image</span>
+          </button>
+          {img.caption && (
+            <span style={{ fontSize: '12px', color: 'var(--ink-soft)', maxWidth: '480px' }}>
+              {img.caption}
+            </span>
+          )}
         </div>
       </figure>
     );
@@ -396,10 +400,11 @@ export default function CaseStudyView({
           }
         }}
       >
-        <img
+        <SmartImage
           src={caseStudy.coverImage}
           alt={caseStudy.title}
           referrerPolicy="no-referrer"
+          reloadDescription="Reload image"
         />
       </motion.div>
 

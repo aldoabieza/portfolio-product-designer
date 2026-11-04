@@ -47,11 +47,17 @@ function TimelineCard({
       {/* Dashed connector line seamlessly linking to the next logo box */}
       {!isLast && <div className="timeline__line" aria-hidden="true" />}
 
-      {/* Right Column: Visual Hierarchy of Company, Role, and Period */}
+      {/* Right Column: Visual Hierarchy of Company, Role, and Period positioned on the right */}
       <div className="timeline__content">
-        <h3 className="timeline__company">{item.company}</h3>
-        <p className="timeline__role">{item.role}</p>
-        <span className="timeline__period">{item.period}</span>
+        <div className="timeline__header">
+          <div className="timeline__info">
+            <h3 className="timeline__company">{item.company}</h3>
+            <p className="timeline__role">{item.role}</p>
+          </div>
+          <div className="timeline__date">
+            <span className="timeline__period">{item.period}</span>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
