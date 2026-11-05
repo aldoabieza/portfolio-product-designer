@@ -27,7 +27,7 @@ const DESIGNERS: DesignerData[] = [
     description:
       'First designer have approach to designing foundation of header page, and design the behaviour for user navigation return to parent menu using the breadcrumb.',
     caption: 'Detail Page: Without Return Navigation (Checkout Page Configuration)',
-    imageSrc: '/assets/projects/doku/screenshot-1-checkout.png',
+    imageSrc: '/assets/aistudio/Image_1_953ca73a.png',
     videoSrc: '/assets/projects/doku/doku-component-1-without-return.mp4'
   },
   {
@@ -36,7 +36,7 @@ const DESIGNERS: DesignerData[] = [
     description:
       'Second designer have different approach to designing the foundation of header page and the behaiour for user navigation return by close button',
     caption: 'Detail Page: With Return Navigation (Payment Link Settings)',
-    imageSrc: '/assets/projects/doku/screenshot-2-payment-link.png',
+    imageSrc: '/assets/aistudio/Image_2_72d1a0b5.png',
     videoSrc: '/assets/projects/doku/doku-component-2-with-return.mp4'
   }
 ];
@@ -52,16 +52,7 @@ export function InconsistencyCards({ onExpand }: InconsistencyCardsProps) {
   const currentDesigner =
     DESIGNERS.find((d) => d.id === selectedDesigner) || DESIGNERS[0];
 
-  const storageKey = `custom_foundation_image_${currentDesigner.id}`;
-  const customImage = (() => {
-    try {
-      return localStorage.getItem(storageKey);
-    } catch {
-      return null;
-    }
-  })();
-
-  const activeImageSrc = customImage || currentDesigner.imageSrc;
+  const activeImageSrc = currentDesigner.imageSrc;
 
   const handleSelectSubTab = (designerId: DesignerId, tab: TabType) => {
     setSelectedDesigner(designerId);

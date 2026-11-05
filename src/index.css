@@ -475,6 +475,12 @@ img { max-width: 100%; display: block; }
     flex-direction: column;
     gap: 12px;
   }
+  .sidebar__collapsible-footer .sidebar__timezone {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
   .sidebar__collapsible-footer .btn {
     width: 100%;
     justify-content: center;
