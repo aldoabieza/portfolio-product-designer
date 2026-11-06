@@ -6,6 +6,8 @@ interface SidebarProps {
   activeView: ViewType;
   currentCaseStudy?: CaseStudy | null;
   onNavigate: (view: ViewType) => void;
+  onBack?: () => void;
+  canGoBack?: boolean;
   onOpenResume?: () => void;
 }
 
@@ -31,6 +33,8 @@ export default function Sidebar({
   activeView,
   currentCaseStudy,
   onNavigate,
+  onBack,
+  canGoBack = false,
   onOpenResume
 }: SidebarProps) {
   const [copied, setCopied] = useState(false);
@@ -103,10 +107,43 @@ export default function Sidebar({
       >
         {/* Top/Navbar Header Row */}
         <div className="sidebar__header-row">
-          {/* Ujung Kiri Navbar: Logo + Timezone (Hidden in details of portfolio / case study) */}
-          {!isCaseStudy && (
-            <div className="sidebar__brand">
+          {/* Ujung Kiri Navbar: Return CTA when canGoBack / Logo on intro */}
+          <div className="sidebar__brand">
+            {canGoBack ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (onBack) {
+                      onBack();
+                    } else {
+                      onNavigate('intro');
+                    }
+                    setIsMenuOpen(false);
+                  }}
+                  className="sidebar__back hero__company-link sidebar__back-responsive"
+                  aria-label="Return to previous page"
+                  title="Return to previous page"
+                >
+                  <span className="sidebar__back-icon" aria-hidden="true">←</span>
+                  <span className="sidebar__back-text">Back</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    onNavigate('intro');
+                    setIsMenuOpen(false);
+                  }}
+                  className="sidebar__logo sidebar__logo--desktop-only"
+                  aria-label="Go to Aldo Abieza home"
+                >
+                  Aldo Abieza
+                </button>
+              </>
+            ) : (
               <button
+                type="button"
                 onClick={() => {
                   onNavigate('intro');
                   setIsMenuOpen(false);
@@ -116,8 +153,8 @@ export default function Sidebar({
               >
                 Aldo Abieza
               </button>
-            </div>
-          )}
+            )}
+          </div>
 
           {/* Ujung Kanan Navbar (Responsive only): Download Button & Hamburger Menu */}
           <div className="sidebar__actions">
@@ -231,11 +268,16 @@ export default function Sidebar({
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="sidebar__collapsible-inner">
-                {isCaseStudy && (
+                {canGoBack && (
                   <div className="sidebar__case-nav mb-2">
                     <button
+                      type="button"
                       onClick={() => {
-                        onNavigate('work');
+                        if (onBack) {
+                          onBack();
+                        } else {
+                          onNavigate('work');
+                        }
                         setIsMenuOpen(false);
                       }}
                       className="sidebar__back hero__company-link"

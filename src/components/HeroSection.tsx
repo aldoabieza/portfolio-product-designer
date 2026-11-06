@@ -17,7 +17,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="hero">
+    <section className="section hero">
       <div className="hero__inner">
         {/* Status Badge: Option 1 (Available for Opportunity) */}
         <motion.div
